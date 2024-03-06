@@ -49,11 +49,8 @@ public class DatalogStep3BlueToothGuideActivty extends BaseActivity implements T
     Banner banner;
 
 
-
     private String[] title;
     private int[] images;
-
-
 
 
     @Override
@@ -70,18 +67,15 @@ public class DatalogStep3BlueToothGuideActivty extends BaseActivity implements T
 
         title = new String[]{
                 getString(R.string.datalog_bluetooth_step)
-               };
-
-
+        };
 
 
     }
 
 
-
     @OnClick({R.id.btn_next})
     public void onViewClicked(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_next:
                 boolean b = LocalUtil.checkGPSIsOpen(this);
                 if (b) {
@@ -94,20 +88,13 @@ public class DatalogStep3BlueToothGuideActivty extends BaseActivity implements T
                     CircleDialogUtils.showCommentDialog(this, getString(R.string.温馨提示),
                             getString(R.string.utf_open_gprs), v -> {
                                 LocalUtil.goToOpenGPS(this);
-                    }, v -> finish(), false);
+                            }, v -> finish(), false);
                 }
 
 
                 break;
         }
     }
-
-
-
-
-
-
-
 
 
     @Override
@@ -122,15 +109,16 @@ public class DatalogStep3BlueToothGuideActivty extends BaseActivity implements T
     }
 
 
-
     /**
      * 检测拍摄权限
      */
     @AfterPermissionGranted(RC_LOCATION)
     private void checkCameraPermissions() {
-        String[] perms = {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
+        String[] perms;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             perms = PermissionConstant.BLE_SCAN;
+        } else {
+            perms = new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
         }
 
 
@@ -145,19 +133,16 @@ public class DatalogStep3BlueToothGuideActivty extends BaseActivity implements T
     }
 
 
-    private void toScanSerial(){
+    private void toScanSerial() {
         Intent intent = new Intent(this, BlueToothScanActivity.class);
         startActivity(intent);
     }
 
 
-
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode==LocalUtil.OPEN_GPS_CODE){
+        if (requestCode == LocalUtil.OPEN_GPS_CODE) {
             checkCameraPermissions();
         }
     }

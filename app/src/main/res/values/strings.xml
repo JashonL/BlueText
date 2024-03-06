@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BLueTooth Config</string>
+    <string name="app_name">EC Tool</string>
     <string name="product_detial">产品详情</string>
     <!--===========================内部引入 start===============================-->
     <string name="fragment3_title">@string/main_service</string>

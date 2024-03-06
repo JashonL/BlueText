@@ -41,8 +41,10 @@ import com.shuoxd.bluetext.Mydialog;
 import com.shuoxd.bluetext.R;
 import com.shuoxd.bluetext.SmartHomeUtil;
 import com.shuoxd.bluetext.WifiUtils;
+import com.shuoxd.bluetext.datalogConfig.BlueToothMode.BlueToothAdvanceActivity;
 import com.shuoxd.bluetext.datalogConfig.CircleDialogUtils;
 import com.shuoxd.bluetext.datalogConfig.ConfigManager;
+import com.shuoxd.bluetext.datalogConfig.MyUtils;
 import com.shuoxd.bluetext.datalogConfig.bean.DatalogConfigBean;
 import com.shuoxd.bluetext.datalogConfig.bluetooth.BleService;
 import com.shuoxd.bluetext.datalogConfig.bluetooth.constant.BluetoothConstant;
@@ -130,6 +132,10 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
     private boolean isvisible = true;
 //    private String action;
 
+
+
+    private int step=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,7 +152,7 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
             finish();
             return;
         }
-        devId = configBean.getSerialNumber();
+        devId = "0000000000";
 //        action = configBean.getAction();
 
 //        toolbar.inflateMenu(R.menu.menu_quetion_right);
@@ -314,6 +320,7 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
 
     /*发送密钥连接蓝牙*/
     private void sendRestart() throws Exception {
+        step=1;
         String value = "1";
         List<DatalogAPSetParam> restartList = new ArrayList<>();
         DatalogAPSetParam bean = new DatalogAPSetParam();
@@ -328,6 +335,7 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
 
     /*发送密钥连接蓝牙*/
     private void sendCmdConnect() throws Exception {
+        step=0;
         String bluetoothCommentKey = BluetoothConstant.BLUETOOTH_OSS_KEY;
    /*     //蓝牙公共密钥
         if (action.equals(Constant.DATALOGER_CONFIG_FROM_OSS)) {
@@ -359,7 +367,8 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
 
     /*发送密钥连接蓝牙*/
     private void setKey() throws Exception {
-        String bluetoothCommentKey = "123456";
+        step=0;
+        String bluetoothCommentKey = BluetoothConstant.BLUETOOTH_OSS_KEY;
         List<DatalogAPSetParam> restartList = new ArrayList<>();
         DatalogAPSetParam bean = new DatalogAPSetParam();
         bean.setParamnum(DataLogApDataParseUtil.BLUETOOTH_KEY);
@@ -390,6 +399,7 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
 
 
     private void requestSetting() throws Exception {
+        step=3;
         //请求重置采集器
         List<DatalogAPSetParam> routerList = new ArrayList<>();
         String ssid = etSsid.getText().toString();
@@ -482,7 +492,7 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
                 int paramNum = bean.getParamNum();
 
 
-                if (paramNum == DataLogApDataParseUtil.BLUETOOTH_KEY) {//连接成功
+                if (paramNum == DataLogApDataParseUtil.BLUETOOTH_KEY||step==0) {//连接成功
                     if (statusCode == 0) {
                         //发送重启指令
                         sendRestart();
@@ -501,7 +511,7 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
                 }
 
 
-                if (paramNum == DataLogApDataParseUtil.WIFI_PASSWORD) {//设置WiFi名称密码回应
+                if (paramNum == DataLogApDataParseUtil.WIFI_PASSWORD||step==3) {//设置WiFi名称密码回应
                     if (statusCode == 0) {
                         checkStatus();//查询配网状态
                         configStart();
@@ -543,7 +553,7 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
                         } else {
                             errorCode = "302";
 
-                            errorNameCn =ConfigConstant.bluetooth_config_error_zn_302;
+                            errorNameCn = ConfigConstant.bluetooth_config_error_zn_302;
                             errorNameEn = ConfigConstant.bluetooth_config_error_en_302;
                             configError();//连接失败
                         }
@@ -637,7 +647,7 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
         intent.putExtra("errorCode", errorCode);
         intent.putExtra("errorNameCn", errorNameCn);
         intent.putExtra("errorNameEn", errorNameEn);
-        jumpTo(intent, false);
+        jumpTo(intent, true);
     }
 
 
@@ -659,7 +669,7 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
         EventBus.getDefault().post(new DatalogConfigfinish());
         //2.跳转成功界面
         Intent intent = new Intent(this, DatalogConfigSuccessActivity.class);
-        jumpTo(intent, false);
+        jumpTo(intent, true);
     }
 
 

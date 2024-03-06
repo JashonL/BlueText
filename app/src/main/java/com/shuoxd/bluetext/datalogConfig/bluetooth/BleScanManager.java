@@ -4,6 +4,7 @@ package com.shuoxd.bluetext.datalogConfig.bluetooth;
 
 import static com.shuoxd.bluetext.datalogConfig.bluetooth.BleService.BLE_CONNECTING;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -13,14 +14,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.Toast;
+
 
 import androidx.fragment.app.FragmentActivity;
 
 
 import com.shuoxd.bluetext.R;
+import com.shuoxd.bluetext.SmartHomeUtil;
 import com.shuoxd.bluetext.datalogConfig.CircleDialogUtils;
+import com.shuoxd.bluetext.datalogConfig.bean.BleBrocastPro;
 import com.shuoxd.bluetext.datalogConfig.bluetooth.bean.BleBean;
 import com.shuoxd.bluetext.datalogConfig.bluetooth.constant.BluetoothConstant;
 
@@ -114,77 +121,127 @@ public class BleScanManager {
         //5.0以下
         mLeScanCallback = (device, rssi, scanRecord) -> {
             if (scanRecord != null) {
-                parseRecord(scanRecord);
+                parseRecord(scanRecord, device.getAddress());
             }
         };
 
     }
 
-    private void parseRecord(byte[] scanRecord) {
-        int index = 3;
-        int startLen = scanRecord[index] & 0xff;
-        if (startLen == 0) {
-            return;
-        }
-        if (startLen != 11) {
-            return;
-        }
-        if ((scanRecord[4] & 0xff) != 9) {
-            return;
-        }
-        BleBean bleBean = new BleBean();
-        for (int i = 0; i < 6; i++) {
-            byte[] valueArr = new byte[startLen - 1];  //0b 11-1=10
-            int type = scanRecord[index + 1] & 0xff;
-            if (type == 9) {
-                System.arraycopy(scanRecord, index + 2, valueArr, 0, valueArr.length);
-                String value = new String(valueArr, StandardCharsets.UTF_8);
-                Log.d(TAG, "parseData: name:" + value);
-                bleBean.setBleName(value);
-                index += 1 + scanRecord[index] & 0xff;
-                startLen = scanRecord[index] & 0xff;
-            } else if (type == 255) {
-                System.arraycopy(scanRecord, index + 2, valueArr, 0, valueArr.length);
-                String value = new String(valueArr, StandardCharsets.UTF_8);
-                //判断设备类型  34才是逆变器
-                if (value.contains("G:") || value.contains("g:")) {
-                    bleBean.setType(value);
-                    Log.d(TAG, "parseData: type:" + value);
-                } else if (value.contains("M:")) {
-                    //String st = String.format("%02X ", data[i]);
-                    String address = String.format("%02X", valueArr[2]) + ":"
-                            + String.format("%02X", valueArr[3]) + ":"
-                            + String.format("%02X", valueArr[4]) + ":"
-                            + String.format("%02X", valueArr[5]) + ":"
-                            + String.format("%02X", valueArr[6]) + ":"
-                            + String.format("%02X", valueArr[7]);
-                    bleBean.setAddress(address);
-                    Log.d(TAG, "parseData: address:" + address);
-                }
-                index += 1 + scanRecord[index] & 0xff;
-                startLen = scanRecord[index] & 0xff;
-            } else {
-                System.arraycopy(scanRecord, index + 2, valueArr, 0, valueArr.length);
-                //String value = new String(valueArr, StandardCharsets.UTF_8);
-                index += 1 + scanRecord[index] & 0xff;
-                startLen = scanRecord[index] & 0xff;
-            }
-        }
+    private void parseRecord(byte[] scanRecord, String address) {
 
-        boolean repeatFlag = false;
 
-        for (BleBean ble : scanlisteners.getBleData()) {
-            if (ble.getBleName().equals(bleBean.getBleName())) {
-                repeatFlag = true;
+
+        //数据长度
+        int tempLenIndex = 0;
+        List<BleBrocastPro> datas = new ArrayList<>();
+        for (int i = 0; i < scanRecord.length; i = tempLenIndex) {
+
+            //len包含Type data
+            int len = scanRecord[i] & 0xff;
+            //len包含Type data
+            if (len == 0) {
                 break;
             }
+
+            byte[] data = new byte[len - 1];
+            BleBrocastPro pro = new BleBrocastPro();
+            pro.len = len;
+            pro.type = scanRecord[i + 1];
+            System.arraycopy(scanRecord, i + 2, data, 0, len - 1);
+            pro.data = data;
+
+
+
+
+
+            datas.add(pro);
+            tempLenIndex += len + 1;
+
+
+
         }
 
-        if (!repeatFlag && "g:12".equalsIgnoreCase(bleBean.getType())) {
-            scanlisteners.addBleData(bleBean);
+
+        BleBean bleBean = new BleBean();
+        bleBean.setAddress(address);
+
+
+        String name1 = "";
+        String deviceType = "";
+        String bleName = "";
+
+        for (int i = 0; i < datas.size(); i++) {
+            BleBrocastPro pro = datas.get(i);
+            byte type = pro.type;
+            switch (type) {
+                case 0x01:
+                    break;
+                case (byte) 0xff:
+                    String tempType = new String(pro.data, StandardCharsets.UTF_8);
+                    if (tempType.toLowerCase().contains("g")) {
+                        deviceType = tempType;
+                        int i1 = tempType.indexOf("#");
+                        if (i1 != -1) {
+                            name1 = tempType.substring(i1 + 1);
+                        }
+
+                    }
+
+                    break;
+                case 0x03:
+                    break;
+                case 0x09:
+                    bleName = new String(pro.data, StandardCharsets.UTF_8);
+
+                    break;
+                case 0x0A:
+                    break;
+
+            }
+
+
         }
 
-//        baseView.showConnDeviceDialog();
+
+        bleName = name1 + bleName;
+
+
+
+
+
+        bleBean.setBleName(bleName);
+        bleBean.setType(deviceType);
+
+        if (TextUtils.isEmpty(bleBean.getBleName()) || TextUtils.isEmpty(bleBean.getType()) || TextUtils.isEmpty(bleBean.getAddress())) {
+            return;
+        }
+
+
+
+    /*      33：便携式电源内采集器
+            34：ShineWiFi-X2
+            43：GroHome Manager
+            44：WeLink
+            45：Welink-Pro
+            46：ShineRFStick-X2
+            51：ShineWiLan-X
+            94：便携式电源-TB*/
+
+        Log.d("liaojinsha","type:"+bleBean.getType()+"name:"+bleName);
+
+        if (bleBean.getType().toLowerCase().contains("g")) {
+            boolean repeatFlag = false;
+            for (BleBean ble : scanlisteners.getBleData()) {
+                if (ble.getBleName().equals(bleBean.getBleName())) {
+                    repeatFlag = true;
+                    break;
+                }
+            }
+            if (!repeatFlag) {
+                scanlisteners.addBleData(bleBean);
+            }
+        }
+
 
     }
 

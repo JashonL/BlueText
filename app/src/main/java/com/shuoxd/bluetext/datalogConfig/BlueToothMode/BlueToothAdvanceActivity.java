@@ -39,6 +39,7 @@ import com.shuoxd.bluetext.DatalogStep2ModActivity;
 import com.shuoxd.bluetext.MyApplication;
 import com.shuoxd.bluetext.Mydialog;
 import com.shuoxd.bluetext.R;
+import com.shuoxd.bluetext.SmartHomeUtil;
 import com.shuoxd.bluetext.datalogConfig.CircleDialogUtils;
 import com.shuoxd.bluetext.datalogConfig.MyUtils;
 import com.shuoxd.bluetext.datalogConfig.WifiTypeEnum;

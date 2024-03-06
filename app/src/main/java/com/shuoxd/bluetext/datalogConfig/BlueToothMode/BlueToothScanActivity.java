@@ -133,6 +133,8 @@ public class BlueToothScanActivity extends BaseActivity
 
 //    private String action;
 
+    private int step=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -237,7 +239,6 @@ public class BlueToothScanActivity extends BaseActivity
             manager.stopBleScan();
             pos = position;
             BleBean bleBean = mAdapter.getData().get(position);
-            String bleName = bleBean.getBleName();
             bleBean.setStatus(BluetoothConstant.BLUETOOTH_CONNET_STATUS_3);
             //mBleService.connect(mAdapter.getData().get(position).getAddress());
     /*        if (!bleName.equals(datalogSn)){
@@ -686,6 +687,8 @@ public class BlueToothScanActivity extends BaseActivity
         }*/
 
 
+        step=0;
+
         String bluetoothCommentKey = BluetoothConstant.BLUETOOTH_OSS_KEY;
 
 
@@ -695,7 +698,7 @@ public class BlueToothScanActivity extends BaseActivity
         bean.setLength(bluetoothCommentKey.length());
         bean.setValue(bluetoothCommentKey);
         restartList.add(bean);
-        byte[] bytes = DatalogApUtil.sendMsg_bt18(DatalogApUtil.DATALOG_GETDATA_0X18, bleBean.getBleName(), restartList);
+        byte[] bytes = DatalogApUtil.sendMsg_bt18(DatalogApUtil.DATALOG_GETDATA_0X18, "0000000000", restartList);
         mBleService.writeCharacteristic(bytes);
     }
 
@@ -741,7 +744,7 @@ public class BlueToothScanActivity extends BaseActivity
             if (bean.getFuncode() == DatalogApUtil.DATALOG_GETDATA_0X18) {
                 int statusCode = bean.getStatusCode();
                 int paramNum = bean.getParamNum();
-                if (paramNum == DataLogApDataParseUtil.BLUETOOTH_KEY) {//连接成功
+                if (paramNum == DataLogApDataParseUtil.BLUETOOTH_KEY||step==0) {//连接成功
                     if (statusCode == 0) {
                         toConfig();
                     } else {//提示失败
