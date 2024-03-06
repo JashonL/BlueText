@@ -281,10 +281,8 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                     return;
                 }
 
-                if (isSetDomain) {
-                    //弹框选择
-                    setServer(etServerDomain);
-                }
+                //弹框选择
+                setServer(etServerDomain);
 
 
                 break;
@@ -673,7 +671,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
 
         btnNext.setVisibility(View.VISIBLE);
         clUnlock.setVisibility(View.GONE);
-        String ip = String.format("%s/%s", getString(R.string.server_url), "IP");
+        String ip = getString(R.string.服务器地址);
         tvServerDomain.setText(ip);
 
     }
