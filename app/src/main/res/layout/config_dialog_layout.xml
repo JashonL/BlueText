@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/white_background"
+    android:gravity="center"
+    android:minHeight="@dimen/x40"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/xa300"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/loading_img"
+            android:layout_width="@dimen/x30"
+            android:layout_height="@dimen/x30"
+            android:indeterminateDrawable="@drawable/progressbar_anim_2" />
+
+
+        <TextView
+            android:id="@+id/tv_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/xa20"
+            android:gravity="center"
+            android:text="0%"
+            android:textColor="@color/scenesbackground"
+            android:textSize="@dimen/x16" />
+
+
+        <TextView
+            android:id="@+id/loading_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/xa20"
+            android:gravity="center"
+            android:text="@string/datalog_loading"
+            android:textColor="@color/title_bg_white"
+            android:textSize="@dimen/sizea_content" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

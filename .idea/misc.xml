@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/newplace/BlueText/app/src/main/res/drawable/circle_blue_bg.xml" value="0.38229166666666664" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/drawable/circle_blue_bg_50.xml" value="0.38229166666666664" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/drawable/circle_gray.xml" value="0.38229166666666664" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/drawable/dashgap.xml" value="0.38229166666666664" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/drawable/edittext_bg.xml" value="0.38229166666666664" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/drawable/selector_checkbox_bg.xml" value="0.38229166666666664" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/drawable/selector_circle_btn_blue.xml" value="0.38229166666666664" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/drawable/selector_circle_btn_blue_normal.xml" value="0.38229166666666664" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/drawable/selector_gray_stroke.xml" value="0.38229166666666664" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/drawable/shape_gray_radius_5_bg.xml" value="0.38229166666666664" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/drawable/shape_iphone_radius_20.xml" value="0.38229166666666664" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/activity_ap_error.xml" value="0.35507246376811596" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/activity_datalog_blue.xml" value="0.20969202898550723" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/activity_datalog_config_error.xml" value="0.35507246376811596" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/activity_datalog_config_success.xml" value="0.35507246376811596" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/activity_datalog_step2_mode.xml" value="0.33" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/activity_datalog_step3_guide.xml" value="0.4534769833496572" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/activity_dataloger_ap_setting.xml" value="0.24320652173913043" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/bluetooth_scan_fail.xml" value="0.2871376811594203" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/config_dialog_layout.xml" value="0.20969202898550723" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/dialog_bluetooth_conneted.xml" value="0.20969202898550723" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/item_blue_tooth.xml" value="0.2871376811594203" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/item_error_analysis.xml" value="0.24320652173913043" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/item_string_choose.xml" value="0.2871376811594203" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/item_text.xml" value="0.2871376811594203" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/layout_title_step1.xml" value="0.2871376811594203" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/layout_title_step2.xml" value="0.35507246376811596" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/layout_title_step3.xml" value="0.35507246376811596" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/layout_title_step4.xml" value="0.35507246376811596" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/popuwindow_comment_list_layout.xml" value="0.2871376811594203" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/shape_white_corner_bg.xml" value="0.2871376811594203" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/tab_item_base.xml" value="0.24320652173913043" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/tab_item_router.xml" value="0.35507246376811596" />
+        <entry key="..\:/newplace/BlueText/app/src/main/res/layout/toobar_title.xml" value="0.2871376811594203" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

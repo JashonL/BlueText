@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/title_step2"
+    android:background="@color/white_background"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_step_one"
+        android:layout_width="@dimen/xa64"
+        android:layout_height="@dimen/xa64"
+        android:background="@drawable/circle_blue_bg"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/white1"
+        android:textSize="@dimen/sizea_title"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_selected"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/view_selected_background"
+        app:layout_constraintTop_toTopOf="@+id/tv_selected" />
+
+
+    <View
+        android:id="@+id/view_step_one"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/dashgap"
+        app:layout_constraintBottom_toBottomOf="@+id/view_selected_background"
+        app:layout_constraintLeft_toRightOf="@+id/tv_step_one"
+        app:layout_constraintRight_toLeftOf="@+id/view_selected_background"
+        app:layout_constraintTop_toTopOf="@+id/view_selected_background" />
+
+
+    <View
+        android:id="@+id/view_selected_background"
+        android:layout_width="@dimen/xa90"
+        android:layout_height="@dimen/xa90"
+        android:layout_marginTop="@dimen/xa20"
+        android:background="@drawable/circle_blue_bg_50"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_selected"
+        android:layout_width="@dimen/xa64"
+        android:layout_height="@dimen/xa64"
+        android:background="@drawable/circle_blue_bg"
+        android:gravity="center"
+        android:text="2"
+        android:textColor="@color/white1"
+        android:textSize="@dimen/sizea_title"
+        app:layout_constraintBottom_toBottomOf="@+id/view_selected_background"
+        app:layout_constraintLeft_toLeftOf="@+id/view_selected_background"
+        app:layout_constraintRight_toRightOf="@+id/view_selected_background"
+        app:layout_constraintTop_toTopOf="@+id/view_selected_background" />
+
+
+    <TextView
+        android:id="@+id/tv_step_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/xa10"
+        android:text="@string/添加采集器"
+        android:textColor="@color/title_bg_white"
+        app:layout_constraintLeft_toLeftOf="@+id/view_selected_background"
+        app:layout_constraintRight_toRightOf="@+id/view_selected_background"
+        app:layout_constraintTop_toBottomOf="@+id/view_selected_background" />
+
+    <View
+        android:id="@+id/view_dash_1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/dashgap"
+        app:layout_constraintBottom_toBottomOf="@+id/view_selected_background"
+        app:layout_constraintLeft_toRightOf="@+id/view_selected_background"
+        app:layout_constraintRight_toLeftOf="@+id/tv_unselected"
+        app:layout_constraintTop_toTopOf="@+id/view_selected_background" />
+
+
+    <TextView
+        android:id="@+id/tv_unselected"
+        android:layout_width="@dimen/xa64"
+        android:layout_height="@dimen/xa64"
+        android:background="@drawable/circle_gray"
+        android:gravity="center"
+        android:text="3"
+        android:textColor="@color/white1"
+        android:textSize="@dimen/sizea_title"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_selected"
+        app:layout_constraintLeft_toRightOf="@+id/view_selected_background"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_selected" />
+
+
+    <View
+        android:id="@+id/view_dash_2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/dashgap"
+        app:layout_constraintBottom_toBottomOf="@+id/view_selected_background"
+        app:layout_constraintLeft_toRightOf="@+id/tv_unselected"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view_selected_background" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

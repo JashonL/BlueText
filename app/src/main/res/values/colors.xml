@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    <!--白色背景版本颜色-->
+    <color name="headerView_v3">#ffffff</color> <!--头部颜色-->
+    <color name="headerView_click_v3">#d4d4d4</color> <!--头部颜色-->
+    <color name="headerView_title_v3">#454545</color> <!--头部字体颜色-->
+    <color name="content_v3">#24293d</color> <!--内容字体颜色-->
+    <color name="content_note_v3">#484848</color> <!--内容说明字体颜色-->
+    <!--头部和背景颜色-->
+    <!--旧版-->
+    <!--<color name="headerView">#11a7f3</color> &lt;!&ndash;头部颜色&ndash;&gt;-->
+    <!--<color name="headerView_r50">#8011a7f3</color> &lt;!&ndash;头部颜色&ndash;&gt;-->
+    <!--<color name="blue_background">#2ec2f0</color>&lt;!&ndash;主体背景颜色1：蓝色&ndash;&gt;-->
+    <!--新版-->
+    <color name="headerView">#009cff</color> <!--头部颜色-->
+    <!--<color name="headerView">#ffffff</color> &lt;!&ndash;头部颜色&ndash;&gt;-->
+    <color name="headerView_r50">#80009cff</color> <!--头部颜色加透明度50%-->
+    <color name="blue_background">#1da7ff</color><!--主体背景颜色1：蓝色-->
+    <color name="headerView_text">@color/headerView</color> <!--字体颜色==主色-->
+    <color name="headerView_gray">#0097f5</color> <!--字体颜色==主色-->
+
+
+    <color name="blue_background_click">@color/headerView</color><!--主体背景颜色1:点击后颜色-->
+    <color name="white_background">#ffffff</color><!--主体背景颜色2：白色-->
+    <color name="white_background_click">#d4d4d4</color><!--主体背景颜色2:点击后颜色-->
+    <color name="gray_background">#f7f7f7</color><!--主体背景颜色3：灰色-->
+    <color name="gray_background_small">#f2f2f2</color><!--主体背景颜色3：灰色小-->
+    <color name="gray_background_click">#d4d4d4</color><!--主体背景颜色3:点击后颜色-->
+    <color name="frg1_storage_line">#e5dc78</color><!--设备页头部动画线条颜色-->
+    <color name="gray_background2">#f0f0f0</color>
+    <!--字体颜色-->
+    <color name="title_bg_white">#333333</color><!--标题颜色-->
+    <color name="title_bg_blue">#ffffff</color>
+    <color name="content_bg_white">#666666</color><!--内容颜色-->
+    <color name="content_bg_blue">#ffffff</color>
+    <color name="note_bg_white">#999999</color><!--注释颜色-->
+    <color name="note2_bg_white">#aaaaaa</color><!--注释颜色-->
+    <color name="note_bg_blue">#ccffffff</color>
+    <color name="hint_bg_white">#bbbbbb</color><!--隐藏字体颜色-->
+    <color name="hint_bg_blue">#99ffffff</color>
+    <color name="grid_bg_white">#dedede</color><!--分割线颜色-->
+    <color name="grid_bg_blue">#4dffffff</color>
+    <color name="grid_bg_blue_50">@color/white_50</color>
+    <color name="grid_bg_blue_2">#b3ffffff</color><!--虚线分割线-->
+    <color name="title_bg_oss">#eeeeee</color>
+    <color name="title_bg_oss_selector">#80ffffff</color>
+    <!--标注颜色-->
+    <color name="text_note_new">#52608c</color>
+    <color name="overv2_gray">#a6abb8</color>
+
+    <color name="overv2_status_on">#5ace69</color>
+    <color name="overv2_status_off">#d9d9d9</color>
+    <color name="overv2_status_fault">#ff7a45</color>
+    <!--oss字体颜色-->
+    <color name="oss_logout_normal">#666666</color><!--oss退出登录正常字体-->
+    <color name="oss_logout_click">#ee4933</color><!--oss退出登录点击后字体-->
+    <color name="oss_bg_device_online">#02e802</color><!--oss集成商设备在线颜色-->
+    <color name="oss_bg_device_wait">#e9df4a</color><!--oss集成商设备等待颜色-->
+    <color name="oss_bg_device_err">#ee4933</color><!--oss集成商设备故障颜色-->
+    <color name="oss_bg_device_offline">#b5babd</color><!--oss集成商设备离线颜色-->
+    <color name="oss_bg_device_charge">#ded35b</color><!--oss集成商设备充电颜色-->
+    <color name="oss_bg_device_discharge">#9ae580</color><!--oss集成商设备放电颜色-->
+    <!--集成商处理进度颜色-->
+    <color name="ossgd_ques_progress_no">#e34a21</color><!--问题处理进度：未处理-->
+    <color name="ossgd_ques_progress_wait">#e3a421</color><!--问题处理进度：待处理-->
+    <color name="ossgd_ques_progress_processing">#5ec335</color><!--问题处理进度：正在处理-->
+    <color name="ossgd_ques_progress_yes">#9d9d9d</color><!--问题处理进度：已处理完-->
+    <!--客服处理进度颜色-->
+    <color name="oss_kf_progress_no">#e34a21</color><!--客服处理进度：未处理-->
+    <color name="oss_kf_progress_wait">#e3a421</color><!--客服处理进度：待跟进-->
+    <color name="oss_kf_progress_processing">#5ec335</color><!--客服处理进度：正在处理-->
+    <color name="oss_kf_progress_yes">#9d9d9d</color><!--客服处理进度：已处理完-->
+    <!--工单处理进度颜色-->
+    <color name="oss_gd_progress_fenpei">#d4af00</color><!--工单处理进度：待分配-->
+    <color name="oss_gd_progress_fenpei_finish">#0ab8d7</color><!--工单处理进度：已分配-->
+    <color name="oss_gd_progress_wait">#e16f00</color><!--工单处理进度：待接收-->
+    <color name="oss_gd_progress_processing">#29b622</color><!--工单处理进度：服务中-->
+    <color name="oss_gd_progress_visit">#75c0c5</color><!--工单处理进度：待回访-->
+    <color name="oss_gd_progress_yes">#999999</color><!--工单处理进度：已处理完-->
+    <color name="oss_gd_yuan2">#FFCC00</color><!--工单流程颜色2-->
+    <color name="oss_gd_yuan1">#bbbbbb</color><!--工单流程颜色1-->
+    <!--状态颜色-->
+    <color name="oss_device_status_online">#77d538</color><!--在线-->
+    <color name="oss_device_status_offline">#666666</color><!--离线-->
+    <!--状态颜色2-->
+    <color name="oss_status_oprating">#2de2e9</color><!--闲置0-->
+    <color name="oss_status_charge">#79e681</color><!--充电1-->
+    <color name="oss_status_discharge">#ded35b</color><!--放电2-->
+    <color name="oss_status_discharge_normal">#b3ded35b</color><!--放电2 透明度-->
+    <color name="oss_status_fault">#f15652</color><!--故障3-->
+    <color name="oss_status_flash">#666666</color><!--离线4-->
+    <color name="inverter_wait">#11a7F3</color><!--逆变器等待-->
+    <color name="inverter_lost">#a3a3a3</color><!--逆变器断开-->
+    <!--yangshui-->
+    <color name="inverter_yang_1">#378ffa</color>
+    <color name="inverter_yang_2">#22e784</color>
+    <color name="inverter_yang_3">#f5ac02</color>
+    <color name="inverter_yang_4">#ff5652</color>
+    <color name="inverter_yang_0">#8d8c89</color>
+    <!--tlxh状态-->
+    <color name="tlxh_wait">#378ffa</color><!--待机-->
+    <color name="tlxh_bingwang">#22e784</color><!--并网-->
+    <color name="tlxh_liwang">#378ffa</color><!--离网-->
+    <color name="tlxh_error">#ff5652</color><!--故障-->
+    <color name="tlxh_flash">#f5ac02</color><!--烧录-->
+    <!--状态颜色3-->
+    <color name="oss_status_wait">#666666</color><!--等待-->
+    <color name="oss_status_normal">#79e681</color><!--正常-->
+    <!--新版曲线图颜色-->
+    <!--柱状图-->
+    <color name="chart_green_normal">#7ae681</color>
+    <color name="chart_green_click">#58c45f</color>
+    <!--柱状图对比-->
+    <color name="ov_comp_1">#d95ad8a6</color>
+    <color name="ov_comp_2">#378ffa</color>
+    <!--曲线图-->
+    <color name="chart_green_normal_line">#b359e197</color>
+    <color name="chart_green_click_line">#ff59e197</color>
+    <color name="chart_yellow_normal_line">#b3efd751</color>
+    <color name="chart_yellow_click_line">#ffefd751</color>
+    <!--Seekbar颜色-->
+    <color name="seekbar_bluebg">#06eef4</color><!--进度条颜色-->
+    <color name="radiocolor">#03a0f2</color>
+    <color name="charts_bar1">#F2F9FB</color>
+    <color name="charts_bar">#6078e9fb</color>
+    <color name="charts_curve">#6078e9fb</color>
+    <color name="btn_top">#95e262</color>
+    <color name="btn_down">#7870AA39</color>
+    <color name="bg">#80C717</color>
+    <color name="bg_down">#7880C717</color>
+    <color name="halfwhite">#99ffffff</color>
+    <color name="white1">#ffffff</color>
+    <color name="gray">#dddddd</color>
+    <color name="datalog_bg">#3ec6f8</color>
+
+    <color name="bluebg">#96d5fd</color>
+    <color name="datatimeselected">#6078e9fb</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="banhei">#78cccccc</color>
+    <color name="bigbg">#3ec6f8</color>
+    <color name="light_blue">#6593cb</color>
+    <color name="dark_blue">#0f1dd2</color>
+    <color name="ivory">#fffff0</color><!--象牙色 -->
+    <color name="lightyellow">#ffffe0</color><!--亮黄色 -->
+    <color name="yellow">#ffff00</color><!--黄色 -->
+    <color name="snow">#fffafa</color><!--雪白色 -->
+    <color name="floralwhite">#fffaf0</color><!--花白色 -->
+    <color name="lemonchiffon">#fffacd</color><!--柠檬绸色 -->
+    <color name="cornsilk">#fff8dc</color><!--米绸色 -->
+    <color name="seaShell">#fff5ee</color><!--海贝色 -->
+    <color name="lavenderblush">#fff0f5</color><!--淡紫红 -->
+    <color name="papayawhip">#ffefd5</color><!--番木色 -->
+    <color name="blanchedalmond">#ffebcd</color><!--白杏色 -->
+    <color name="mistyrose">#ffe4e1</color><!--浅玫瑰色 -->
+    <color name="bisque">#ffe4c4</color><!--桔黄色 -->
+    <color name="moccasin">#ffe4b5</color><!--鹿皮色 -->
+    <color name="navajowhite">#ffdead</color><!--纳瓦白 -->
+    <color name="peachpuff">#ffdab9</color><!--桃色 -->
+    <color name="gold">#ffd700</color><!--金色 -->
+    <color name="pink">#ffc0cb</color><!--粉红色 -->
+    <color name="lightpink">#ffb6c1</color><!--亮粉红色 -->
+    <color name="orange">#ffa500</color><!--橙色 -->
+    <color name="lightsalmon">#ffa07a</color><!--亮肉色 -->
+    <color name="darkorange">#ff8c00</color><!--暗桔黄色 -->
+    <color name="coral">#ff7f50</color><!--珊瑚色 -->
+    <color name="hotpink">#ff69b4</color><!--热粉红色 -->
+    <color name="tomato">#ff6347</color><!--西红柿色 -->
+    <color name="orangered">#ff4500</color><!--红橙色 -->
+    <color name="deeppink">#ff1493</color><!--深粉红色 -->
+    <color name="fuchsia">#ff00ff</color><!--紫红色 -->
+    <color name="magenta">#ff00ff</color><!--红紫色 -->
+    <color name="red">#ff0000</color><!--红色 -->
+    <color name="oldlace">#fdf5e6</color><!--老花色 -->
+    <color name="lightgoldenrodyellow">#fafad2</color><!--亮金黄色 -->
+    <color name="linen">#faf0e6</color><!--亚麻色 -->
+    <color name="antiquewhite">#faebd7</color><!--古董白 -->
+    <color name="salmon">#fa8072</color><!--鲜肉色 -->
+    <color name="ghostwhite">#f8f8ff</color><!--幽灵白 -->
+    <color name="mintcream">#f5fffa</color><!--薄荷色 -->
+    <color name="whitesmoke">#f5f5f5</color><!--烟白色 -->
+    <color name="beige">#f5f5dc</color><!--米色 -->
+    <color name="wheat">#f5deb3</color><!--浅黄色 -->
+    <color name="sandybrown">#f4a460</color><!--沙褐色 -->
+    <color name="azure">#f0ffff</color><!--天蓝色 -->
+    <color name="honeydew">#f0fff0</color><!--蜜色 -->
+    <color name="aliceblue">#f0f8ff</color><!--艾利斯兰 -->
+    <color name="khaki">#f0e68c</color><!--黄褐色 -->
+    <color name="lightcoral">#f08080</color><!--亮珊瑚色 -->
+    <color name="palegoldenrod">#eee8aa</color><!--苍麒麟色 -->
+    <color name="violet">#ee82ee</color><!--紫罗兰色 -->
+    <color name="darksalmon">#e9967a</color><!--暗肉色 -->
+    <color name="lavender">#e6e6fa</color><!--淡紫色 -->
+    <color name="lightcyan">#e0ffff</color><!--亮青色 -->
+    <color name="burlywood">#deb887</color><!--实木色 -->
+    <color name="plum">#dda0dd</color><!--洋李色 -->
+    <color name="gainsboro">#dcdcdc</color><!--淡灰色 -->
+    <color name="crimson">#dc143c</color><!--暗深红色 -->
+    <color name="palevioletred">#db7093</color><!--苍紫罗兰色 -->
+    <color name="goldenrod">#daa520</color><!--金麒麟色 -->
+    <color name="orchid">#da70d6</color><!--淡紫色 -->
+    <color name="thistle">#d8bfd8</color><!--蓟色 -->
+    <color name="lightgray">#d3d3d3</color><!--亮灰色 -->
+    <color name="lightgrey">#d3d3d3</color><!--亮灰色 -->
+    <color name="tan">#d2b48c</color><!--茶色 -->
+    <color name="chocolate">#d2691e</color><!--巧可力色 -->
+    <color name="peru">#cd853f</color><!--秘鲁色 -->
+    <color name="indianred">#cd5c5c</color><!--印第安红 -->
+    <color name="mediumvioletred">#c71585</color><!--中紫罗兰色 -->
+    <color name="silver">#c0c0c0</color><!--银色 -->
+    <color name="darkkhaki">#bdb76b</color><!--暗黄褐色 -->
+    <color name="rosybrown">#bc8f8f</color><!--褐玫瑰红 -->
+    <color name="mediumorchid">#ba55d3</color><!--中粉紫色 -->
+    <color name="darkgoldenrod">#b8860b</color><!--暗金黄色 -->
+    <color name="firebrick">#b22222</color><!--火砖色 -->
+    <color name="powderblue">#b0e0e6</color><!--粉蓝色 -->
+    <color name="lightsteelblue">#b0c4de</color><!--亮钢兰色 -->
+    <color name="paleturquoise">#afeeee</color><!--苍宝石绿 -->
+    <color name="greenyellow">#adff2f</color><!--黄绿色 -->
+    <color name="lightblue">#add8e6</color><!--亮蓝色 -->
+    <color name="darkgray">#a9a9a9</color><!--暗灰色 -->
+    <color name="darkgrey">#a9a9a9</color><!--暗灰色 -->
+    <color name="brown">#a52a2a</color><!--褐色 -->
+    <color name="sienna">#a0522d</color><!--赭色 -->
+    <color name="darkorchid">#9932cc</color><!--暗紫色 -->
+    <color name="palegreen">#98fb98</color><!--苍绿色 -->
+    <color name="darkviolet">#9400d3</color><!--暗紫罗兰色 -->
+    <color name="mediumpurple">#9370db</color><!--中紫色 -->
+    <color name="lightgreen">#90ee90</color><!--亮绿色 -->
+    <color name="darkseagreen">#8fbc8f</color><!--暗海兰色 -->
+    <color name="saddlebrown">#8b4513</color><!--重褐色 -->
+    <color name="darkmagenta">#8b008b</color><!--暗洋红 -->
+    <color name="darkred">#8b0000</color><!--暗红色 -->
+    <color name="blueviolet">#8a2be2</color><!--紫罗兰蓝色 -->
+    <color name="lightskyblue">#87cefa</color><!--亮天蓝色 -->
+    <color name="skyblue">#87ceeb</color><!--天蓝色 -->
+    <color name="gray1">#808080</color><!--灰色 -->
+    <color name="grey">#808080</color><!--灰色 -->
+    <color name="olive">#808000</color><!--橄榄色 -->
+    <color name="purple">#800080</color><!--紫色 -->
+    <color name="maroon">#800000</color><!--粟色 -->
+    <color name="aquamarine">#7fffd4</color><!--碧绿色 -->
+    <color name="chartreuse">#7fff00</color><!--黄绿色 -->
+    <color name="lawngreen">#7cfc00</color><!--草绿色 -->
+    <color name="mediumslateblue">#7b68ee</color><!--中暗蓝色 -->
+    <color name="lightslategray">#778899</color><!--亮蓝灰 -->
+    <color name="lightslategrey">#778899</color><!--亮蓝灰 -->
+    <color name="slategray">#708090</color><!--灰石色 -->
+    <color name="slategrey">#708090</color><!--灰石色 -->
+    <color name="olivedrab">#6b8e23</color><!--深绿褐色 -->
+    <color name="slateblue">#6a5acd</color><!--石蓝色 -->
+    <color name="dimgray">#696969</color><!--暗灰色 -->
+    <color name="dimgrey">#696969</color><!--暗灰色 -->
+    <color name="mediumaquamarine">#66cdaa</color><!--中绿色 -->
+    <color name="cornflowerblue">#6495ed</color><!--菊兰色 -->
+    <color name="cadetblue">#5f9ea0</color><!--军兰色 -->
+    <color name="darkolivegreen">#556b2f</color><!--暗橄榄绿 -->
+    <color name="indigo">#4b0082</color><!--靛青色 -->
+    <color name="mediumturquoise">#48d1cc</color><!--中绿宝石 -->
+    <color name="darkslateblue">#483d8b</color><!--暗灰蓝色 -->
+    <color name="steelblue">#4682b4</color><!--钢兰色 -->
+    <color name="royalblue">#4169e1</color><!--皇家蓝 -->
+    <color name="turquoise">#40e0d0</color><!--青绿色 -->
+    <color name="mediumseagreen">#3cb371</color><!--中海蓝 -->
+    <color name="limegreen">#32cd32</color><!--橙绿色 -->
+    <color name="darkslategray">#2f4f4f</color><!--暗瓦灰色 -->
+    <color name="darkslategrey">#2f4f4f</color><!--暗瓦灰色 -->
+    <color name="seagreen">#2e8b57</color><!--海绿色 -->
+    <color name="forestgreen">#228b22</color><!--森林绿 -->
+    <color name="lightseagreen">#20b2aa</color><!--亮海蓝色 -->
+    <color name="dodgerblue">#1e90ff</color><!--闪兰色 -->
+    <color name="midnightblue">#191970</color><!--中灰兰色 -->
+    <color name="aqua">#00ffff</color><!--浅绿色 -->
+    <color name="cyan">#00ffff</color><!--青色 -->
+    <color name="springgreen">#00ff7f</color><!--春绿色 -->
+    <color name="lime">#00ff00</color><!--酸橙色 -->
+    <color name="mediumspringgreen">#00fa9a</color><!--中春绿色 -->
+    <color name="darkturquoise">#00ced1</color><!--暗宝石绿 -->
+    <color name="deepskyblue">#00bfff</color><!--深天蓝色 -->
+    <color name="darkcyan">#008b8b</color><!--暗青色 -->
+    <color name="teal">#008080</color><!--水鸭色 -->
+    <color name="green">#008000</color><!--绿色 -->
+    <color name="darkgreen">#006400</color><!--暗绿色 -->
+    <color name="blue">#0000ff</color><!--蓝色 -->
+    <color name="mediumblue">#0000cd</color><!--中兰色 -->
+    <color name="darkblue">#00008b</color><!--暗蓝色 -->
+    <color name="navy">#000080</color><!--海军色 -->
+    <color name="transparent">#0000</color><!-- 透明 -->
+    <color name="transparent2">#8000</color><!-- 透明 -->
+    <color name="green_2">#3ddc6e</color>
+
+
+    <!-- 上传图片添加的颜色 -->
+    <color name="none_color2">#78ffffff</color>
+    <color name="none_color">#00000000</color>
+    <color name="plugin_camera_black">#000000</color>
+    <color name="albumback">#E1E0DE</color>
+
+
+    <color name="about_rela">#dfdfdf</color>
+    <color name="color_text_selected">#666666</color>
+    <color name="color_text_normal">#8cddf9</color>
+    <color name="color_text_main">#11b7f3</color>
+    <color name="color_text_main_">#7811b7f3</color>
+    <color name="chatb">#7800CD00</color>
+    <color name="chata">#00CD00</color>
+    <color name="white2">#dfdfdf</color>
+    <color name="style_red">#ff4c41</color>
+    <color name="style_divider_color">#C9C7CD</color>
+    <!-- 指示器 -->
+    <color name="vpi__background_holo_dark">#ff000000</color>
+    <color name="vpi__background_holo_light">#fff3f3f3</color>
+    <color name="vpi__bright_foreground_holo_dark">@color/vpi__background_holo_light</color>
+    <color name="vpi__bright_foreground_holo_light">@color/vpi__background_holo_dark</color>
+    <color name="vpi__bright_foreground_disabled_holo_dark">#ff4c4c4c</color>
+    <color name="vpi__bright_foreground_disabled_holo_light">#ffb2b2b2</color>
+    <color name="vpi__bright_foreground_inverse_holo_dark">
+        @color/vpi__bright_foreground_holo_light
+    </color>
+    <color name="vpi__bright_foreground_inverse_holo_light">
+        @color/vpi__bright_foreground_holo_dark
+    </color>
+    <color name="transparent_background">#80000000</color>
+
+    <!--资料中心  -->
+    <color name="faqact_title_bg">#20d593</color>  <!-- 常见问题副标题背景 -->
+    <!-- 水波纹 -->
+    <color name="rippelColor">#0099CC</color>
+    <color name="btn_top_red">#c56868</color>
+    <!--一键建站背景颜色-->
+    <color name="btn_a_yijian">#cc11b7f3</color>
+    <color name="btn_b_yijian">#8011b7f3</color>
+    <color name="header_color">#5011a7f3</color>
+    <color name="gif2_color">#f2f2f2</color>
+    //设备触摸数据颜色
+    <color name="line_color">#5080eb</color>
+    <!--新能源界面-->
+    <color name="title_bg">#0b043755</color><!--头部标题背景-->
+    <color name="white_gray">#bad8f4</color><!--字体颜色-->
+    <color name="white_gray2">#e6ffffff</color><!--字体颜色-->
+    <color name="pv_line">#66ffd923</color><!--能源曲线颜色-->
+    <color name="storage_line">#6636c176</color><!--能源曲线颜色-->
+    <color name="home_line">#668b80ff</color><!--能源曲线颜色-->
+    <color name="grid_line">#660eeff6</color><!--能源曲线颜色-->
+    <color name="grid_line2">#6601ef16</color><!--能源曲线颜色-->
+
+    <!--增加透明度-->
+    <color name="pv_line_a">#b3ffd923</color><!--能源曲线颜色-->
+    <color name="storage_line_a">#b336c176</color><!--能源曲线颜色-->
+    <color name="home_line_a">#b38b80ff</color><!--能源曲线颜色-->
+    <color name="grid_line_a">#b30eeff6</color><!--能源曲线颜色-->
+    <color name="grid_line_a2">#b301ef16</color><!--能源曲线颜色-->
+    <!--SPF5k饼图-->
+    <color name="pv_charge">#64b9fa</color><!--能源曲线颜色-->
+    <color name="ac_charge">#18d26f</color><!--能源曲线颜色-->
+    <color name="ac_discharge">#e5c122</color><!--能源曲线颜色-->
+
+    <color name="zhou_line">#ffffffff</color><!--曲线图轴颜色-->
+    <color name="bar_data1">#ff12ed07</color><!--柱状图数据1-->
+    <color name="bar_data2">#fffeee3e</color><!--柱状图数据2-->
+    <color name="bar_data2_click">#FFC4B61F</color><!--柱状图数据2-->
+
+    <color name="btn_top_detical">#a3ffbc</color>
+    <!--mix能源界面颜色-->
+    <color name="pv_line_mix">#ff55a24e</color><!--光伏产出-->
+    <color name="home_line_mix">#ff52a4b3</color><!--用电消耗-->
+    <color name="grid_line_mix">#ffaf6969</color><!--电网取电-->
+    <color name="bat_line_mix">#ff5987d4</color><!--来自电池-->
+    <!--增加透明度-->
+    <color name="pv_line_a_mix">#b355a24e</color><!--光伏产出-->
+    <color name="home_line_a_mix">#b352a4b3</color><!--用电消耗-->
+    <color name="grid_line_a_mix">#b3af6969</color><!--电网取电-->
+    <color name="bat_line_a_mix">#b35987d4</color><!--来自电池-->
+    <!--总览v2能源界面颜色-->
+    <color name="pv_line_fragv2">#ff68e7b3</color><!--光伏产出-->
+    <color name="home_line_fragv2">#ff4f93e9</color><!--用电消耗-->
+    <color name="grid_line_fragv2">#ff9ecbff</color><!--电网取电-->
+    <color name="bat_line_fragv2">#ffffd48b</color><!--来自电池-->
+    <!--总览v2增加透明度-->
+    <color name="pv_line_a_fragv2">#9968e7b3</color><!--光伏产出-->
+    <color name="home_line_a_fragv2">#994f93e9</color><!--用电消耗-->
+    <color name="grid_line_a_fragv2">#999ecbff</color><!--电网取电-->
+    <color name="bat_line_a_fragv2">#99ffd48b</color><!--来自电池-->
+    <!--能源界面颜色 new-->
+    <color name="line_en_new1">#ffffd923</color>
+    <color name="line_en_new2">#ff36c176</color>
+    <color name="line_en_new3">#ff8b80ff</color>
+    <color name="line_en_new4">#ff0eeff6</color>
+    <color name="line_en_new5">#ffe38343</color>
+    <color name="line_en_new6">#ff4b92fe</color>
+    <!--增加透明度 new-->
+    <color name="line_a_en_new1">#b3ffd923</color>
+    <color name="line_a_en_new2">#b336c176</color>
+    <color name="line_a_en_new3">#b38b80ff</color>
+    <color name="line_a_en_new4">#b30eeff6</color>
+    <color name="line_a_en_new5">#b3e38343</color>
+    <color name="line_a_en_new6">#b34b92fe</color>
+    <!--标题颜色分级-->
+    <color name="title_1">#333333</color>
+    <color name="title_2">#666666</color>
+    <color name="title_3">#999999</color>
+    <color name="inver_key">#888888</color>
+    <color name="inver_value">#3c7fb2</color>
+    <color name="xy_grid">#B3ffffff</color><!--xy网格线储能能源界面(有背景)-->
+    <color name="xy_grid_st">#999999</color><!--xy网格线逆变器界面（无背景）-->
+    <color name="white_10">#1Affffff</color><!--白色透明度10%-->
+    <color name="white_20">#33ffffff</color><!--白色透明度20%-->
+    <color name="white_30">#4Dffffff</color><!--白色透明度30%-->
+    <color name="white_40">#66ffffff</color><!--白色透明度40%-->
+    <color name="white_50">#80ffffff</color><!--白色透明度50%-->
+    <color name="white_60">#99ffffff</color><!--白色透明度60%-->
+    <color name="white_70">#B3ffffff</color><!--白色透明度70%-->
+    <color name="white_80">#ccffffff</color><!--白色透明度80%-->
+    <color name="white_90">#E6ffffff</color><!--白色透明度90%-->
+    <color name="highLightColor">#ffda8c03</color><!--手指触摸高亮线颜色-->
+    <color name="lineChart_inv">#ff55b4d9</color><!--逆变器折线图颜色-->
+    <color name="lineChart_invfill">#6078e9fb</color><!--逆变器折线图填充颜色-->
+    <color name="time_data_detial">#009688</color><!--详情数据颜色-->
+    <color name="header_2">#26acef</color><!--wifi配置背景-->
+    <color name="energy_shadow">#0487d9</color><!--能源界面投影颜色-->
+
+    <!--max主界面-->
+    <color name="mainColor">#009cff</color>
+    <color name="textColor">#ffffff</color>
+    <color name="max_main_bg">#f2f2f2</color>
+    <color name="max_main_bg_white">#ffffff</color>
+    <color name="max_main_bg_gray">#fafafa</color>
+    <color name="max_main_power">@color/headerView</color>
+    <color name="max_main_energy">#55c45f</color>
+    <color name="max_main_out_power">#1bc9d5</color>
+    <color name="max_main_err">#dd7878</color>
+    <color name="max_main_gray">#999999</color>
+    <color name="max_main_text_title">#333333</color>
+    <color name="max_main_text_content">#666666</color>
+    <!--max3.0智能检测-->
+    <color name="max_iv_graph_linechart1">#d06b6b</color>
+    <color name="max_iv_graph_linechart2">#d9bd3c</color>
+    <color name="max_iv_graph_linechart3">#55cf55</color>
+    <color name="max_iv_graph_linechart4">#557acf</color>
+    <color name="max_iv_graph_linechart5">#4fd0ce</color>
+    <color name="max_iv_graph_linechart6">#925bca</color>
+    <color name="max_iv_graph_linechart7">#a1b137</color>
+    <color name="max_iv_graph_linechart8">#d762d0</color>
+    <color name="max_iv_graph_read">#35b1ff</color>
+    <!--水波纹-->
+    <color name="wave_status_b_normal">#5079e681</color>
+    <color name="wave_status_f_normal">#ff79e681</color>
+    <color name="wave_status_b_stand">#502de2e9</color>
+    <color name="wave_status_f_stand">#ff2de2e9</color>
+    <color name="wave_status_b_oprating">#5079e681</color>
+    <color name="wave_status_f_oprating">#ff79e681</color>
+    <color name="wave_status_b_fault">#5069d6f9</color>
+    <color name="wave_status_f_fault">#ff69d6f9</color>
+    <color name="wave_status_b_discharge">#50ded35b</color>
+    <color name="wave_status_f_discharge">#ffded35b</color>
+    <color name="wave_status_b_gray">#50a3a3a3</color>
+    <color name="wave_status_f_gray">#a0a3a3a3</color>
+    <color name="wave_blue">#ff0e8af3</color>
+    <color name="wave_discharge">#ffded35b</color>
+    <color name="wave_oprate">#ff2de2e9</color>
+    <color name="wave_charge">#ff79e681</color>
+    <!--
+        <color name="wave_status_b_normal">#3079e681</color>
+        <color name="wave_status_f_normal">#8079e681</color>
+        <color name="wave_status_b_stand">#3011a7f3</color>
+        <color name="wave_status_f_stand">#8011a7f3</color>
+        <color name="wave_status_b_oprating">#302de2e9</color>
+        <color name="wave_status_f_oprating">#802de2e9</color>
+        <color name="wave_status_b_fault">#30f15652</color>
+        <color name="wave_status_f_fault">#80f15652</color>
+        <color name="wave_status_b_discharge">#30ded35b</color>
+        <color name="wave_status_f_discharge">#80ded35b</color>
+        <color name="wave_status_b_gray">#30a3a3a3</color>
+        <color name="wave_status_f_gray">#80a3a3a3</color>
+        <color name="wave_blue">#ff0e8af3</color>
+        <color name="wave_discharge">#ffded35b</color>
+        <color name="wave_oprate">#ff2de2e9</color>
+        <color name="wave_charge">#ff79e681</color>
+    -->
+    <!--水波纹-->
+    <!--    <color name="wave_status_f_xianzhi">#ff2de2e9</color>
+        <color name="wave_status_f_chongdian">#ff79e681</color>
+        <color name="wave_status_f_fangdian">#ffded35b</color>
+        <color name="wave_status_f_cuowu">#ff69d6f9</color>
+        <color name="wave_status_f_dengdai">#ff2de2e9</color>
+        <color name="wave_status_f_duankai">#ff1c6feb</color>
+        <color name="wave_status_f_other">#ff79e681</color>-->
+    <!--多选择弹框-->
+    <color name="muil_dialog_gray">#c3c3c3</color>
+    <color name="muil_dialog_green">#2ed184</color>
+    <color name="strokeColor">#dedede</color>
+    <color name="listTextColor">#2d2d2d</color>
+
+    <!--涂鸦相关颜色-->
+    <color name="tuya_temper_text">#2abdbe</color>
+    <color name="tuya_electric_text">#a078ca</color>
+    <color name="tuya_voltage_text">#bda520</color>
+    <color name="tuya_power_text">#369ee0</color>
+    <color name="tuya_power_month_text">#1ad82c</color>
+    <color name="tuya_power_model">#c1c809</color>
+    <color name="tuya_power_cost">#e6aa08</color>
+    <color name="tuya_home_data_head_color1">#80009cff</color>
+    <color name="tuya_home_data_head_ele_color">#0a9ffe</color>
+    <color name="tuya_home_data_head_ele_data_color">#069efe</color>
+    <color name="tuya_home_data_head_color2">#80e2af00</color>
+    <color name="tuya_home_data_yellow_color">#e2af00</color>
+    <color name="editext_gray_baground">#f2f2f2</color>
+    <color name="editext_text_color">#bbbbbb</color>
+    <color name="at_circleprogress_bg">#4c1CC9F4</color>
+    <color name="text_color_gray">#626262</color>
+    <color name="navbar_font_color">#ff5800</color>
+
+    <!--绿色-->
+    <color name="green_1">#00e3c0</color>
+    <!--蓝色-->
+    <color name="blue_1">#009cff</color>
+    <color name="read_type_color">#009cff</color>
+    <color name="forget_password_color">#00e3bf</color>
+
+    <!--充电桩首页-->
+    <color name="charging_button_blue">#23496e</color>
+    <color name="charging_button_blue_50">#5023496e</color>
+    <color name="charging_text_green">#00efad</color>
+    <color name="gray_2">#cad0d5</color>
+    <color name="green_3">#00fff6</color>
+    <color name="red_faulted">#f53232</color>
+
+    <!--方案编辑-->
+    <color name="preset_edit_divider">#c7cbce</color>
+    <color name="iphone_background">#edf0f2</color>
+
+    <!--预约编辑-->
+    <color name="timing_delete">#fb2929</color>
+    <!--透明颜色-->
+    <color name="trans_color">#00ffffff</color>
+    <!--白色背景时间段值-->
+    <color name="whitebg_time_value">#378ffa</color>
+
+    <!--面板开关相关颜色-->
+    <color name="open_bg_color">#f239b999</color>
+    <color name="close_bg_color">#f2ffffff</color>
+    <!--场景相关颜色-->
+    <color name="btn_delete_bg_a">#f04e4e</color>
+    <color name="btn_delete_bg_b">#ef475b</color>
+    <color name="scenesbackground">#378ffa</color>
+    <color name="scenes_icon_bg_cheked">#d0ecff</color>
+    <color name="scenes_icon_bg">#eceff1</color>
+    <color name="scenes_icon_stroke">#d5d9db</color>
+    <color name="scenes_light_cyan">#f2f7fe</color>
+    <color name="scenes_list_onclick_start">#f2a27b</color>
+    <color name="scenes_list_onclick_end">#fec3a4</color>
+    <color name="scenes_list_condition_start">#f2378ffa</color>
+    <color name="scenes_list_condition_center">#f2509efd</color>
+    <color name="scenes_list_condition_end">#f269adff</color>
+    <!--优化器部分-->
+    <color name="tigo_title_color">#717171</color>
+    <color name="tigo_button_normal">#a1acb3</color>
+    <color name="tigo_button_click">#378ffa</color>
+    <color name="tigo_button_text_normal">#ff999999</color>
+    <color name="tigo_button_text_click">#ff333333</color>
+    <color name="tigo_chart_line">#ff34e4b8</color>
+    <color name="tigo_chart_line_a">#ffb8f7e7</color>
+
+    <!--空调相关-->
+    <color name="color_bg_12">#cc011f28</color>
+    <color name="color_temp_room">#ef6f30</color>
+    <color name="color_temp_set">#0dc973</color>
+
+    <!--分割线-->
+    <color name="divider">#FF1C3942</color>
+    <!--蓝色渐变-->
+    <color name="color_blue_start">#0083E5</color>
+    <color name="color_blue_end">#00DAEE</color>
+    <!--圆角绿色-->
+    <color name="color_green_corner">#3fc4b9</color>
+    <color name="color_energy_blue_corner">#6f9ae7</color>
+    <color name="color_energy_purple_corner">#d77575</color>
+    <!--弹框警告颜色-->
+    <color name="color_warning">#f96125</color>
+
+    <!--添加设备背景-->
+    <color name="color_add_socket_bg">#f5e7e4</color>
+    <color name="color_add_switch_bg">#d7e6f0</color>
+    <color name="color_add_aircondition_bg">#ddeaec</color>
+    <color name="color_add_thermostat_bg">#e8f7d6</color>
+    <color name="color_add_charging_bg">#dbf6ec</color>
+    <!--电池背景-->
+    <color name="color_battary_foreground">#1cd098</color>
+    <color name="color_battary_background">#e8eef7</color>
+    <color name="btn_color_code_normal">#cc378ffa</color>
+    <color name="btn_color_code_no">#55378ffa</color>
+
+    <!--流量续费其他帐号背景-->
+    <color name="color_flow_other_account">#62729e</color>
+    <color name="blue_10">#60009cff</color>
+    <color name="blue_40">#99009cff</color>
+
+    <!--圆环进度颜色-->
+    <color name="gradient_start">#10e2f5</color>
+    <color name="gradient_end">#48f52b</color>
+
+    <!--圆角进度条颜色-->
+    <color name="progress_gradient_start">#37eefa</color>
+    <color name="progress_gradient_center">#1cd5f6</color>
+    <color name="progress_gradient_end">#378ffa</color>
+    <!--联动的颜色-->
+    <color name="item_linkage_text">#d57221</color>
+    <color name="color_home_system_line">#e1eefe</color>
+    <color name="item_linkage_not_start">#ffe1b3</color>
+    <color name="linkage_priority_1_deep">#FF8477</color>
+    <color name="linkage_priority_1_shallow">#FFBEAB</color>
+
+    <color name="linkage_priority_2_deep">#56D0E9</color>
+    <color name="linkage_priority_2_shallow">#D3FAE3</color>
+
+    <color name="linkage_priority_3_deep">#C775FF</color>
+    <color name="linkage_priority_3_shallow">#EDDCF6</color>
+
+    <!--能源系统图颜色-->
+    <color name="energy_text_color">#ffbe58</color>
+    <color name="energy_text_second_color">#ffeed4</color>
+    <color name="ennergy_percent_color">#cc752f</color>
+    <color name="energy_triangle_green">#73deb3</color>
+    <color name="energy_triangle_yellow">#ffbe58</color>
+    <color name="energy_linkage_color">#f9c574</color>
+    <color name="energy_other_color"> #a5a1b2</color>
+    <!--groboost-->
+    <color name="groboost_thermometer_bg">#eeeeee</color>
+    <color name="gray_f7">#f7f8f9</color>
+    <color name="priority_1">#FF911F</color>
+    <color name="priority_1_p20">#33FF911F</color>
+    <color name="priority_2">#F7B500</color>
+    <color name="priority_2_p20">#33F7B500</color>
+    <color name="priority_3">#42BDA1</color>
+    <color name="priority_3_p20">#3342BDA1</color>
+    <color name="boost_linkage_background">#10BCCC</color>
+    <color name="boost_linkage_background_40">#6610BCCC</color>
+    <!--充电桩-->
+    <color name="charge_pile_gray">#eeeeee</color>
+    <color name="charge_pile_error">#f75b58</color>
+    <color name="charge_progress">#00d49f</color>
+    <color name="charge_background">#80cfe1d6</color>
+    <color name="charge_off">#ff976a</color>
+
+    <color name="circle_blue_fa">#21378FFA</color>
+    <color name="operation">#FA6400</color>
+    <color name="operation_fa">#66fa6400</color>
+    <color name="gray_dfe5eb">#DFE5EB</color>
+    <color name="charge_line_color">#FED700</color>
+    <color name="charge_bar_color">#14BDCC</color>
+
+    <color name="self_line_color">#F6B95A</color>
+    <color name="self_line_hight_color">#FFA920</color>
+    <color name="charge_item_background">#F6F7F8</color>
+
+    <!-- 设备相关颜色-->
+    <color name="color_white_mode_panel_title">#454752</color>
+    <color name="color_white_mode_panel_background">#363840</color>
+    <color name="color_white_mode_panel_cancel">#303135</color>
+    <color name="seek_progress">#3bffaa</color>
+    <color name="seek_gradient_start">#ffe47a</color>
+    <color name="seek_gradient_end">#3d7eaa</color>
+    <color name="seek_thumb_color">#8ea896</color>
+    <color name="color_bottom_menu">#33ffffff</color>
+    <!--按键背景色-->
+    <color name="color_button">#333333</color>
+    <color name="color_button_press">#000000</color>
+
+    <!--场景相关颜色-->
+    <color name="color_scene_launch_background">#d48166</color>
+    <color name="color_scene_launch_off_background">#1A21435E</color>
+    <color name="color_smart_on_background">#708c73</color>
+    <color name="bulb_light_gray">#999999</color>
+
+    <!--功率/电量-->
+    <color name="color_pv_line">#508e73</color>
+    <color name="color_grid_line">#635cb4</color>
+    <color name="color_battery_line">#547537</color>
+    <color name="color_ac_line">#4cb2b6</color>
+
+
+    <color name="color_online">#35C961</color>
+    <color name="color_offline">#FF9249</color>
+
+</resources>

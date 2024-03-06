@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_background"
+    android:orientation="vertical">
+
+    <include layout="@layout/toobar_title" />
+
+    <include layout="@layout/layout_title_step4" />
+
+    <ImageView
+        android:id="@+id/iv_success"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/xa100"
+        android:src="@drawable/datalog_config_success" />
+
+
+    <TextView
+        android:id="@+id/tv_success_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/datalog_success"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title" />
+
+
+    <TextView
+        android:id="@+id/tv_success_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/wait_one_minute"
+        android:layout_marginTop="@dimen/xa30"
+        android:padding="@dimen/xa20"
+        android:textColor="@color/content_bg_white"
+        android:textSize="@dimen/sizea_content" />
+
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ya88"
+        android:layout_marginLeft="@dimen/xa100"
+        android:layout_marginTop="@dimen/xa150"
+        android:layout_marginRight="@dimen/xa100"
+        android:background="@drawable/selector_circle_btn_blue"
+        android:text="@string/back_to_plant"
+        android:textColor="@color/white1"
+        android:textSize="@dimen/xa30"
+        app:layout_constraintTop_toBottomOf="@+id/tv_tips_2" />
+
+
+</LinearLayout>

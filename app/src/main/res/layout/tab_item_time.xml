@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ll_time_setting"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_intervals"
+        android:layout_width="@dimen/xa200"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/intervals"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:layout_constraintBottom_toBottomOf="@+id/et_intervals"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_intervals" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/et_intervals"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xa90"
+        android:layout_marginTop="@dimen/xa20"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        android:gravity="end|center_vertical"
+        app:layout_constraintLeft_toRightOf="@+id/tv_intervals"
+        app:layout_constraintRight_toLeftOf="@+id/et_intervals_min"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/et_intervals_min"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/xa90"
+        android:layout_marginTop="@dimen/xa20"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        android:gravity="end|center_vertical"
+        android:text="@string/m459分钟"
+        app:layout_constraintRight_toLeftOf="@+id/iv_intervals_next"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <ImageView
+        android:id="@+id/iv_intervals_next"
+        android:layout_width="@dimen/xa90"
+        android:layout_height="@dimen/xa90"
+        android:padding="@dimen/xa20"
+        android:src="@drawable/icon_r"
+        app:layout_constraintBottom_toBottomOf="@+id/et_intervals"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_intervals" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_datalog_time"
+        android:layout_width="@dimen/xa200"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/datalog_time"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:layout_constraintBottom_toBottomOf="@+id/et_datalog_time"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_datalog_time" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/et_datalog_time"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xa90"
+        android:layout_marginTop="@dimen/xa20"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        android:gravity="end|center_vertical"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:layout_constraintLeft_toRightOf="@+id/tv_intervals"
+        app:layout_constraintRight_toLeftOf="@+id/iv_intervals_next"
+        app:layout_constraintTop_toBottomOf="@+id/et_intervals" />
+
+    <ImageView
+        android:id="@+id/iv_datalog_time_next"
+        android:layout_width="@dimen/xa90"
+        android:layout_height="@dimen/xa90"
+        android:padding="@dimen/xa20"
+        android:src="@drawable/icon_r"
+        app:layout_constraintBottom_toBottomOf="@+id/et_datalog_time"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_datalog_time" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_synchronize_time"
+        android:layout_width="@dimen/xa200"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/syscn_time"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:layout_constraintBottom_toBottomOf="@+id/cb_synchronize_time"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cb_synchronize_time" />
+
+    <CheckBox
+        android:id="@+id/cb_synchronize_time"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/xa60"
+        android:button="@drawable/selector_checkbox_bg"
+        android:layout_marginTop="@dimen/xa20"
+        android:layout_marginEnd="@dimen/xa20"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_datalog_time_next" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

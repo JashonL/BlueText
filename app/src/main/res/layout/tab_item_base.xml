@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_base_setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_serialnum"
+        android:layout_width="@dimen/xa200"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/序列号"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/et_serialnum"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_serialnum" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/et_serialnum"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xa90"
+        android:layout_marginTop="@dimen/xa20"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:autoSizeTextType="uniform"
+        android:paddingEnd="@dimen/xa30"
+        android:gravity="end|center_vertical"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:layout_constraintLeft_toRightOf="@+id/tv_serialnum"
+        app:layout_constraintRight_toLeftOf="@+id/iv_serialnum_next"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_serialnum_next"
+        android:layout_width="@dimen/xa90"
+        android:layout_height="@dimen/xa90"
+        android:padding="@dimen/xa20"
+        android:src="@drawable/icon_r"
+        app:layout_constraintBottom_toBottomOf="@+id/et_serialnum"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_serialnum" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_mac"
+        android:layout_width="@dimen/xa200"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/m159网络MAC地址"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/et_mac"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_mac" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/et_mac"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xa90"
+        android:layout_marginTop="@dimen/xa20"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:autoSizeTextType="uniform"
+        android:gravity="end|center_vertical"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        android:paddingEnd="@dimen/xa30"
+        app:layout_constraintLeft_toRightOf="@+id/tv_mac"
+        app:layout_constraintRight_toLeftOf="@+id/iv_mac_next"
+        app:layout_constraintTop_toBottomOf="@+id/et_serialnum" />
+
+
+    <ImageView
+        android:id="@+id/iv_mac_next"
+        android:layout_width="@dimen/xa90"
+        android:layout_height="@dimen/xa90"
+        android:padding="@dimen/xa20"
+        android:src="@drawable/icon_r"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/et_mac"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_mac" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_device_type"
+        android:layout_width="@dimen/xa200"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/mdevice_type_ios"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/et_device_type"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_device_type" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/et_device_type"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xa90"
+        android:layout_marginTop="@dimen/xa20"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:autoSizeTextType="uniform"
+        android:gravity="end|center_vertical"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        android:paddingEnd="@dimen/xa30"
+        app:layout_constraintLeft_toRightOf="@+id/tv_device_type"
+        app:layout_constraintRight_toLeftOf="@+id/iv_type_next"
+        app:layout_constraintTop_toBottomOf="@+id/et_mac" />
+
+
+    <ImageView
+        android:id="@+id/iv_type_next"
+        android:layout_width="@dimen/xa90"
+        android:layout_height="@dimen/xa90"
+        android:padding="@dimen/xa20"
+        android:src="@drawable/icon_r"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/et_device_type"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_device_type" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_version"
+        android:layout_width="@dimen/xa200"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/dataloggers_list_version"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/et_version"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_version" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/et_version"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xa90"
+        android:layout_marginTop="@dimen/xa20"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:autoSizeTextType="uniform"
+        android:gravity="end|center_vertical"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        android:paddingEnd="@dimen/xa30"
+        app:layout_constraintLeft_toRightOf="@+id/tv_version"
+        app:layout_constraintRight_toLeftOf="@+id/iv_version_next"
+        app:layout_constraintTop_toBottomOf="@+id/et_device_type" />
+
+
+    <ImageView
+        android:id="@+id/iv_version_next"
+        android:layout_width="@dimen/xa90"
+        android:layout_height="@dimen/xa90"
+        android:padding="@dimen/xa20"
+        android:src="@drawable/icon_r"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/et_version"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_version" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/toobar_title" />
+
+    <com.shuoxd.bluetext.RippleBackground
+        android:id="@+id/ripple"
+        android:layout_width="@dimen/xa618"
+        android:layout_height="@dimen/xa618"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerView"
+        app:rb_color="#009cff"
+        app:rb_duration="5000"
+        app:rb_radius="30dp"
+        app:rb_rippleAmount="5"
+        app:rb_scale="4"
+        app:rb_strokeWidth="10dp"
+        app:rb_type="strokeRipple">
+
+        <ImageView
+            android:id="@+id/centerImage"
+            android:layout_width="@dimen/xa200"
+            android:layout_height="@dimen/xa200"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/x30"
+            android:layout_marginBottom="@dimen/x30"
+            android:gravity="center"
+            android:src="@drawable/blue_scan" />
+
+    </com.shuoxd.bluetext.RippleBackground>
+
+    <TextView
+        android:id="@+id/tvNote"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xa100"
+        android:gravity="center"
+        android:text="@string/bluetooth_scaning"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ripple" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_search_text"
+        app:layout_constraintTop_toBottomOf="@+id/ripple">
+
+
+        <TextView
+            android:id="@+id/tv_nearby_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/xa10"
+            android:gravity="center"
+            android:padding="@dimen/xa10"
+            android:text="@string/nearby_bluetooth"
+            android:textColor="@color/title_bg_white"
+            android:textSize="@dimen/sizea_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_choose_bluetooth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/xa10"
+            android:gravity="center"
+            android:padding="@dimen/xa10"
+            android:text="@string/connet_tips"
+            android:textColor="@color/note_bg_white"
+            android:textSize="@dimen/sizea_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nearby_blue" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rlv_bluetooth"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/xa20"
+            android:background="@drawable/shape_gray_radius_5_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="@dimen/xa10"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_choose_bluetooth" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_search_text"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xa100"
+        android:layout_margin="@dimen/xa30"
+        android:background="@drawable/selector_gray_stroke"
+        android:gravity="center"
+        android:text="@string/search_bluetooth"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+
+    <include layout="@layout/bluetooth_scan_fail"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

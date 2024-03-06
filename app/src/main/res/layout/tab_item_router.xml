@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_router_setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_background"
+    android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_dhcp"
+        android:layout_width="@dimen/xa200"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="DHCP"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:layout_constraintBottom_toBottomOf="@+id/cb_dhcp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cb_dhcp" />
+
+
+    <CheckBox
+        android:id="@+id/cb_dhcp"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/xa60"
+        android:layout_marginTop="@dimen/xa30"
+        android:button="@drawable/selector_checkbox_bg"
+        app:layout_constraintLeft_toRightOf="@+id/tv_dhcp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_ip"
+        android:layout_width="@dimen/xa200"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/ip_address"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/et_ip"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_ip" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/et_ip"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xa90"
+        android:layout_marginTop="@dimen/xa20"
+        android:gravity="end|center_vertical"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintLeft_toRightOf="@+id/tv_dhcp"
+        app:layout_constraintRight_toLeftOf="@+id/iv_ip_next"
+        app:layout_constraintTop_toBottomOf="@+id/cb_dhcp" />
+
+    <ImageView
+        android:id="@+id/iv_ip_next"
+        android:layout_width="@dimen/xa90"
+        android:layout_height="@dimen/xa90"
+        android:padding="@dimen/xa20"
+        android:src="@drawable/icon_r"
+        app:layout_constraintBottom_toBottomOf="@+id/et_ip"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_ip" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_gateway"
+        android:layout_width="@dimen/xa200"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/gateway_setting"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/et_gateway"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_gateway" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/et_gateway"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xa90"
+        android:layout_marginTop="@dimen/xa20"
+        android:gravity="end|center_vertical"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintLeft_toRightOf="@+id/tv_dhcp"
+        app:layout_constraintRight_toLeftOf="@+id/iv_gateway_next"
+        app:layout_constraintTop_toBottomOf="@+id/et_ip" />
+
+
+    <ImageView
+        android:id="@+id/iv_gateway_next"
+        android:layout_width="@dimen/xa90"
+        android:layout_height="@dimen/xa90"
+        android:padding="@dimen/xa20"
+        android:src="@drawable/icon_r"
+        app:layout_constraintBottom_toBottomOf="@+id/et_gateway"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_gateway" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_mask"
+        android:layout_width="@dimen/xa200"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/m158子网掩码"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/et_mask"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_mask" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/et_mask"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xa90"
+        android:layout_marginTop="@dimen/xa20"
+        android:gravity="end|center_vertical"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintLeft_toRightOf="@+id/tv_mask"
+        app:layout_constraintRight_toLeftOf="@+id/iv_mask_next"
+        app:layout_constraintTop_toBottomOf="@+id/et_gateway" />
+
+
+    <ImageView
+        android:id="@+id/iv_mask_next"
+        android:layout_width="@dimen/xa90"
+        android:layout_height="@dimen/xa90"
+        android:padding="@dimen/xa20"
+        android:src="@drawable/icon_r"
+        app:layout_constraintBottom_toBottomOf="@+id/et_mask"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_mask" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

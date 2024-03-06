@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toobar_title" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_error"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/tv_comment_quetion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableEnd="@drawable/icon_more"
+        android:text="@string/userdata_title_common"
+        android:textColor="@color/headerView"
+        android:textSize="@dimen/sizea_title"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/xa20"
+        android:background="@drawable/selector_circle_btn_blue"
+        android:text="@string/m461重新配置"
+        android:textColor="@color/white1"
+        android:textSize="@dimen/xa30" />
+
+
+</LinearLayout>

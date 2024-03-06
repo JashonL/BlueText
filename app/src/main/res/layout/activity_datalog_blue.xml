@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_background">
+
+    <include layout="@layout/toobar_title" />
+
+
+    <include
+        layout="@layout/layout_title_step3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/headerView" />
+
+
+    <TextView
+        android:id="@+id/tv_current_wifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/xa30"
+        android:padding="@dimen/xa20"
+        android:text="@string/connect_wifi"
+        android:textColor="@color/title_3"
+        android:textSize="@dimen/xa24"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_step3" />
+
+
+    <View
+        android:id="@+id/view_ssid_background"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xa100"
+        android:layout_marginStart="@dimen/xa60"
+        android:layout_marginTop="@dimen/xa16"
+        android:layout_marginEnd="@dimen/xa60"
+        android:background="@drawable/shape_iphone_radius_20"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_current_wifi" />
+
+
+
+    <ImageView
+        android:id="@+id/iv_wifi"
+        android:layout_width="@dimen/xa40"
+        android:layout_height="0dp"
+        android:src="@drawable/icon_wifi"
+        android:layout_marginStart="@dimen/xa20"
+        app:layout_constraintLeft_toLeftOf="@+id/view_ssid_background"
+        app:layout_constraintTop_toTopOf="@+id/view_ssid_background"
+        app:layout_constraintBottom_toBottomOf="@+id/view_ssid_background" />
+
+
+    <EditText
+        android:id="@+id/et_ssid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@null"
+        android:hint="@string/ahtool_wifi_blank"
+        android:padding="@dimen/xa10"
+        android:textColor="@color/content_bg_white"
+        android:textSize="@dimen/sizea_content"
+        app:layout_constraintBottom_toBottomOf="@+id/view_ssid_background"
+        app:layout_constraintLeft_toRightOf="@+id/iv_wifi"
+        app:layout_constraintTop_toTopOf="@+id/view_ssid_background"
+        app:layout_constraintRight_toLeftOf="@+id/iv_switch_wifi" />
+
+
+    <ImageView
+        android:id="@+id/iv_switch_wifi"
+        android:layout_width="@dimen/xa40"
+        android:layout_height="0dp"
+        android:src="@drawable/icon_pull"
+        android:layout_marginEnd="@dimen/xa20"
+        app:layout_constraintTop_toTopOf="@+id/view_ssid_background"
+        app:layout_constraintBottom_toBottomOf="@+id/view_ssid_background"
+        app:layout_constraintRight_toRightOf="@+id/view_ssid_background" />
+
+
+
+    <View
+        android:id="@+id/view_password_background"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xa100"
+        android:layout_marginStart="@dimen/xa60"
+        android:layout_marginTop="@dimen/xa16"
+        android:layout_marginEnd="@dimen/xa60"
+        android:background="@drawable/shape_iphone_radius_20"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_ssid_background" />
+
+
+    <ImageView
+        android:id="@+id/iv_password"
+        android:layout_width="@dimen/xa40"
+        android:layout_height="0dp"
+        android:src="@drawable/password"
+        android:layout_marginStart="@dimen/xa20"
+        app:layout_constraintLeft_toLeftOf="@+id/view_password_background"
+        app:layout_constraintTop_toTopOf="@+id/view_password_background"
+        app:layout_constraintBottom_toBottomOf="@+id/view_password_background"
+        />
+
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@null"
+        android:hint="@string/ahtool_wifipwd_blank"
+        android:inputType="textPassword"
+        android:padding="@dimen/xa10"
+        android:textColor="@color/content_bg_white"
+        android:textSize="@dimen/sizea_content"
+        app:layout_constraintBottom_toBottomOf="@+id/view_password_background"
+        app:layout_constraintLeft_toRightOf="@+id/iv_password"
+        app:layout_constraintTop_toTopOf="@+id/view_password_background"
+        app:layout_constraintRight_toLeftOf="@+id/iv_switch_password" />
+
+
+    <ImageView
+        android:id="@+id/iv_switch_password"
+        android:layout_width="@dimen/xa40"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/xa20"
+        android:src="@drawable/icon_signin_see"
+        app:layout_constraintBottom_toBottomOf="@+id/view_password_background"
+        app:layout_constraintTop_toTopOf="@+id/view_password_background"
+        app:layout_constraintRight_toRightOf="@+id/view_password_background" />
+
+
+
+
+    <TextView
+        android:id="@+id/tv_setwifi_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/xa5"
+        android:text="@string/高级设置"
+        android:textColor="@color/headerView"
+        android:textSize="@dimen/sizea_content"
+        android:layout_marginBottom="@dimen/xa60"
+        app:layout_constraintBottom_toTopOf="@+id/btn_next"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/iv_toguide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_more"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_setwifi_guide"
+        app:layout_constraintLeft_toRightOf="@+id/tv_setwifi_guide"
+        app:layout_constraintTop_toTopOf="@+id/tv_setwifi_guide" />
+
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ya88"
+        android:layout_marginLeft="@dimen/xa100"
+        android:layout_marginRight="@dimen/xa100"
+        android:background="@drawable/selector_circle_btn_blue"
+        android:text="@string/config_immediately"
+        android:textColor="@color/white1"
+        android:textSize="@dimen/xa30"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_password_background" />
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ya88"
+        android:layout_marginLeft="@dimen/xa100"
+        android:layout_marginRight="@dimen/xa100"
+        android:background="@drawable/selector_circle_btn_blue"
+        android:text="@string/下一步"
+        android:textColor="@color/white1"
+        android:textSize="@dimen/xa30"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_password_background" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_url_setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_server_domain"
+        android:layout_width="@dimen/xa200"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/server_url"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:layout_constraintBottom_toBottomOf="@+id/et_server_domain"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_server_domain" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/et_server_domain"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xa90"
+        android:paddingEnd="@dimen/xa30"
+        android:gravity="end|center_vertical"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:layout_constraintLeft_toRightOf="@+id/tv_server_domain"
+       app:layout_constraintRight_toLeftOf="@+id/iv_server_domain_next"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/iv_server_domain_next"
+        android:layout_width="@dimen/xa90"
+        android:layout_height="@dimen/xa90"
+        android:padding="@dimen/xa20"
+        android:visibility="visible"
+        android:src="@drawable/icon_r"
+        app:layout_constraintBottom_toBottomOf="@+id/et_server_domain"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_server_domain" />
+
+
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_server_port"
+        android:layout_width="@dimen/xa200"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/inverterdevicedata_port"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        app:layout_constraintBottom_toBottomOf="@+id/et_server_port"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_server_port" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/et_server_port"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/xa90"
+        android:layout_marginTop="@dimen/xa20"
+        android:gravity="end|center_vertical"
+        android:textColor="@color/title_bg_white"
+        android:textSize="@dimen/sizea_title"
+        app:autoSizeTextType="uniform"
+        app:autoSizeMaxTextSize="@dimen/sizea_title"
+        app:autoSizeMinTextSize="@dimen/xa10"
+        android:paddingEnd="@dimen/xa30"
+        app:layout_constraintLeft_toRightOf="@+id/tv_server_port"
+        app:layout_constraintRight_toLeftOf="@+id/iv_server_port_next"
+        app:layout_constraintTop_toBottomOf="@+id/et_server_domain" />
+
+    <ImageView
+        android:id="@+id/iv_server_port_next"
+        android:layout_width="@dimen/xa90"
+        android:layout_height="@dimen/xa90"
+        android:padding="@dimen/xa20"
+        android:src="@drawable/icon_r"
+        app:layout_constraintBottom_toBottomOf="@+id/et_server_port"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_server_port" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

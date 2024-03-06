@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--新版头部高度-->
+    <dimen name="header_height_v3">@dimen/xa75</dimen>
+
+
+    <dimen name="header_height">@dimen/x48</dimen> <!--头部高度-->
+    <!--字体大小-->
+    <dimen name="size_head_title">@dimen/x18</dimen> <!--头标题字体-->
+    <dimen name="size_content_title">@dimen/x15</dimen> <!--内容标题字体-->
+    <dimen name="size_content">@dimen/x14</dimen> <!--内容字体-->
+    <dimen name="size_content_small">@dimen/x13</dimen> <!--内容字体-->
+    <dimen name="size_note">@dimen/x12</dimen> <!--注释或说明字体-->
+    <dimen name="size_grid">@dimen/x10</dimen> <!--曲线刻度或底部导航字体-->
+    <!--字体大小-->
+    <dimen name="size_head_title_2">@dimen/x18</dimen> <!--头标题字体-->
+    <dimen name="size_content_title_2">@dimen/x14</dimen> <!--内容标题字体-->
+    <dimen name="size_content_2">@dimen/x13</dimen> <!--内容字体-->
+    <dimen name="size_content_small_2">@dimen/x12</dimen> <!--内容字体-->
+    <dimen name="size_note_2">@dimen/x11</dimen> <!--注释或说明字体-->
+    <dimen name="size_grid_2">@dimen/x10</dimen> <!--曲线刻度或底部导航字体-->
+    <!--字体大小-->
+    <dimen name="size_18">@dimen/x16</dimen> <!--头标题字体-->
+    <dimen name="size_16">@dimen/x14</dimen> <!--头标题字体-->
+    <dimen name="size_14">@dimen/x13</dimen> <!--内容标题字体-->
+    <dimen name="size_13">@dimen/x12</dimen> <!--内容字体-->
+    <dimen name="size_12">@dimen/x11</dimen> <!--内容字体-->
+    <dimen name="size_11">@dimen/x10</dimen> <!--注释或说明字体-->
+    <dimen name="size_10">@dimen/x9</dimen> <!--曲线刻度或底部导航字体-->
+    <!--新版750*1334 字体大小-->
+    <dimen name="sizea_big">@dimen/xa48</dimen> <!--头标题字体-->
+    <dimen name="sizea_header">@dimen/xa36</dimen> <!--头标题字体-->
+    <dimen name="sizea_title_big">@dimen/xa33</dimen> <!--头标题字体-->
+    <dimen name="sizea_title">@dimen/xa30</dimen> <!--内容标题字体-->
+    <dimen name="sizea_title_small">@dimen/xa28</dimen> <!--内容标题字体-->
+    <dimen name="sizea_content">@dimen/xa26</dimen> <!--内容字体-->
+    <dimen name="sizea_content_small">@dimen/xa24</dimen> <!--内容字体-->
+    <dimen name="sizea_note">@dimen/xa20</dimen> <!--注释或说明字体-->
+    <dimen name="sizea_small">@dimen/xa18</dimen> <!--曲线刻度或底部导航字体-->
+    <!--新版750*1334 字体大小 y-->
+    <dimen name="sizea_big_y">@dimen/ya48</dimen> <!--头标题字体-->
+    <dimen name="sizea_header_y">@dimen/ya36</dimen> <!--头标题字体-->
+    <dimen name="sizea_title_big_y">@dimen/ya33</dimen> <!--头标题字体-->
+    <dimen name="sizea_title_y">@dimen/ya30</dimen> <!--内容标题字体-->
+    <dimen name="sizea_title_small_y">@dimen/ya28</dimen> <!--内容标题字体-->
+    <dimen name="sizea_content_y">@dimen/ya26</dimen> <!--内容字体-->
+    <dimen name="sizea_content_small_y">@dimen/ya24</dimen> <!--内容字体-->
+    <dimen name="sizea_note_y">@dimen/ya20</dimen> <!--注释或说明字体-->
+    <dimen name="sizea_small_y">@dimen/ya18</dimen> <!--曲线刻度或底部导航字体-->
+
+
+    <dimen name="size_title_16">@dimen/x16</dimen> <!--头标题字体-->
+    <dimen name="size_title_15">@dimen/x15</dimen> <!--头标题字体-->
+    <dimen name="size_title_14">@dimen/x14</dimen> <!--头标题字体-->
+    <dimen name="size_content_title_13">@dimen/x13</dimen> <!--内容标题字体-->
+    <dimen name="size_content_12">@dimen/x12</dimen> <!--内容字体-->
+    <dimen name="size_content_11">@dimen/x11</dimen> <!--内容字体-->
+    <dimen name="size_note_10">@dimen/x10</dimen> <!--注释或说明字体-->
+    <dimen name="size_note_9">@dimen/x9</dimen> <!--曲线刻度或底部导航字体-->
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <!-- pulltorefresh -->
+    <dimen name="indicator_right_padding">10dp</dimen>
+    <dimen name="indicator_corner_radius">12dp</dimen>
+    <dimen name="indicator_internal_padding">4dp</dimen>
+    <dimen name="header_footer_left_right_padding">24dp</dimen>
+    <dimen name="header_footer_top_bottom_padding">12dp</dimen>
+    <!-- 水波纹效果 -->
+    <dimen name="rippleStrokeWidth">2dp</dimen>
+    <dimen name="rippleRadius">64dp</dimen>
+    <!--状态栏高度-->
+    <dimen name="status_bar_height">0dp</dimen>
+    <dimen name="status_bar_height2">25dp</dimen>
+
+
+    <!--大号字体-->
+    <dimen name="size_26">@dimen/x26</dimen>
+    <dimen name="size_64">@dimen/x64</dimen>
+    <dimen name="size_28">@dimen/xa28</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+<!--fab FloatingActionsMenu-->
+    <dimen name="fab_size_normal">56dp</dimen>
+    <dimen name="fab_size_mini">40dp</dimen>
+    <dimen name="fab_icon_size">24dp</dimen>
+    <dimen name="fab_plus_icon_size">14dp</dimen>
+    <dimen name="fab_plus_icon_stroke">2dp</dimen>
+    <dimen name="fab_shadow_offset">3dp</dimen>
+    <dimen name="fab_shadow_radius">9dp</dimen>
+    <dimen name="fab_stroke_width">1dp</dimen>
+    <dimen name="fab_actions_spacing">16dp</dimen>
+    <dimen name="fab_labels_margin">8dp</dimen>
+</resources>

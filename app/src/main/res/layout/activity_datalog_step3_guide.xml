@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/headerView"
+        layout="@layout/toobar_title" />
+
+
+   <include layout="@layout/layout_title_step3"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_ok"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/xa20"
+        android:layout_marginTop="@dimen/xa20"
+        android:layout_marginEnd="@dimen/xa20"
+        android:layout_marginBottom="@dimen/xa20"
+        android:foreground="@drawable/card_foreground"
+        app:cardBackgroundColor="@color/white_background"
+        app:cardCornerRadius="@dimen/xa45"
+        app:cardElevation="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_guide">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <com.youth.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="invisible"
+                app:layout_constraintTop_toTopOf="@+id/v_banner_background" />
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/xa20"
+                android:background="@drawable/selector_circle_btn_blue"
+                android:text="@string/下一步"
+                android:textColor="@color/white1"
+                android:textSize="@dimen/xa30" />
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>

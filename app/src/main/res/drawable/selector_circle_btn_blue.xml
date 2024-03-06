@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 对item的不通状态设置不同的图片，第一行是 他的状态被选中&&他没有被按下的状态就用这个图片-->
+    <item android:drawable="@drawable/selector_circle_btn_blue_click" android:state_pressed="true" />
+    <!-- 被checked的时候并且没有按下 -->
+    <item android:drawable="@drawable/selector_circle_btn_blue_click" android:state_checked="true" />
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle" android:useLevel="false">
+            <corners android:radius="360dp" />
+            <solid android:color="@color/charge_pile_gray" />
+        </shape>
+    </item>
+
+    <item android:drawable="@drawable/selector_circle_btn_blue_normal" />
+</selector>
