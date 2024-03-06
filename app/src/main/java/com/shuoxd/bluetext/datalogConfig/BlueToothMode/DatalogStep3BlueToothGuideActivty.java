@@ -5,6 +5,7 @@ import static com.shuoxd.bluetext.datalogConfig.PermissionConstant.RC_LOCATION;
 
 import android.Manifest;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.shuoxd.bluetext.BaseActivity;
 import com.shuoxd.bluetext.R;
 import com.shuoxd.bluetext.datalogConfig.CircleDialogUtils;
 import com.shuoxd.bluetext.datalogConfig.LocalUtil;
+import com.shuoxd.bluetext.datalogConfig.PermissionConstant;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
@@ -126,7 +128,12 @@ public class DatalogStep3BlueToothGuideActivty extends BaseActivity implements T
      */
     @AfterPermissionGranted(RC_LOCATION)
     private void checkCameraPermissions() {
-        String[] perms = {Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION};
+        String[] perms = {Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            perms = PermissionConstant.BLE_SCAN;
+        }
+
+
         if (EasyPermissions.hasPermissions(this, perms)) {//有权限
             toScanSerial();
         } else {
@@ -134,6 +141,7 @@ public class DatalogStep3BlueToothGuideActivty extends BaseActivity implements T
             EasyPermissions.requestPermissions(this, getString(R.string.scan_bluetooth_permission),
                     RC_LOCATION, perms);
         }
+
     }
 
 
