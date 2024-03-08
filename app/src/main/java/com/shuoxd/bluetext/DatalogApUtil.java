@@ -753,7 +753,6 @@ public class DatalogApUtil {
                         if (TextUtils.isEmpty(text)) text = "";
                         switch (num) {
                             case DataLogApDataParseUtil.LOCAL_IP:
-                            case DataLogApDataParseUtil.REMOTE_IP:
                             case DataLogApDataParseUtil.DEFAULT_GATEWAY:
                             case DataLogApDataParseUtil.SUBNET_MASK:
                                 if (!TextUtils.isEmpty(text)) {
