@@ -1,18 +1,19 @@
 package com.shuoxd.bluetext.datalogConfig.bluetooth;
 
 
-
 import static com.shuoxd.bluetext.datalogConfig.bluetooth.BleService.BLE_CONNECTING;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.le.BluetoothLeScanner;
 import android.bluetooth.le.ScanCallback;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
@@ -25,7 +26,6 @@ import androidx.fragment.app.FragmentActivity;
 
 
 import com.shuoxd.bluetext.R;
-import com.shuoxd.bluetext.SmartHomeUtil;
 import com.shuoxd.bluetext.datalogConfig.CircleDialogUtils;
 import com.shuoxd.bluetext.datalogConfig.bean.BleBrocastPro;
 import com.shuoxd.bluetext.datalogConfig.bluetooth.bean.BleBean;
@@ -130,7 +130,6 @@ public class BleScanManager {
     private void parseRecord(byte[] scanRecord, String address) {
 
 
-
         //数据长度
         int tempLenIndex = 0;
         List<BleBrocastPro> datas = new ArrayList<>();
@@ -151,12 +150,8 @@ public class BleScanManager {
             pro.data = data;
 
 
-
-
-
             datas.add(pro);
             tempLenIndex += len + 1;
-
 
 
         }
@@ -178,13 +173,10 @@ public class BleScanManager {
                     break;
                 case (byte) 0xff:
                     String tempType = new String(pro.data, StandardCharsets.UTF_8);
-                    if (tempType.toLowerCase().contains("g")) {
-                        deviceType = tempType;
-                        int i1 = tempType.indexOf("#");
-                        if (i1 != -1) {
-                            name1 = tempType.substring(i1 + 1);
-                        }
-
+                    deviceType = tempType;
+                    int i1 = tempType.indexOf("#");
+                    if (i1 != -1) {
+                        name1 = tempType.substring(i1 + 1);
                     }
 
                     break;
@@ -206,9 +198,6 @@ public class BleScanManager {
         bleName = name1 + bleName;
 
 
-
-
-
         bleBean.setBleName(bleName);
         bleBean.setType(deviceType);
 
@@ -227,9 +216,9 @@ public class BleScanManager {
             51：ShineWiLan-X
             94：便携式电源-TB*/
 
-        Log.d("liaojinsha","type:"+bleBean.getType()+"name:"+bleName);
+        Log.d("liaojinsha", "type:" + bleBean.getType() + "name:" + bleName);
 
-        if (bleBean.getType().toLowerCase().contains("g")) {
+        if (bleBean.getBleName().length() >= 10 && bleBean.getBleName().length() <= 20) {
             boolean repeatFlag = false;
             for (BleBean ble : scanlisteners.getBleData()) {
                 if (ble.getBleName().equals(bleBean.getBleName())) {
@@ -245,6 +234,7 @@ public class BleScanManager {
 
     }
 
+    @SuppressLint("MissingPermission")
     public void startBleScan() {
         BluetoothUtils.getBluetoothLeScanner().stopScan(mScanCallback);
         BluetoothUtils.getBluetoothLeScanner().startScan(mScanCallback);
@@ -262,8 +252,14 @@ public class BleScanManager {
     }
 
 
+    @SuppressLint("MissingPermission")
     public void stopBleScan() {
-        BluetoothUtils.getBluetoothLeScanner().stopScan(mScanCallback);
+        BluetoothLeScanner bluetoothLeScanner = BluetoothUtils.getBluetoothLeScanner();
+        if (bluetoothLeScanner != null) {
+            if (mScanCallback == null) return;
+            bluetoothLeScanner.stopScan(mScanCallback);
+        }
+
     }
 
 
@@ -274,7 +270,11 @@ public class BleScanManager {
         intentFilter.addAction(BluetoothDevice.ACTION_ACL_DISCONNECTED);
         intentFilter.addAction(BLE_CONNECTING);
         intentFilter.addAction(BluetoothDevice.ACTION_FOUND);
-        context.registerReceiver(mBleReceiver, intentFilter);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            context.registerReceiver(mBleReceiver, intentFilter, Context.RECEIVER_NOT_EXPORTED);
+        } else {
+            context.registerReceiver(mBleReceiver, intentFilter);
+        }
     }
 
     public void unRegisterBleReceiver() {

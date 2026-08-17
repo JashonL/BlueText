@@ -21,12 +21,12 @@
     <!--<color name="headerView_r50">#8011a7f3</color> &lt;!&ndash;头部颜色&ndash;&gt;-->
     <!--<color name="blue_background">#2ec2f0</color>&lt;!&ndash;主体背景颜色1：蓝色&ndash;&gt;-->
     <!--新版-->
-    <color name="headerView">#009cff</color> <!--头部颜色-->
+    <color name="headerView">#FE9112</color> <!--头部颜色-->
     <!--<color name="headerView">#ffffff</color> &lt;!&ndash;头部颜色&ndash;&gt;-->
-    <color name="headerView_r50">#80009cff</color> <!--头部颜色加透明度50%-->
-    <color name="blue_background">#1da7ff</color><!--主体背景颜色1：蓝色-->
+    <color name="headerView_r50">#80FE9112</color> <!--头部颜色加透明度50%-->
+    <color name="blue_background">#FC8012</color><!--主体背景颜色1：蓝色-->
     <color name="headerView_text">@color/headerView</color> <!--字体颜色==主色-->
-    <color name="headerView_gray">#0097f5</color> <!--字体颜色==主色-->
+    <color name="headerView_gray">#FC8012</color> <!--字体颜色==主色-->
 
 
     <color name="blue_background_click">@color/headerView</color><!--主体背景颜色1:点击后颜色-->
@@ -101,15 +101,15 @@
     <color name="inverter_wait">#11a7F3</color><!--逆变器等待-->
     <color name="inverter_lost">#a3a3a3</color><!--逆变器断开-->
     <!--yangshui-->
-    <color name="inverter_yang_1">#378ffa</color>
+    <color name="inverter_yang_1">#FE9112</color>
     <color name="inverter_yang_2">#22e784</color>
     <color name="inverter_yang_3">#f5ac02</color>
     <color name="inverter_yang_4">#ff5652</color>
     <color name="inverter_yang_0">#8d8c89</color>
     <!--tlxh状态-->
-    <color name="tlxh_wait">#378ffa</color><!--待机-->
+    <color name="tlxh_wait">#FE9112</color><!--待机-->
     <color name="tlxh_bingwang">#22e784</color><!--并网-->
-    <color name="tlxh_liwang">#378ffa</color><!--离网-->
+    <color name="tlxh_liwang">#FE9112</color><!--离网-->
     <color name="tlxh_error">#ff5652</color><!--故障-->
     <color name="tlxh_flash">#f5ac02</color><!--烧录-->
     <!--状态颜色3-->
@@ -121,7 +121,7 @@
     <color name="chart_green_click">#58c45f</color>
     <!--柱状图对比-->
     <color name="ov_comp_1">#d95ad8a6</color>
-    <color name="ov_comp_2">#378ffa</color>
+    <color name="ov_comp_2">#FE9112</color>
     <!--曲线图-->
     <color name="chart_green_normal_line">#b359e197</color>
     <color name="chart_green_click_line">#ff59e197</color>
@@ -430,7 +430,7 @@
     <color name="energy_shadow">#0487d9</color><!--能源界面投影颜色-->
 
     <!--max主界面-->
-    <color name="mainColor">#009cff</color>
+    <color name="mainColor">#FE9112</color>
     <color name="textColor">#ffffff</color>
     <color name="max_main_bg">#f2f2f2</color>
     <color name="max_main_bg_white">#ffffff</color>
@@ -509,7 +509,7 @@
     <color name="tuya_power_month_text">#1ad82c</color>
     <color name="tuya_power_model">#c1c809</color>
     <color name="tuya_power_cost">#e6aa08</color>
-    <color name="tuya_home_data_head_color1">#80009cff</color>
+    <color name="tuya_home_data_head_color1">#80FE9112</color>
     <color name="tuya_home_data_head_ele_color">#0a9ffe</color>
     <color name="tuya_home_data_head_ele_data_color">#069efe</color>
     <color name="tuya_home_data_head_color2">#80e2af00</color>
@@ -523,8 +523,8 @@
     <!--绿色-->
     <color name="green_1">#00e3c0</color>
     <!--蓝色-->
-    <color name="blue_1">#009cff</color>
-    <color name="read_type_color">#009cff</color>
+    <color name="blue_1">#FE9112</color>
+    <color name="read_type_color">#FE9112</color>
     <color name="forget_password_color">#00e3bf</color>
 
     <!--充电桩首页-->
@@ -544,7 +544,7 @@
     <!--透明颜色-->
     <color name="trans_color">#00ffffff</color>
     <!--白色背景时间段值-->
-    <color name="whitebg_time_value">#378ffa</color>
+    <color name="whitebg_time_value">#FE9112</color>
 
     <!--面板开关相关颜色-->
     <color name="open_bg_color">#f239b999</color>
@@ -552,20 +552,20 @@
     <!--场景相关颜色-->
     <color name="btn_delete_bg_a">#f04e4e</color>
     <color name="btn_delete_bg_b">#ef475b</color>
-    <color name="scenesbackground">#378ffa</color>
+    <color name="scenesbackground">#FE9112</color>
     <color name="scenes_icon_bg_cheked">#d0ecff</color>
     <color name="scenes_icon_bg">#eceff1</color>
     <color name="scenes_icon_stroke">#d5d9db</color>
     <color name="scenes_light_cyan">#f2f7fe</color>
     <color name="scenes_list_onclick_start">#f2a27b</color>
     <color name="scenes_list_onclick_end">#fec3a4</color>
-    <color name="scenes_list_condition_start">#f2378ffa</color>
+    <color name="scenes_list_condition_start">#f2FE9112</color>
     <color name="scenes_list_condition_center">#f2509efd</color>
     <color name="scenes_list_condition_end">#f269adff</color>
     <!--优化器部分-->
     <color name="tigo_title_color">#717171</color>
     <color name="tigo_button_normal">#a1acb3</color>
-    <color name="tigo_button_click">#378ffa</color>
+    <color name="tigo_button_click">#FE9112</color>
     <color name="tigo_button_text_normal">#ff999999</color>
     <color name="tigo_button_text_click">#ff333333</color>
     <color name="tigo_chart_line">#ff34e4b8</color>
@@ -597,13 +597,13 @@
     <!--电池背景-->
     <color name="color_battary_foreground">#1cd098</color>
     <color name="color_battary_background">#e8eef7</color>
-    <color name="btn_color_code_normal">#cc378ffa</color>
-    <color name="btn_color_code_no">#55378ffa</color>
+    <color name="btn_color_code_normal">#ccFE9112</color>
+    <color name="btn_color_code_no">#55FE9112</color>
 
     <!--流量续费其他帐号背景-->
     <color name="color_flow_other_account">#62729e</color>
-    <color name="blue_10">#60009cff</color>
-    <color name="blue_40">#99009cff</color>
+    <color name="blue_10">#60FE9112</color>
+    <color name="blue_40">#99FE9112</color>
 
     <!--圆环进度颜色-->
     <color name="gradient_start">#10e2f5</color>
@@ -612,7 +612,7 @@
     <!--圆角进度条颜色-->
     <color name="progress_gradient_start">#37eefa</color>
     <color name="progress_gradient_center">#1cd5f6</color>
-    <color name="progress_gradient_end">#378ffa</color>
+    <color name="progress_gradient_end">#FE9112</color>
     <!--联动的颜色-->
     <color name="item_linkage_text">#d57221</color>
     <color name="color_home_system_line">#e1eefe</color>
@@ -652,7 +652,7 @@
     <color name="charge_background">#80cfe1d6</color>
     <color name="charge_off">#ff976a</color>
 
-    <color name="circle_blue_fa">#21378FFA</color>
+    <color name="circle_blue_fa">#21FE9112</color>
     <color name="operation">#FA6400</color>
     <color name="operation_fa">#66fa6400</color>
     <color name="gray_dfe5eb">#DFE5EB</color>

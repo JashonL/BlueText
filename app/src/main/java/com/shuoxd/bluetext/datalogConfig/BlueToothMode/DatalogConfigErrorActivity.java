@@ -3,19 +3,16 @@ package com.shuoxd.bluetext.datalogConfig.BlueToothMode;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.shuoxd.bluetext.BaseActivity;
 import com.shuoxd.bluetext.DatalogStep2ModActivity;
 import com.shuoxd.bluetext.R;
+import com.shuoxd.bluetext.databinding.ActivityDatalogConfigErrorBinding;
 import com.shuoxd.bluetext.datalogConfig.ConfigManager;
 import com.shuoxd.bluetext.datalogConfig.Constant;
 import com.shuoxd.bluetext.datalogConfig.adapter.DataLogConfigErrorAdapter;
@@ -25,25 +22,11 @@ import com.shuoxd.bluetext.datalogConfig.bean.DatalogConfigBean;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
-public class DatalogConfigErrorActivity extends BaseActivity {
 
 
-    @BindView(R.id.status_bar_view)
-    View statusBarView;
-    @BindView(R.id.tv_title)
-    AppCompatTextView tvTitle;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.headerView)
-    LinearLayout headerView;
-    @BindView(R.id.rv_error)
-    RecyclerView rvError;
-    @BindView(R.id.btn_next)
-    Button btnNext;
+public class DatalogConfigErrorActivity extends BaseActivity implements View.OnClickListener {
+
+
 
 
     private List<DataConfigErrorBean> list;
@@ -66,15 +49,18 @@ public class DatalogConfigErrorActivity extends BaseActivity {
     private String serverId;
 
 
+    private ActivityDatalogConfigErrorBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_datalog_config_error);
-        ButterKnife.bind(this);
+        binding=ActivityDatalogConfigErrorBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        initViews();
         initIntent();
-        initToobar(toolbar);
+        initToobar(binding.headerView.toolbar);
 
-        tvTitle.setText(R.string.m311故障分析);
+        binding.headerView. tvTitle.setText(R.string.m311故障分析);
 
         //配网类型
         titles = new String[]{getString(R.string.light_red_flash), getString(R.string.light_green_flash), getString(R.string.light_green_steady), getString(R.string.light_blue_flash), getString(R.string.light_blue_steady), getString(R.string.check_frequency), getString(R.string.check_router)};
@@ -97,13 +83,18 @@ public class DatalogConfigErrorActivity extends BaseActivity {
             list.add(bean);
         }
 
-        rvError.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        binding. rvError.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mAdapter = new DataLogConfigErrorAdapter(R.layout.item_error_analysis, list);
-        rvError.setAdapter(mAdapter);
+        binding.rvError.setAdapter(mAdapter);
 
         int dimensionPixelSize = getResources().getDimensionPixelSize(R.dimen.xa20);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, LinearLayout.VERTICAL);
-        rvError.addItemDecoration(dividerItemDecoration);
+        binding.rvError.addItemDecoration(dividerItemDecoration);
+    }
+
+    private void initViews() {
+        binding.btnNext.setOnClickListener(this);
+        binding.tvCommentQuetion.setOnClickListener(this);
     }
 
     private void initIntent() {
@@ -121,17 +112,6 @@ public class DatalogConfigErrorActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.btn_next,R.id.tv_comment_quetion})
-    public void onViewClicked(View view) {
-        switch (view.getId()){
-            case R.id.btn_next:
-                retryConfig();
-                break;
-            case R.id.tv_comment_quetion:
-
-                break;
-        }
-    }
 
 
 
@@ -148,5 +128,17 @@ public class DatalogConfigErrorActivity extends BaseActivity {
         intent.putExtra("serverId", serverId);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btn_next:
+                retryConfig();
+                break;
+            case R.id.tv_comment_quetion:
+
+                break;
+        }
     }
 }

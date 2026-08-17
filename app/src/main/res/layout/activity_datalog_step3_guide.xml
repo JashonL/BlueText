@@ -10,7 +10,7 @@
         layout="@layout/toobar_title" />
 
 
-   <include layout="@layout/layout_title_step3"/>
+   <include layout="@layout/layout_title_step3" android:id="@+id/title_step3"/>
 
 
     <androidx.cardview.widget.CardView

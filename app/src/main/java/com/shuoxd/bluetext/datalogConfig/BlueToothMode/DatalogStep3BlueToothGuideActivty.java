@@ -18,16 +18,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.shuoxd.bluetext.BaseActivity;
 import com.shuoxd.bluetext.R;
+import com.shuoxd.bluetext.databinding.ActivityDatalogStep3GuideBinding;
 import com.shuoxd.bluetext.datalogConfig.CircleDialogUtils;
 import com.shuoxd.bluetext.datalogConfig.LocalUtil;
 import com.shuoxd.bluetext.datalogConfig.PermissionConstant;
-import com.youth.banner.Banner;
 
-import java.util.ArrayList;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -35,49 +30,34 @@ import pub.devrel.easypermissions.EasyPermissions;
 public class DatalogStep3BlueToothGuideActivty extends BaseActivity implements Toolbar.OnMenuItemClickListener {
 
 
-    @BindView(R.id.status_bar_view)
-    View statusBarView;
-    @BindView(R.id.tv_title)
-    AppCompatTextView tvTitle;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.headerView)
-    LinearLayout headerView;
-    @BindView(R.id.tv_step_title3)
-    TextView tvStepTitle3;
-    @BindView(R.id.banner)
-    Banner banner;
+
 
 
     private String[] title;
     private int[] images;
 
 
+    private ActivityDatalogStep3GuideBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_datalog_step3_guide);
-        ButterKnife.bind(this);
-        initToobar(toolbar);
+        binding=ActivityDatalogStep3GuideBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        initToobar(binding.headerView.toolbar);
 
 
-        tvTitle.setText(R.string.config_datalog);
-        tvStepTitle3.setText(R.string.config_network);
+        binding.headerView.tvTitle.setText(R.string.config_datalog);
+        binding.titleStep3.tvStepTitle3.setText(R.string.config_network);
 
 
         title = new String[]{
                 getString(R.string.datalog_bluetooth_step)
         };
-
-
-    }
-
-
-    @OnClick({R.id.btn_next})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.btn_next:
-                boolean b = LocalUtil.checkGPSIsOpen(this);
+        binding.btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean b = LocalUtil.checkGPSIsOpen(DatalogStep3BlueToothGuideActivty.this);
                 if (b) {
                     try {
                         checkCameraPermissions();
@@ -85,16 +65,18 @@ public class DatalogStep3BlueToothGuideActivty extends BaseActivity implements T
                         e.printStackTrace();
                     }
                 } else {
-                    CircleDialogUtils.showCommentDialog(this, getString(R.string.温馨提示),
+                    CircleDialogUtils.showCommentDialog(DatalogStep3BlueToothGuideActivty.this, getString(R.string.温馨提示),
                             getString(R.string.utf_open_gprs), v -> {
-                                LocalUtil.goToOpenGPS(this);
+                                LocalUtil.goToOpenGPS(DatalogStep3BlueToothGuideActivty.this);
                             }, v -> finish(), false);
                 }
+            }
+        });
 
-
-                break;
-        }
     }
+
+
+
 
 
     @Override

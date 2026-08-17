@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/toobar_title" />
+    <include layout="@layout/toobar_title" android:id="@+id/headerView"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_error"

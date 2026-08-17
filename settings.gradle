@@ -1,11 +1,49 @@
+//插件仓库地址
+pluginManagement {
+    plugins {
+        //KSP版本配置（注解处理器替代方案）
+        id 'org.gradle.toolchains.foojay-resolver-convention' version '0.5.0'
+    }
+
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        // 配置HMS Core SDK的Maven仓地址
+        maven {url 'https://developer.huawei.com/repo/'}
+    }
+}
+
+//依赖库仓库地址，对应以前的allprojects中的repositories
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/central'}
+        maven { url 'https://maven.aliyun.com/repository/google'}
+        maven { url 'https://maven.aliyun.com/repository/jcenter'}
+
         google()
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
+        jcenter()
         maven { url 'https://jitpack.io' }
+        //涂鸦
+        maven {
+            url "https://maven-other.tuya.com/repository/maven-releases/"
+        }
+        maven {
+            url "https://maven-other.tuya.com/repository/maven-commercial-releases/"
+        }
+        // 配置HMS Core SDK的Maven仓地址
+        maven {url 'https://developer.huawei.com/repo/'}
+        //友盟
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
+
     }
 }
+
+
 rootProject.name = "BlueText"
 include ':app'
+

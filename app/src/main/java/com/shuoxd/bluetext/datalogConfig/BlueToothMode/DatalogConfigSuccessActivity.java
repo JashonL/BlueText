@@ -19,47 +19,24 @@ import androidx.appcompat.widget.Toolbar;
 import com.shuoxd.bluetext.BaseActivity;
 import com.shuoxd.bluetext.DatalogStep2ModActivity;
 import com.shuoxd.bluetext.R;
+import com.shuoxd.bluetext.databinding.ActivityDatalogConfigSuccessBinding;
 import com.shuoxd.bluetext.datalogConfig.CircleDialogUtils;
 
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
 
 public class DatalogConfigSuccessActivity extends BaseActivity {
 
-    @BindView(R.id.status_bar_view)
-    View statusBarView;
-    @BindView(R.id.tv_title)
-    AppCompatTextView tvTitle;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.headerView)
-    LinearLayout headerView;
-    @BindView(R.id.view_selected_background)
-    View viewSelectedBackground;
-    @BindView(R.id.tv_selected)
-    TextView tvSelected;
-    @BindView(R.id.btn_next)
-    Button btnNext;
-    @BindView(R.id.tv_step_title4)
-    TextView tvStepTile4;
 
-/*
-    private String action;
-    //根据配网类型判断是否需要添加
-    private String configType;
-    private String datalogSn;
-    private String userId;
-    private String plantId;
-    private String serverId;
-    private String isHave;*/
+
+    private ActivityDatalogConfigSuccessBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_datalog_config_success);
-        ButterKnife.bind(this);
+        binding=ActivityDatalogConfigSuccessBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        binding.btnNext.setOnClickListener(view -> back());
 
    /*     DatalogConfigBean configBean = ConfigManager.getInstance().getConfigBean();
         action = configBean.getAction();
@@ -71,11 +48,11 @@ public class DatalogConfigSuccessActivity extends BaseActivity {
         isHave = configBean.getIsHave();*/
 
 
-        tvTitle.setText(R.string.dataloggers_add_success);
-        tvStepTile4.setText(R.string.config_finish);
+        binding.headerView.tvTitle.setText(R.string.dataloggers_add_success);
+        binding.titleStep4.tvStepTitle4.setText(R.string.config_finish);
 
-        toolbar.setNavigationIcon(R.drawable.icon_return);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        binding.headerView.toolbar.setNavigationIcon(R.drawable.icon_return);
+        binding.headerView. toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 back();
@@ -89,12 +66,7 @@ public class DatalogConfigSuccessActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.btn_next})
-    public void onViewClicked(View view) {
-        if (view.getId() == R.id.btn_next) {
-            back();
-        }
-    }
+
 
 
     public void back() {

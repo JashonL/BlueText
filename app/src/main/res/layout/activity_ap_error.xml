@@ -4,9 +4,9 @@
     android:background="@color/white_background"
     android:layout_height="match_parent">
 
-    <include layout="@layout/toobar_title" />
+    <include layout="@layout/toobar_title" android:id="@+id/headerView"/>
 
-    <include layout="@layout/layout_title_step4" />
+    <include layout="@layout/layout_title_step4" android:id="@+id/title_step4"/>
 
 
     <ImageView

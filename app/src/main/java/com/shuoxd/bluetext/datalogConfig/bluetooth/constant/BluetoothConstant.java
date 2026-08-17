@@ -10,5 +10,7 @@ public class BluetoothConstant {
     //分享的密钥
     public static  String BLUETOOTH_SHARE_KEY = "";
     //oss账户使用密钥
-    public static final String BLUETOOTH_OSS_KEY = "shuoxd_aiot_local_wireless_key01";
+//    public static final String BLUETOOTH_OSS_KEY = "shuoxd_aiot_local_wireless_key01";
+
+    public static final String BLUETOOTH_OSS_KEY = "growatt_iot_device_common_key_01";
 }

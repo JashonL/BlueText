@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/toobar_title" />
+    <include layout="@layout/toobar_title" android:id="@+id/headerView"/>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/srl_pull"
@@ -49,19 +49,23 @@
                 android:orientation="vertical">
 
                 <include
+                    android:id="@+id/ll_router_setting"
                     layout="@layout/tab_item_router"
                     android:visibility="visible" />
 
 
                 <include
+                    android:id="@+id/ll_url_setting"
                     layout="@layout/tab_item_url"
                     android:visibility="gone" />
 
                 <include
+                    android:id="@+id/ll_base_setting"
                     layout="@layout/tab_item_base"
                     android:visibility="gone" />
 
                 <include
+                    android:id="@+id/ll_time_setting"
                     layout="@layout/tab_item_time"
                     android:visibility="gone" />
 

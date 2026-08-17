@@ -41,6 +41,7 @@ import com.shuoxd.bluetext.Mydialog;
 import com.shuoxd.bluetext.R;
 import com.shuoxd.bluetext.SmartHomeUtil;
 import com.shuoxd.bluetext.WifiUtils;
+import com.shuoxd.bluetext.databinding.ActivityDatalogBlueBinding;
 import com.shuoxd.bluetext.datalogConfig.BlueToothMode.BlueToothAdvanceActivity;
 import com.shuoxd.bluetext.datalogConfig.CircleDialogUtils;
 import com.shuoxd.bluetext.datalogConfig.ConfigManager;
@@ -60,42 +61,11 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener {
 
-    @BindView(R.id.status_bar_view)
-    View statusBarView;
-    @BindView(R.id.tv_title)
-    AppCompatTextView tvTitle;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.headerView)
-    LinearLayout headerView;
-    @BindView(R.id.view_selected_background)
-    View viewSelectedBackground;
-    @BindView(R.id.tv_selected)
-    TextView tvSelected;
-    @BindView(R.id.tv_step_title3)
-    TextView tvStepTitle3;
-    @BindView(R.id.tv_unselected)
-    TextView tvUnselected;
-    @BindView(R.id.et_ssid)
-    EditText etSsid;
-    @BindView(R.id.et_password)
-    EditText etPassword;
-    @BindView(R.id.iv_switch_password)
-    ImageView ivSwitchPassword;
-    @BindView(R.id.btn_next)
-    Button btnNext;
-    @BindView(R.id.btn_add)
-    Button btnAdd;
-    @BindView(R.id.tv_current_wifi)
-    TextView tvCurrentWifi;
-    @BindView(R.id.view_ssid_background)
-    View view_ssid_background;
+public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnMenuItemClickListener, View.OnClickListener {
+
+
 
 
     //获取wifi列表
@@ -106,7 +76,7 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
     //蓝牙通信的服务
     private BleService mService;
     //当前设备是否已绑定
-    private String deviceType;
+//    private String deviceType;
     //设备id
     private String devId;
     //wifi密码可见FLAG
@@ -136,15 +106,16 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
 
     private int step=0;
 
+    private ActivityDatalogBlueBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_datalog_blue);
-        ButterKnife.bind(this);
+        binding=ActivityDatalogBlueBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         EventBus.getDefault().register(this);
-        initToobar(toolbar);
-        deviceType = getIntent().getStringExtra(GlobalConstant.DEVICE_TYPE);
-
+        initToobar(binding.headerView.toolbar);
+        initliseners();
 
         //获取设备Id
         DatalogConfigBean configBean = ConfigManager.getInstance().getConfigBean();
@@ -158,10 +129,18 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
 //        toolbar.inflateMenu(R.menu.menu_quetion_right);
 //        toolbar.setOnMenuItemClickListener(this);
 
-        tvTitle.setText(R.string.config_datalog);
-        tvStepTitle3.setText(R.string.config_network);
+        binding.headerView.tvTitle.setText(R.string.config_datalog);
+        binding.titleStep3.tvStepTitle3.setText(R.string.config_network);
 
         connectSendMsg();
+    }
+
+    private void initliseners() {
+        binding.tvSetwifiGuide.setOnClickListener(this);
+        binding.ivSwitchWifi.setOnClickListener(this);
+        binding.ivSwitchPassword.setOnClickListener(this);
+        binding.btnNext.setOnClickListener(this);
+        binding.btnAdd.setOnClickListener(this);
     }
 
 
@@ -171,8 +150,9 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
         isView = true;
     }
 
-    @OnClick({R.id.tv_setwifi_guide, R.id.iv_switch_wifi, R.id.iv_switch_password, R.id.btn_next, R.id.btn_add})
-    public void onViewClicked(View view) {
+
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_setwifi_guide:
                 Intent intent = new Intent(this, BlueToothAdvanceActivity.class);
@@ -180,7 +160,7 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
                 jumpTo(intent, false);
                 break;
             case R.id.iv_switch_wifi:
-                setSsid(view_ssid_background);
+                setSsid(binding.viewSsidBackground);
                 break;
             case R.id.iv_switch_password:
                 clickPasswordSwitch();
@@ -196,20 +176,22 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
 
                 break;
         }
+
     }
+
 
 
     public void clickPasswordSwitch() {
         passwordOn = !passwordOn;
         if (passwordOn) {
-            ivSwitchPassword.setImageResource(R.drawable.icon_signin_see);
-            etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            binding.ivSwitchPassword.setImageResource(R.drawable.icon_signin_see);
+            binding.etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
         } else {
-            ivSwitchPassword.setImageResource(R.drawable.icon_signin_see);
-            etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            binding.ivSwitchPassword.setImageResource(R.drawable.icon_signin_see);
+            binding.etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         }
-        if (etPassword.getText().length() > 0) {
-            etPassword.setSelection(etPassword.getText().length());
+        if (binding.etPassword.getText().length() > 0) {
+            binding.etPassword.setSelection(binding.etPassword.getText().length());
         }
     }
 
@@ -232,8 +214,8 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
                     recyclerView.setAdapter(adapter);
                     adapter.setOnItemClickListener((adapter1, view1, position) -> {
                         String item = adapter.getItem(position);
-                        etSsid.setText(item);
-                        etPassword.setText("");
+                        binding.etSsid.setText(item);
+                        binding.etPassword.setText("");
                         wifiWindow.getPopupWindow().dismiss();
                     });
                 }
@@ -302,10 +284,6 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
      */
     private void connectSendMsg() {
         mService = MyApplication.getInstance().getgBleServer();
-        if (TextUtils.isEmpty(deviceType)) {
-            finish();
-        }
-
 
         try {
 //            sendCmdConnect();
@@ -402,13 +380,13 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
         step=3;
         //请求重置采集器
         List<DatalogAPSetParam> routerList = new ArrayList<>();
-        String ssid = etSsid.getText().toString();
+        String ssid = binding.etSsid.getText().toString();
         if (TextUtils.isEmpty(ssid)) {
             Toast.makeText(this,R.string.不能为空,Toast.LENGTH_SHORT).show();
             return;
         }
 
-        String password = etPassword.getText().toString();
+        String password = binding.etPassword.getText().toString();
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(this,R.string.不能为空,Toast.LENGTH_SHORT).show();
             return;
@@ -533,12 +511,12 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
                     String value = paramBean.getValue();
                     if (num == DataLogApDataParseUtil.WIFI_SSID) {
                         if (!TextUtils.isEmpty(value)) {
-                            etSsid.setText(value);
+                            binding.etSsid.setText(value);
                         }
                     }
                     if (num == DataLogApDataParseUtil.WIFI_PASSWORD) {
                         if (!TextUtils.isEmpty(value)) {
-                            etPassword.setText(value);
+                            binding.etPassword.setText(value);
                         }
                     }
                     //查询配网状态  一直到连接服务器才会返回60，如果要判断是否采集器是否连接上路由器请求55
@@ -565,11 +543,12 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
                         int status = Integer.parseInt(value);
                         if (status==4||status==3||status==16) {//连接成功
                             Toast.makeText(this,R.string.m107wifi连接路由器,Toast.LENGTH_SHORT).show();
-                            if (deviceType.contains("g")) {
+                       /*     if (deviceType.contains("g")) {
                                 setKey();
                             } else {
                                 configSuccess();
-                            }
+                            }*/
+                            configSuccess();
 
                         } else {
                             checkServerStatus();//查询配网状态
@@ -717,4 +696,6 @@ public class BlueToothConfigActivity extends BaseActivity implements Toolbar.OnM
             mService.disconnect();
         }
     }
+
+
 }

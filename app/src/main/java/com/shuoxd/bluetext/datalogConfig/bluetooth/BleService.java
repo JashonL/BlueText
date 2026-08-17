@@ -214,7 +214,7 @@ public class BleService extends Service {
         BleManager.getInstance().init(getApplication());
         BleManager.getInstance().enableLog(true)
                 .setReConnectCount(1, 5000)
-                .setSplitWriteNum(600)
+                .setSplitWriteNum(500)
                 .setConnectOverTime(10000)
                 .setOperateTimeout(5000);
     }

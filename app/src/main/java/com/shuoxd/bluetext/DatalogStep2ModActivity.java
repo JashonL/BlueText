@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.shuoxd.bluetext.databinding.ActivityDatalogStep2ModeBinding;
 import com.shuoxd.bluetext.datalogConfig.BlueToothMode.DatalogStep3BlueToothGuideActivty;
 import com.shuoxd.bluetext.datalogConfig.ConfigManager;
 import com.shuoxd.bluetext.datalogConfig.Constant;
@@ -34,39 +35,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class DatalogStep2ModActivity extends BaseActivity implements BaseQuickAdapter.OnItemClickListener, Toolbar.OnMenuItemClickListener {
 
-    @BindView(R.id.status_bar_view)
-    View statusBarView;
-    @BindView(R.id.tv_title)
-    AppCompatTextView tvTitle;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.headerView)
-    LinearLayout headerView;
-    @BindView(R.id.tv_step_one)
-    TextView tvStepOne;
-    @BindView(R.id.view_step_one)
-    View viewStepOne;
-    @BindView(R.id.view_selected_background)
-    View viewSelectedBackground;
-    @BindView(R.id.tv_selected)
-    TextView tvSelected;
-    @BindView(R.id.tv_step_title)
-    TextView tvStepTitle;
-    @BindView(R.id.view_dash_1)
-    View viewDash1;
-    @BindView(R.id.tv_unselected)
-    TextView tvUnselected;
-    @BindView(R.id.view_dash_2)
-    View viewDash2;
-    @BindView(R.id.ll_guide)
-    ConstraintLayout llGuide;
-    @BindView(R.id.recyclerView)
-    RecyclerView recyclerView;
+
 
 
     private DatalogStringChooseAdapter mAdapter;
@@ -86,18 +58,19 @@ public class DatalogStep2ModActivity extends BaseActivity implements BaseQuickAd
     private String wifiType;
 
 
+    private ActivityDatalogStep2ModeBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_datalog_step2_mode);
-        ButterKnife.bind(this);
-        initToobar(toolbar);
+        binding=ActivityDatalogStep2ModeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        initToobar(binding.headerView.toolbar);
 
 
 
-        tvStepTitle.setText(R.string.choose_config_mode);
-        tvTitle.setText(R.string.config_datalog);
+        binding.tvStepTitle.setText(R.string.choose_config_mode);
+        binding.headerView.tvTitle.setText(R.string.config_datalog);
 
         isNewDatalog = getIntent().getStringExtra(Constant.DATALOG_ISNEW_DATALOG);
         plantId = getIntent().getStringExtra("plantId");
@@ -130,10 +103,10 @@ public class DatalogStep2ModActivity extends BaseActivity implements BaseQuickAd
         };
 
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<String> mList = new ArrayList<>();
         mAdapter = new DatalogStringChooseAdapter(R.layout.item_string_choose, mList);
-        recyclerView.setAdapter(mAdapter);
+        binding.recyclerView.setAdapter(mAdapter);
         initData();
         mAdapter.setOnItemClickListener(this);
 

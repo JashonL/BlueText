@@ -39,7 +39,7 @@ import com.shuoxd.bluetext.DatalogStep2ModActivity;
 import com.shuoxd.bluetext.MyApplication;
 import com.shuoxd.bluetext.Mydialog;
 import com.shuoxd.bluetext.R;
-import com.shuoxd.bluetext.SmartHomeUtil;
+import com.shuoxd.bluetext.databinding.ActivityDatalogerApSettingBinding;
 import com.shuoxd.bluetext.datalogConfig.CircleDialogUtils;
 import com.shuoxd.bluetext.datalogConfig.MyUtils;
 import com.shuoxd.bluetext.datalogConfig.WifiTypeEnum;
@@ -55,86 +55,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
+
 
 public class BlueToothAdvanceActivity extends BaseActivity implements
         Toolbar.OnMenuItemClickListener,
-        CompoundButton.OnCheckedChangeListener,TabLayout.OnTabSelectedListener{
+        CompoundButton.OnCheckedChangeListener,TabLayout.OnTabSelectedListener, View.OnClickListener {
 
-
-    @BindView(R.id.status_bar_view)
-    View statusBarView;
-    @BindView(R.id.tv_title)
-    AppCompatTextView tvTitle;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.headerView)
-    LinearLayout headerView;
-    @BindView(R.id.tab_title)
-    TabLayout tabTitle;
-    @BindView(R.id.tv_dhcp)
-    AppCompatTextView tvDhcp;
-    @BindView(R.id.cb_dhcp)
-    CheckBox cbDhcp;
-    @BindView(R.id.et_ip)
-    AppCompatTextView etIp;
-    @BindView(R.id.iv_ip_next)
-    ImageView ivIpNext;
-    @BindView(R.id.et_gateway)
-    AppCompatTextView etGateway;
-    @BindView(R.id.iv_gateway_next)
-    ImageView ivGatewayNext;
-    @BindView(R.id.et_mask)
-    AppCompatTextView etMask;
-    @BindView(R.id.iv_mask_next)
-    ImageView ivMaskNext;
-    @BindView(R.id.ll_router_setting)
-    ConstraintLayout llRouterSetting;
-    @BindView(R.id.et_intervals)
-    AppCompatTextView etIntervals;
-    @BindView(R.id.tv_datalog_time)
-    AppCompatTextView etDatalogTime;
-    @BindView(R.id.cb_synchronize_time)
-    CheckBox cbSynchronizeTime;
-    @BindView(R.id.ll_time_setting)
-    ConstraintLayout llTimeSetting;
-
-    @BindView(R.id.et_server_domain)
-    AppCompatTextView etServerDomain;
-    @BindView(R.id.iv_server_domain_next)
-    ImageView ivServerDomainNext;
-
-
-    @BindView(R.id.et_server_port)
-    AppCompatTextView etServerPort;
-    @BindView(R.id.iv_server_port_next)
-    ImageView ivServerPortNext;
-    @BindView(R.id.ll_url_setting)
-    ConstraintLayout llUrlSetting;
-    @BindView(R.id.et_serialnum)
-    AppCompatTextView etSerialnum;
-    @BindView(R.id.iv_serialnum_next)
-    ImageView ivSerialnumNext;
-    @BindView(R.id.et_mac)
-    AppCompatTextView etMac;
-    @BindView(R.id.et_device_type)
-    AppCompatTextView etDeviceType;
-    @BindView(R.id.et_version)
-    AppCompatTextView etVersion;
-    @BindView(R.id.ll_base_setting)
-    ConstraintLayout llBaseSetting;
-    @BindView(R.id.btn_next)
-    Button btnNext;
-    @BindView(R.id.cl_unlock)
-    ConstraintLayout clUnlock;
-    @BindView(R.id.srl_pull)
-    SwipeRefreshLayout srlPull;
-    @BindView(R.id.et_datalog_time)
-    TextView etDatalogSystemTime;
-    @BindView(R.id.tv_server_domain)
-    TextView tvServerDomain;
 
 
 
@@ -182,16 +109,66 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
     private boolean isvisible;
 
 
+    private ActivityDatalogerApSettingBinding binding;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EventBus.getDefault().register(this);
-        setContentView(R.layout.activity_dataloger_ap_setting);
-        ButterKnife.bind(this);
+        binding = ActivityDatalogerApSettingBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         initIntent();
         initResource();
         initViews();
+        initLiseners();
         connectSendMsg();
+    }
+
+    private void initLiseners() {
+        binding.llTimeSetting.cbSynchronizeTime.setOnClickListener(this);
+        binding.llRouterSetting.cbDhcp.setOnClickListener(this);
+
+
+        binding.llRouterSetting.etIp.setOnClickListener(this);
+        binding.llRouterSetting.ivIpNext.setOnClickListener(this);
+
+
+        binding.llRouterSetting.etGateway.setOnClickListener(this);
+        binding.llRouterSetting.ivGatewayNext.setOnClickListener(this);
+        binding.llRouterSetting.etMask.setOnClickListener(this);
+        binding.llRouterSetting.ivMaskNext.setOnClickListener(this);
+
+        binding.llTimeSetting.ivIntervalsNext.setOnClickListener(this);
+        binding.llTimeSetting.etIntervals.setOnClickListener(this);
+        binding.llTimeSetting.ivDatalogTimeNext.setOnClickListener(this);
+        binding.llTimeSetting.etDatalogTime.setOnClickListener(this);
+
+        binding.llUrlSetting.etServerDomain.setOnClickListener(this);
+        binding.llUrlSetting.ivServerDomainNext.setOnClickListener(this);
+
+        binding.llBaseSetting.ivSerialnumNext.setOnClickListener(this);
+        binding.llBaseSetting.etSerialnum.setOnClickListener(this);
+
+        binding.llBaseSetting.ivMacNext.setOnClickListener(this);
+        binding.llBaseSetting.etMac.setOnClickListener(this);
+
+
+        binding.llBaseSetting.ivTypeNext.setOnClickListener(this);
+        binding.llBaseSetting.etDeviceType.setOnClickListener(this);
+
+
+        binding.llUrlSetting.ivServerPortNext.setOnClickListener(this);
+        binding.llUrlSetting.etServerPort.setOnClickListener(this);
+
+
+        binding.tvQuiteAp.setOnClickListener(this);
+        binding.btnNext.setOnClickListener(this);
+        binding.clUnlock.setOnClickListener(this);
+
+
+
+
     }
 
     @Override
@@ -207,12 +184,10 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
         isvisible=false;
     }
 
-    @OnClick({R.id.et_ip, R.id.iv_ip_next, R.id.et_gateway, R.id.iv_gateway_next, R.id.et_mask, R.id.iv_mask_next,
-            R.id.et_intervals, R.id.iv_intervals_next, R.id.et_datalog_time, R.id.iv_datalog_time_next,
-            R.id.et_server_domain, R.id.iv_server_domain_next,     R.id.et_server_port, R.id.iv_server_port_next,
-            R.id.et_serialnum, R.id.iv_serialnum_next, R.id.et_mac, R.id.iv_mac_next, R.id.et_device_type, R.id.iv_type_next,
-            R.id.cl_unlock, R.id.btn_next, R.id.tv_quite_ap})
-    public void onViewClicked(View view) {
+
+
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.cb_synchronize_time:
 
@@ -230,7 +205,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                     return;
                 }
                 if (!dhcpStatus) return;
-                DatalogApUtil.showDialog(this, DataLogApDataParseUtil.LOCAL_IP, etIp, getString(R.string.ip_address));
+                DatalogApUtil.showDialog(this, DataLogApDataParseUtil.LOCAL_IP, binding.llRouterSetting.etIp, getString(R.string.ip_address));
                 break;
 
             case R.id.iv_gateway_next:
@@ -240,7 +215,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                     return;
                 }
                 if (!dhcpStatus) return;
-                DatalogApUtil.showDialog(this, DataLogApDataParseUtil.DEFAULT_GATEWAY, etGateway, getString(R.string.m157网关));
+                DatalogApUtil.showDialog(this, DataLogApDataParseUtil.DEFAULT_GATEWAY, binding.llRouterSetting.etGateway, getString(R.string.m157网关));
                 break;
 
             case R.id.et_mask:
@@ -250,7 +225,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                     return;
                 }
                 if (!dhcpStatus) return;
-                DatalogApUtil.showDialog(this, DataLogApDataParseUtil.SUBNET_MASK, etMask, getString(R.string.m158子网掩码));
+                DatalogApUtil.showDialog(this, DataLogApDataParseUtil.SUBNET_MASK, binding.llRouterSetting.etMask, getString(R.string.m158子网掩码));
 
                 break;
 
@@ -261,7 +236,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
 
                     return;
                 }
-                DatalogApUtil.showDialog(this, DataLogApDataParseUtil.DATA_INTERVAL, etIntervals, getString(R.string.intervals));
+                DatalogApUtil.showDialog(this, DataLogApDataParseUtil.DATA_INTERVAL, binding.llTimeSetting.etIntervals, getString(R.string.intervals));
                 break;
 
             case R.id.iv_datalog_time_next:
@@ -270,7 +245,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                     Toast.makeText(this,R.string.unlock_setting,Toast.LENGTH_SHORT).show();
                     return;
                 }
-                MyUtils.showTotalTime(this, etDatalogTime);
+                MyUtils.showTotalTime(this, binding.llTimeSetting.etDatalogTime);
                 break;
 
 
@@ -282,7 +257,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                 }
 
                 //弹框选择
-                setServer(etServerDomain);
+                setServer( binding.llUrlSetting.etServerDomain);
 
 
                 break;
@@ -295,7 +270,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                     Toast.makeText(this,R.string.unlock_setting,Toast.LENGTH_SHORT).show();
                     return;
                 }
-                DatalogApUtil.showDialog(this, DataLogApDataParseUtil.DATALOGGER_SN, etSerialnum, getString(R.string.序列号));
+                DatalogApUtil.showDialog(this, DataLogApDataParseUtil.DATALOGGER_SN, binding.llBaseSetting.etSerialnum, getString(R.string.序列号));
                 break;
 
             case R.id.iv_mac_next:
@@ -314,7 +289,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                     Toast.makeText(this,R.string.unlock_setting,Toast.LENGTH_SHORT).show();
                     return;
                 }
-                DatalogApUtil.showDialog(this, DataLogApDataParseUtil.REMOTE_PORT, etServerPort,getString(R.string.inverterdevicedata_port));
+                DatalogApUtil.showDialog(this, DataLogApDataParseUtil.REMOTE_PORT, binding.llUrlSetting.etServerPort,getString(R.string.inverterdevicedata_port));
                 break;
 
             case R.id.tv_quite_ap:
@@ -358,19 +333,19 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                                 String datalogPassword = "123456";
                                 if (text.equals(datalogPassword)) {
                                     ISUNLOCK = true;
-                                    btnNext.setVisibility(View.VISIBLE);
-                                    clUnlock.setVisibility(View.GONE);
+                                    binding.btnNext.setVisibility(View.VISIBLE);
+                                    binding.clUnlock.setVisibility(View.GONE);
                                     serverSetVisible();
-                                    if (cbDhcp.isChecked()) {
-                                        ivIpNext.setVisibility(View.VISIBLE);
-                                        ivGatewayNext.setVisibility(View.VISIBLE);
-                                        ivMaskNext.setVisibility(View.VISIBLE);
+                                    if (binding.llRouterSetting.cbDhcp.isChecked()) {
+                                        binding.llRouterSetting.ivIpNext.setVisibility(View.VISIBLE);
+                                        binding.llRouterSetting.ivGatewayNext.setVisibility(View.VISIBLE);
+                                        binding.llRouterSetting.ivMaskNext.setVisibility(View.VISIBLE);
                                     }
-                                    cbDhcp.setEnabled(true);
-                                    cbSynchronizeTime.setEnabled(true);
+                                    binding.llRouterSetting.cbDhcp.setEnabled(true);
+                                    binding.llTimeSetting.cbSynchronizeTime.setEnabled(true);
 
-                                    ivServerPortNext.setVisibility(View.VISIBLE);
-                                    ivSerialnumNext.setVisibility(View.VISIBLE);
+                                    binding.llUrlSetting.ivServerPortNext.setVisibility(View.VISIBLE);
+                                    binding.llBaseSetting.ivSerialnumNext.setVisibility(View.VISIBLE);
 
                                 } else {
                                     Toast.makeText(BlueToothAdvanceActivity.this,R.string.m密码错误,Toast.LENGTH_SHORT).show();
@@ -391,11 +366,15 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
     }
 
 
+
+
+
+
     private void requestSetting() throws Exception {
         switch (index) {
             case 0:
                 List<DatalogAPSetParam> routerList = new ArrayList<>();
-                String dhcp = cbDhcp.isChecked() ? "1" : "0";
+                String dhcp = binding.llRouterSetting.cbDhcp.isChecked() ? "1" : "0";
                 if (!dhcp.equals(netDhcp)) {
                     DatalogAPSetParam bean = new DatalogAPSetParam();
                     bean.setParamnum(DataLogApDataParseUtil.NET_DHCP);
@@ -404,7 +383,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                     routerList.add(bean);
                 }
 
-                String ip = etIp.getText().toString();
+                String ip = binding.llRouterSetting.etIp.getText().toString();
                 if (TextUtils.isEmpty(ip)) {
                     ip = "";
                 }
@@ -417,7 +396,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                 }
 
 
-                String gateWay = etGateway.getText().toString();
+                String gateWay = binding.llRouterSetting.etGateway.getText().toString();
                 if (TextUtils.isEmpty(gateWay)) {
                     gateWay = "";
                 }
@@ -430,7 +409,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                 }
 
 
-                String cMask = etMask.getText().toString();
+                String cMask = binding.llRouterSetting.etMask.getText().toString();
                 if (TextUtils.isEmpty(cMask)) {
                     cMask = "";
                 }
@@ -455,7 +434,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
             case 1:
                 List<DatalogAPSetParam> serverList = new ArrayList<>();
 
-                String serverDomain = etServerDomain.getText().toString();
+                String serverDomain = binding.llUrlSetting.etServerDomain.getText().toString();
                 if (TextUtils.isEmpty(serverDomain)) {
                     serverDomain = "";
                 }
@@ -470,7 +449,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
 
 
 
-                String serverPort = etServerPort.getText().toString();
+                String serverPort = binding.llUrlSetting.etServerPort.getText().toString();
 
                 if (TextUtils.isEmpty(serverPort)) {
                     serverPort = "";
@@ -494,7 +473,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                 break;
             case 2:
                 List<DatalogAPSetParam> baseList = new ArrayList<>();
-                String serialnum = etSerialnum.getText().toString();
+                String serialnum = binding.llBaseSetting.etSerialnum.getText().toString();
                 if (TextUtils.isEmpty(serialnum)) {
                     serialnum = "";
                 }
@@ -507,7 +486,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                 }
 
 
-                String mac = etMac.getText().toString();
+                String mac = binding.llBaseSetting.etMac.getText().toString();
 
                 if (TextUtils.isEmpty(mac)) {
                     mac = "";
@@ -521,7 +500,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                 }
 
 
-                String type = etDeviceType.getText().toString();
+                String type = binding.llBaseSetting.etDeviceType.getText().toString();
                 if (TextUtils.isEmpty(type)) {
                     type = "";
                 }
@@ -549,7 +528,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                 List<DatalogAPSetParam> timeList = new ArrayList<>();
 
 
-                String intervals = etIntervals.getText().toString();
+                String intervals =  binding.llTimeSetting.etIntervals.getText().toString();
                 if (TextUtils.isEmpty(intervals)) {
                     intervals = "";
                 }
@@ -561,7 +540,7 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                     timeList.add(bean);
                 }
 
-                String dataTime = etDatalogTime.getText().toString();
+                String dataTime = binding.llTimeSetting.etDatalogTime.getText().toString();
 
                 if (TextUtils.isEmpty(dataTime)) {
                     dataTime = "";
@@ -602,9 +581,9 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                     recyclerView.setAdapter(adapter);
                     adapter.setOnItemClickListener((adapter1, view1, position) -> {
                         if (position == 0) {
-                            DatalogApUtil.showDialog(BlueToothAdvanceActivity.this, DataLogApDataParseUtil.REMOTE_IP, etServerDomain, getString(R.string.server_url));
+                            DatalogApUtil.showDialog(BlueToothAdvanceActivity.this, DataLogApDataParseUtil.REMOTE_IP,  binding.llUrlSetting.etServerDomain, getString(R.string.server_url));
                         } else {
-                            etServerDomain.setText(ssids.get(position));
+                            binding.llUrlSetting.etServerDomain.setText(ssids.get(position));
                         }
                         wifiWindow.getPopupWindow().dismiss();
                     });
@@ -635,44 +614,44 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
 
     private void initViews() {
         //头部初始化
-        tvTitle.setText(R.string.高级设置);
-        toolbar.setNavigationIcon(R.drawable.icon_return);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        binding.headerView. tvTitle.setText(R.string.高级设置);
+        binding.headerView. toolbar.setNavigationIcon(R.drawable.icon_return);
+        binding.headerView. toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
 
-        cbDhcp.setOnCheckedChangeListener(this);
+        binding.llRouterSetting.cbDhcp.setOnCheckedChangeListener(this);
 
-        cbSynchronizeTime.setOnCheckedChangeListener(this);
+        binding.llTimeSetting.cbSynchronizeTime.setOnCheckedChangeListener(this);
 
         if (!ISUNLOCK) {
-            cbDhcp.setEnabled(false);
-            cbSynchronizeTime.setEnabled(false);
+            binding.llRouterSetting.cbDhcp.setEnabled(false);
+            binding.llTimeSetting.cbSynchronizeTime.setEnabled(false);
         }
 
         //选项卡
         String[] tabTitles = new String[]{getString(R.string.router_settings), getString(R.string.server_setting), getString(R.string.基本信息), getString(R.string.time_settings)};
         //tablayout初始化
         for (String title : tabTitles) {
-            TabLayout.Tab tab = tabTitle.newTab();
+            TabLayout.Tab tab = binding.tabTitle.newTab();
             tab.setText(title);
-            tabTitle.addTab(tab);
+            binding.tabTitle.addTab(tab);
         }
 
-        tabTitle.addOnTabSelectedListener(this);
+        binding.tabTitle.addOnTabSelectedListener(this);
 
         //下拉刷新
-        srlPull.setColorSchemeColors(ContextCompat.getColor(this, R.color.charging_text_green));
-        srlPull.setOnRefreshListener(this::connectServer);
+        binding. srlPull.setColorSchemeColors(ContextCompat.getColor(this, R.color.charging_text_green));
+        binding.srlPull.setOnRefreshListener(this::connectServer);
 
 
-        btnNext.setVisibility(View.VISIBLE);
-        clUnlock.setVisibility(View.GONE);
+        binding.btnNext.setVisibility(View.VISIBLE);
+        binding.clUnlock.setVisibility(View.GONE);
         String ip = getString(R.string.服务器地址);
-        tvServerDomain.setText(ip);
+        binding.llUrlSetting.tvServerDomain.setText(ip);
 
     }
 
@@ -705,16 +684,16 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (buttonView == cbSynchronizeTime) {
+        if (buttonView == binding.llTimeSetting.cbSynchronizeTime) {
             if (isChecked) {
                 String date = MyUtils.getFormatDate(null, null);
-                etDatalogTime.setText(date);
+                binding.llTimeSetting.etDatalogTime.setText(date);
             } else {
                 if (!TextUtils.isEmpty(systemTime)) {
-                    etDatalogTime.setText(systemTime);
+                    binding.llTimeSetting.etDatalogTime.setText(systemTime);
                 }
             }
-        }   else if (buttonView == cbDhcp) {
+        }   else if (buttonView == binding.llRouterSetting.cbDhcp) {
             dhcpStatus = isChecked;
             routerVisible();
         }
@@ -723,9 +702,9 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
 
 
     private void serverSetVisible() {
-        ivServerDomainNext.setVisibility(View.VISIBLE);
+        binding.llUrlSetting.ivServerDomainNext.setVisibility(View.VISIBLE);
         if (!TextUtils.isEmpty(remoteUrl)){
-            etServerDomain.setText(remoteUrl);
+            binding.llUrlSetting.etServerDomain.setText(remoteUrl);
         }
     }
 
@@ -733,14 +712,14 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
 
     private void routerVisible() {
         if (dhcpStatus) {
-            ivIpNext.setVisibility(View.VISIBLE);
-            ivGatewayNext.setVisibility(View.VISIBLE);
-            ivMaskNext.setVisibility(View.VISIBLE);
+            binding.llRouterSetting.ivIpNext.setVisibility(View.VISIBLE);
+            binding.llRouterSetting.ivGatewayNext.setVisibility(View.VISIBLE);
+            binding.llRouterSetting.ivMaskNext.setVisibility(View.VISIBLE);
 
         } else {
-            ivIpNext.setVisibility(View.GONE);
-            ivGatewayNext.setVisibility(View.GONE);
-            ivMaskNext.setVisibility(View.GONE);
+            binding.llRouterSetting.ivIpNext.setVisibility(View.GONE);
+            binding.llRouterSetting.ivGatewayNext.setVisibility(View.GONE);
+            binding.llRouterSetting.ivMaskNext.setVisibility(View.GONE);
 
         }
     }
@@ -752,66 +731,66 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
         index = tab.getPosition();
         switch (index) {
             case 0:
-                llRouterSetting.setVisibility(View.VISIBLE);
-                llTimeSetting.setVisibility(View.GONE);
-                llUrlSetting.setVisibility(View.GONE);
-                llBaseSetting.setVisibility(View.GONE);
+                binding.llRouterSetting.llRouterSetting.setVisibility(View.VISIBLE);
+                binding.llTimeSetting.llTimeSetting.setVisibility(View.GONE);
+                binding.llUrlSetting.llUrlSetting.setVisibility(View.GONE);
+                binding.llBaseSetting.llBaseSetting.setVisibility(View.GONE);
                 if (ISUNLOCK) {//已解锁
-                    btnNext.setVisibility(View.VISIBLE);
-                    clUnlock.setVisibility(View.GONE);
+                    binding.btnNext.setVisibility(View.VISIBLE);
+                    binding. clUnlock.setVisibility(View.GONE);
                 } else {
-                    btnNext.setVisibility(View.VISIBLE);
-                    clUnlock.setVisibility(View.GONE);
+                    binding.btnNext.setVisibility(View.VISIBLE);
+                    binding.clUnlock.setVisibility(View.GONE);
                 }
                 sendCmdConnect();
                 break;
 
             case 1:
-                llRouterSetting.setVisibility(View.GONE);
-                llTimeSetting.setVisibility(View.GONE);
-                llUrlSetting.setVisibility(View.VISIBLE);
-                llBaseSetting.setVisibility(View.GONE);
+                binding.llRouterSetting.llRouterSetting.setVisibility(View.GONE);
+                binding.llTimeSetting.llTimeSetting.setVisibility(View.GONE);
+                binding.llUrlSetting.llUrlSetting.setVisibility(View.VISIBLE);
+                binding.llBaseSetting.llBaseSetting.setVisibility(View.GONE);
                 if (ISUNLOCK) {//已解锁
-                    btnNext.setVisibility(View.VISIBLE);
-                    clUnlock.setVisibility(View.GONE);
-                    ivServerPortNext.setVisibility(View.GONE);
+                    binding.btnNext.setVisibility(View.VISIBLE);
+                    binding. clUnlock.setVisibility(View.GONE);
+                    binding.llUrlSetting.ivServerPortNext.setVisibility(View.GONE);
                     serverSetVisible();
                 } else {
-                    btnNext.setVisibility(View.VISIBLE);
-                    clUnlock.setVisibility(View.GONE);
-                    ivServerDomainNext.setVisibility(View.GONE);
-                    ivServerPortNext.setVisibility(View.GONE);
+                    binding.btnNext.setVisibility(View.VISIBLE);
+                    binding.clUnlock.setVisibility(View.GONE);
+                    binding.llUrlSetting.ivServerDomainNext.setVisibility(View.GONE);
+                    binding.llUrlSetting.ivServerPortNext.setVisibility(View.GONE);
                 }
                 sendCmdConnect();
                 break;
             case 2:
-                llRouterSetting.setVisibility(View.GONE);
-                llTimeSetting.setVisibility(View.GONE);
-                llUrlSetting.setVisibility(View.GONE);
-                llBaseSetting.setVisibility(View.VISIBLE);
+                binding. llRouterSetting. llRouterSetting.setVisibility(View.GONE);
+                binding. llTimeSetting.llTimeSetting.setVisibility(View.GONE);
+                binding. llUrlSetting.llUrlSetting.setVisibility(View.GONE);
+                binding. llBaseSetting.llBaseSetting.setVisibility(View.VISIBLE);
                 if (ISUNLOCK) {//已解锁
-                    btnNext.setVisibility(View.VISIBLE);
-                    clUnlock.setVisibility(View.GONE);
-                    ivSerialnumNext.setVisibility(View.VISIBLE);
+                    binding.btnNext.setVisibility(View.VISIBLE);
+                    binding.clUnlock.setVisibility(View.GONE);
+                    binding.llBaseSetting.ivSerialnumNext.setVisibility(View.VISIBLE);
                 } else {
-                    btnNext.setVisibility(View.VISIBLE);
-                    clUnlock.setVisibility(View.GONE);
-                    ivSerialnumNext.setVisibility(View.GONE);
+                    binding.btnNext.setVisibility(View.VISIBLE);
+                    binding. clUnlock.setVisibility(View.GONE);
+                    binding.llBaseSetting.ivSerialnumNext.setVisibility(View.GONE);
                 }
                 sendCmdConnect();
                 break;
 
             case 3:
-                llRouterSetting.setVisibility(View.GONE);
-                llTimeSetting.setVisibility(View.VISIBLE);
-                llUrlSetting.setVisibility(View.GONE);
-                llBaseSetting.setVisibility(View.GONE);
+                binding.llRouterSetting.llRouterSetting.setVisibility(View.GONE);
+                binding.llTimeSetting.llTimeSetting.setVisibility(View.VISIBLE);
+                binding.llUrlSetting.llUrlSetting.setVisibility(View.GONE);
+                binding.llBaseSetting.llBaseSetting.setVisibility(View.GONE);
                 if (ISUNLOCK) {//已解锁
-                    btnNext.setVisibility(View.VISIBLE);
-                    clUnlock.setVisibility(View.GONE);
+                    binding.btnNext.setVisibility(View.VISIBLE);
+                    binding.clUnlock.setVisibility(View.GONE);
                 } else {
-                    btnNext.setVisibility(View.VISIBLE);
-                    clUnlock.setVisibility(View.GONE);
+                    binding.btnNext.setVisibility(View.VISIBLE);
+                    binding.clUnlock.setVisibility(View.GONE);
                 }
                 sendCmdConnect();
                 break;
@@ -946,56 +925,56 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                     switch (num) {
                         case DataLogApDataParseUtil.NET_DHCP:
                             netDhcp = value;
-                            cbDhcp.setChecked("1".equals(value));
+                            binding.llRouterSetting.cbDhcp.setChecked("1".equals(value));
 
 
-                            if (ISUNLOCK && cbDhcp.isChecked()) {
-                                ivIpNext.setVisibility(View.VISIBLE);
-                                ivGatewayNext.setVisibility(View.VISIBLE);
-                                ivMaskNext.setVisibility(View.VISIBLE);
+                            if (ISUNLOCK &&  binding.llRouterSetting.cbDhcp.isChecked()) {
+                                binding.llRouterSetting.ivIpNext.setVisibility(View.VISIBLE);
+                                binding.llRouterSetting.ivGatewayNext.setVisibility(View.VISIBLE);
+                                binding.llRouterSetting.ivMaskNext.setVisibility(View.VISIBLE);
                             } else {
-                                ivIpNext.setVisibility(View.GONE);
-                                ivGatewayNext.setVisibility(View.GONE);
-                                ivMaskNext.setVisibility(View.GONE);
+                                binding.llRouterSetting.ivIpNext.setVisibility(View.GONE);
+                                binding.llRouterSetting.ivGatewayNext.setVisibility(View.GONE);
+                                binding.llRouterSetting.ivMaskNext.setVisibility(View.GONE);
                             }
 
                             break;
                         case DataLogApDataParseUtil.LOCAL_IP:
-                            etIp.setText(value);
+                            binding.llRouterSetting.etIp.setText(value);
                             localIp = value;
                             break;
                         case DataLogApDataParseUtil.DEFAULT_GATEWAY:
-                            etGateway.setText(value);
+                            binding.llRouterSetting.etGateway.setText(value);
                             gateway = value;
                             break;
                         case DataLogApDataParseUtil.SUBNET_MASK:
-                            etMask.setText(value);
+                            binding.llRouterSetting.etMask.setText(value);
                             mask = value;
                             break;
                         case DataLogApDataParseUtil.DATA_INTERVAL:
-                            etIntervals.setText(value);
+                            binding.llTimeSetting.etIntervals.setText(value);
                             dataInterval = value;
                             break;
                         case DataLogApDataParseUtil.SYSTEM_TIME:
-                            etDatalogSystemTime.setText(value);
+                          binding.llTimeSetting.  etDatalogTime.setText(value);
                             systemTime = value;
                             break;
 
                         case DataLogApDataParseUtil.REMOTE_IP:
-                            etServerDomain.setText(value);
+                            binding.llUrlSetting.etServerDomain.setText(value);
                             remoteUrl = value;
                             curUrl=value;
                             break;
                         case DataLogApDataParseUtil.REMOTE_PORT:
-                            etServerPort.setText(value);
+                            binding.llUrlSetting.etServerPort.setText(value);
                             remotePort = value;
                             break;
                         case DataLogApDataParseUtil.DATALOGGER_SN:
-                            etSerialnum.setText(value);
+                            binding.llBaseSetting.etSerialnum.setText(value);
                             dataloggerSn = value;
                             break;
                         case DataLogApDataParseUtil.LOCAL_MAC:
-                            etMac.setText(value);
+                            binding.llBaseSetting.etMac.setText(value);
                             localMac = value;
                             break;
                         case DataLogApDataParseUtil.DATALOGGER_TYPE:
@@ -1003,14 +982,14 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
                             String shineWifiS = WifiTypeEnum.SHINE_WIFI_S + "";
 
                             if (value.equals(shineWifiX)) {
-                                etDeviceType.setText(WifiTypeEnum.WIFI_X_NAME);
+                                binding.llBaseSetting.etDeviceType.setText(WifiTypeEnum.WIFI_X_NAME);
                             } else if (value.equals(shineWifiS)) {
-                                etDeviceType.setText(WifiTypeEnum.WIFI_S_NAME);
+                                binding.llBaseSetting.etDeviceType.setText(WifiTypeEnum.WIFI_S_NAME);
                             }
                             dataloggerType = value;
                             break;
                         case DataLogApDataParseUtil.FIRMWARE_VERSION:
-                            etVersion.setText(value);
+                            binding.llBaseSetting.etVersion.setText(value);
                             version = value;
                             break;
                     }
@@ -1033,4 +1012,6 @@ public class BlueToothAdvanceActivity extends BaseActivity implements
         EventBus.getDefault().unregister(this);
 //        mService.disconnect();
     }
+
+
 }

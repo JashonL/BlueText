@@ -280,15 +280,12 @@ public class DatalogApUtil {
 
 
 
-    public static byte[] sendMsgByAes(byte[]bytes) throws Exception {
-        byte[] bytes1 = getbyte16(bytes, 16);
-        return AESCBCUtils.AESEncryption(bytes1);
-    }
+
 
 
     public static byte[] getMsgByAes(byte[]bytes) throws Exception {
-        byte[] bytes1 = getbyte16(bytes, 16);
-        return AESCBCUtils.AESEncryption(bytes1);
+//        byte[] bytes1 = getbyte16(bytes, 16);
+        return AESCBCUtils.AESEncryption(bytes);
     }
 
 

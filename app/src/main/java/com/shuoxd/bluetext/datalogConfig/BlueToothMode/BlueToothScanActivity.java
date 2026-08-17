@@ -1,6 +1,7 @@
 package com.shuoxd.bluetext.datalogConfig.BlueToothMode;
 
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -46,6 +47,7 @@ import com.shuoxd.bluetext.Mydialog;
 import com.shuoxd.bluetext.R;
 import com.shuoxd.bluetext.RippleBackground;
 import com.shuoxd.bluetext.SmartHomeUtil;
+import com.shuoxd.bluetext.databinding.ActivityBlueToothScanBinding;
 import com.shuoxd.bluetext.datalogConfig.CircleDialogUtils;
 import com.shuoxd.bluetext.datalogConfig.ConfigManager;
 import com.shuoxd.bluetext.datalogConfig.bean.DatalogConfigBean;
@@ -66,9 +68,7 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
 
 /**
  * 开发步骤
@@ -83,33 +83,9 @@ import butterknife.OnClick;
 
 public class BlueToothScanActivity extends BaseActivity
         implements Toolbar.OnMenuItemClickListener, BleScanManager.Scanlisteners,
-        BleScanManager.ConnetedListeners {
+        BleScanManager.ConnetedListeners , View.OnClickListener {
 
-    @BindView(R.id.status_bar_view)
-    View statusBarView;
-    @BindView(R.id.tv_title)
-    AppCompatTextView tvTitle;
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-    @BindView(R.id.headerView)
-    LinearLayout headerView;
-    @BindView(R.id.ripple)
-    RippleBackground ripple;
-    @BindView(R.id.rlv_bluetooth)
-    RecyclerView rlvBlueTooth;
-    @BindView(R.id.tvNote)
-    TextView tvNote;
-    @BindView(R.id.tv_nearby_blue)
-    TextView tvNearbyBlue;
-    @BindView(R.id.cl_result)
-    ConstraintLayout clResult;
-    @BindView(R.id.tv_search_text)
-    TextView tvSearchText;
-    @BindView(R.id.tv_error_text)
-    TextView tvError;
 
-    @BindView(R.id.bluetooth_scan_fail)
-    LinearLayout blueScanFail;
 
 
     private BlueToothAdapter mAdapter;
@@ -135,12 +111,15 @@ public class BlueToothScanActivity extends BaseActivity
 
     private int step=0;
 
+
+    private ActivityBlueToothScanBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_blue_tooth_scan);
-        ButterKnife.bind(this);
+        binding=ActivityBlueToothScanBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        initLiseners();
         EventBus.getDefault().register(this);
 
         DatalogConfigBean configBean = ConfigManager.getInstance().getConfigBean();
@@ -152,10 +131,10 @@ public class BlueToothScanActivity extends BaseActivity
 
 
         //初始化头部
-        initToobar(toolbar);
+        initToobar(binding.headerView.toolbar);
 
 
-        tvTitle.setText(R.string.bluetooth_search);
+        binding.headerView.tvTitle.setText(R.string.bluetooth_search);
 //        toolbar.inflateMenu(R.menu.menu_scan);
 //        toolbar.setOnMenuItemClickListener(this);
 
@@ -165,15 +144,15 @@ public class BlueToothScanActivity extends BaseActivity
         //初始化错误提示
         String retry = getString(R.string.bluetooth_onoff) + "\n" + getString(R.string.two_press) + "\n" + getString(R.string.disconnect_retry);
 
-        tvError.setText(retry);
+        binding.bluetoothScanFail.tvErrorText.setText(retry);
 
 
         //隐藏搜索结果控件，开始搜索
-        tvSearchText.setVisibility(View.GONE);
-        clResult.setVisibility(View.GONE);
-        tvNote.setVisibility(View.VISIBLE);
+        binding.tvSearchText.setVisibility(View.GONE);
+        binding.clResult.setVisibility(View.GONE);
+        binding.tvNote.setVisibility(View.VISIBLE);
 
-        blueScanFail.setVisibility(View.GONE);
+        binding.bluetoothScanFail.bluetoothScanFail.setVisibility(View.GONE);
 
         startSearchAnim();
 
@@ -204,6 +183,11 @@ public class BlueToothScanActivity extends BaseActivity
         startService(intent);
     }
 
+    private void initLiseners() {
+        binding.tvSearchText.setOnClickListener(this);
+        binding.bluetoothScanFail.tvRetry.setOnClickListener(this);
+    }
+
 
     /*修改设备名称*/
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -225,26 +209,33 @@ public class BlueToothScanActivity extends BaseActivity
     protected void onPause() {
         super.onPause();
         isvisible = false;
-        reConnect = 0;
-
     }
 
     //初始化列表
+    @SuppressLint("NotifyDataSetChanged")
     private void initRecyclerView() {
         mAdapter = new BlueToothAdapter(R.layout.item_blue_tooth, new ArrayList<>());
-        rlvBlueTooth.setLayoutManager(new LinearLayoutManager(this));
-        rlvBlueTooth.setAdapter(mAdapter);
+        binding.rlvBluetooth.setLayoutManager(new LinearLayoutManager(this));
+        binding.rlvBluetooth.setAdapter(mAdapter);
 
         mAdapter.setOnItemClickListener((adapter, view, position) -> {
-            manager.stopBleScan();
             pos = position;
+
+            boolean isConnecting = false;
+            List<BleBean> data = mAdapter.getData();
+            for (int i = 0; i < data.size(); i++) {
+                BleBean bleBean1 = data.get(i);
+                if (BluetoothConstant.BLUETOOTH_CONNET_STATUS_3.equals(bleBean1.getStatus())){
+                    isConnecting = true;
+                }
+            }
+            if (isConnecting){
+                return;
+            }
+
             BleBean bleBean = mAdapter.getData().get(position);
             bleBean.setStatus(BluetoothConstant.BLUETOOTH_CONNET_STATUS_3);
-            //mBleService.connect(mAdapter.getData().get(position).getAddress());
-    /*        if (!bleName.equals(datalogSn)){
-                toast(R.string.m采集器序列号错误_ios);
-                return;
-            }*/
+            mAdapter.notifyDataSetChanged();
             mBleService.connect(mAdapter.getData().get(position).getAddress());
         });
     }
@@ -253,13 +244,13 @@ public class BlueToothScanActivity extends BaseActivity
     //开始动画
     private void startSearchAnim() {
         scaning = true;
-        ripple.startRippleAnimation();
+        binding. ripple.startRippleAnimation();
     }
 
 
     //结束搜索 动画
     private void stopSearchAnim() {
-        ripple.stopRippleAnimation();
+        binding. ripple.stopRippleAnimation();
     }
 
     @Override
@@ -283,33 +274,7 @@ public class BlueToothScanActivity extends BaseActivity
                 // 搜索蓝牙设备
                 manager.startBleScan();
                 break;
-            case 100:
-                //去连接
-                String sn = intent.getStringExtra("sn");
-                List<BleBean> data = mAdapter.getData();
-                int index = -1;
-                for (int i = 0; i < data.size(); i++) {
-                    String bleName = data.get(i).getBleName();
-                    if (bleName.equals(sn)) {
-                        index = i;
-                        break;
-                    }
-                }
-                pos = index;
 
-                if (index == -1) {
-                    blueScanFail.setVisibility(View.VISIBLE);
-                    ripple.setVisibility(View.GONE);
-                    tvNote.setVisibility(View.GONE);
-                    clResult.setVisibility(View.GONE);
-                    tvSearchText.setVisibility(View.GONE);
-                } else {
-                    BleBean bleBean = data.get(pos);
-                    bleBean.setStatus(BluetoothConstant.BLUETOOTH_CONNET_STATUS_3);
-                    mBleService.connect(bleBean.getAddress());
-                }
-
-                break;
             default:
                 break;
         }
@@ -339,30 +304,6 @@ public class BlueToothScanActivity extends BaseActivity
     public void addBleData(BleBean bleBean) {
         mAdapter.addData(bleBean);
         showScanResult();
-        pos = mAdapter.getData().size() - 1;
-
-
-        String bleName = bleBean.getBleName();
-/*        if (bleName.equals(datalogSn)) {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        //停止扫描  然后去连接
-                        manager.stopBleScan();
-                        BleBean bleBean1 = mAdapter.getData().get(pos);
-                        bleBean1.setStatus(BluetoothConstant.BLUETOOTH_CONNET_STATUS_3);
-                        mBleService.connect(mAdapter.getData().get(pos).getAddress());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }, 1000);
-
-
-        }*/
-
-
     }
 
     private void showScanResult() {
@@ -372,12 +313,12 @@ public class BlueToothScanActivity extends BaseActivity
             //延迟1.5秒再执行
             new Handler().postDelayed(() -> {
                 showResult();
-                tvNote.setVisibility(View.GONE);
+                binding.tvNote.setVisibility(View.GONE);
             }, 1500);
 
         }
         String s = getString(R.string.nearby_bluetooth) + "(" + mAdapter.getData().size() + ")";
-        tvNearbyBlue.setText(s);
+        binding.tvNearbyBlue.setText(s);
     }
 
     @Override
@@ -394,44 +335,46 @@ public class BlueToothScanActivity extends BaseActivity
     private void showResult() {
         int size = mAdapter.getData().size();
         if (size == 0) {
-            blueScanFail.setVisibility(View.VISIBLE);
-            ripple.setVisibility(View.GONE);
-            tvNote.setVisibility(View.GONE);
-            clResult.setVisibility(View.GONE);
-            tvSearchText.setVisibility(View.GONE);
+            binding.bluetoothScanFail.bluetoothScanFail.setVisibility(View.VISIBLE);
+            binding.ripple.setVisibility(View.GONE);
+            binding.tvNote.setVisibility(View.GONE);
+            binding.clResult.setVisibility(View.GONE);
+            binding.tvSearchText.setVisibility(View.GONE);
         } else {
             //设置动画，从自身位置的最下端向上滑动了自身的高度，持续时间为500ms
             final TranslateAnimation ctrlAnimation = new TranslateAnimation(
                     TranslateAnimation.RELATIVE_TO_SELF, 0, TranslateAnimation.RELATIVE_TO_SELF, 0,
                     TranslateAnimation.RELATIVE_TO_SELF, 1, TranslateAnimation.RELATIVE_TO_SELF, 0);
             ctrlAnimation.setDuration(500);     //设置动画的过渡时间
-            clResult.setVisibility(View.VISIBLE);
-            clResult.startAnimation(ctrlAnimation);
-            tvSearchText.setVisibility(View.VISIBLE);
-            blueScanFail.setVisibility(View.GONE);
+            binding.clResult.setVisibility(View.VISIBLE);
+            binding.clResult.startAnimation(ctrlAnimation);
+            binding.tvSearchText.setVisibility(View.VISIBLE);
+            binding.bluetoothScanFail.bluetoothScanFail.setVisibility(View.GONE);
         }
 
     }
 
 
-    @OnClick({R.id.tv_search_text, R.id.tv_retry})
-    public void onViewClicked(View view) {
+
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_search_text:
                 reScan();
                 break;
             case R.id.tv_retry:
-                blueScanFail.setVisibility(View.GONE);
-                ripple.setVisibility(View.VISIBLE);
-                tvNote.setVisibility(View.GONE);
-                clResult.setVisibility(View.VISIBLE);
-                tvSearchText.setVisibility(View.VISIBLE);
+                binding.bluetoothScanFail.bluetoothScanFail.setVisibility(View.GONE);
+                binding.ripple.setVisibility(View.VISIBLE);
+                binding.tvNote.setVisibility(View.GONE);
+                binding.clResult.setVisibility(View.VISIBLE);
+                binding.tvSearchText.setVisibility(View.VISIBLE);
 
                 reScan();
                 break;
 
         }
     }
+
 
 
     private void reScan() {
@@ -439,7 +382,7 @@ public class BlueToothScanActivity extends BaseActivity
 
             mAdapter.getData().clear();
             String s = getString(R.string.nearby_bluetooth) + "(" + 0 + ")";
-            tvNearbyBlue.setText(s);
+            binding.tvNearbyBlue.setText(s);
 
             startSearchAnim();
             scaleBigAnimator();
@@ -451,31 +394,6 @@ public class BlueToothScanActivity extends BaseActivity
     //缩小效果
     private void scaleZoomAnimator() {
 
-/*        //这里故意用两个是想让大家体会下组合动画怎么用而已~
-        final float scale = 0.5f;
-        AnimatorSet scaleSet = new AnimatorSet();
-        ValueAnimator valueAnimatorSmall = ValueAnimator.ofFloat(1.0f, scale);
-        valueAnimatorSmall.setDuration(500);
-
-        ValueAnimator valueAnimatorLarge = ValueAnimator.ofFloat(scale, 1.0f);
-        valueAnimatorLarge.setDuration(500);
-
-        valueAnimatorSmall.addUpdateListener(animation -> {
-            float scale1 = (Float) animation.getAnimatedValue();
-            img_babi.setScaleX(scale1);
-            img_babi.setScaleY(scale1);
-        });
-        valueAnimatorLarge.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                float scale = (Float) animation.getAnimatedValue();
-                img_babi.setScaleX(scale);
-                img_babi.setScaleY(scale);
-            }
-        });
-
-        scaleSet.play(valueAnimatorLarge).after(valueAnimatorSmall);
-        scaleSet.start();*/
 
         //其实可以一个就搞定的
         ValueAnimator vValue = ValueAnimator.ofFloat(1.0f, 0.8f);
@@ -484,15 +402,15 @@ public class BlueToothScanActivity extends BaseActivity
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 float scale = (Float) animation.getAnimatedValue();
-                ripple.setScaleX(scale);
-                ripple.setScaleY(scale);
+                binding.ripple.setScaleX(scale);
+                binding.ripple.setScaleY(scale);
 
             }
         });
 
-        ViewGroup.LayoutParams layoutParams = ripple.getLayoutParams();
-        layoutParams.height = (int) (ripple.getHeight() * 0.6);
-        ripple.setLayoutParams(layoutParams);
+        ViewGroup.LayoutParams layoutParams = binding.ripple.getLayoutParams();
+        layoutParams.height = (int) (binding.ripple.getHeight() * 0.6);
+        binding.ripple.setLayoutParams(layoutParams);
 
 
         vValue.setInterpolator(new LinearInterpolator());
@@ -534,15 +452,15 @@ public class BlueToothScanActivity extends BaseActivity
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 float scale = (Float) animation.getAnimatedValue();
-                ripple.setScaleX(scale);
-                ripple.setScaleY(scale);
+                binding.ripple.setScaleX(scale);
+                binding.ripple.setScaleY(scale);
 
             }
         });
 
-        ViewGroup.LayoutParams layoutParams = ripple.getLayoutParams();
-        layoutParams.height = (int) (ripple.getHeight() / 0.6);
-        ripple.setLayoutParams(layoutParams);
+        ViewGroup.LayoutParams layoutParams = binding.ripple.getLayoutParams();
+        layoutParams.height = (int) (binding.ripple.getHeight() / 0.6);
+        binding.ripple.setLayoutParams(layoutParams);
 
 
         vValue.setInterpolator(new LinearInterpolator());
@@ -566,10 +484,11 @@ public class BlueToothScanActivity extends BaseActivity
     };
 
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void setBleConnStatus(String status) {
         List<BleBean> data = mAdapter.getData();
-        if (data.size() == 0) return;
+        if (data.isEmpty()) return;
         //更新列表
         bleBean = data.get(pos);
         bleBean.setStatus(status);
@@ -581,32 +500,6 @@ public class BlueToothScanActivity extends BaseActivity
         boolean connet = bean.isConnet();
         if (connet) {//连接成功
             if (isvisible) {
-             /*   dialogUpdate = new CircleDialog.Builder()
-                        .setWidth(0.75f)
-                        .setBodyView(R.layout.dialog_config_datalog, view -> {
-                            CircleDrawable bgCircleDrawable = new CircleDrawable(CircleColor.DIALOG_BACKGROUND
-                                    , CircleDimen.DIALOG_RADIUS, CircleDimen.DIALOG_RADIUS, CircleDimen.DIALOG_RADIUS,
-                                    CircleDimen.DIALOG_RADIUS);
-                            view.setBackground(bgCircleDrawable);
-                            TextView tvTips = view.findViewById(R.id.loading_tips);
-                            View viewById = view.findViewById(R.id.tv_time);
-                            viewById.setVisibility(View.GONE);
-                            tvTips.setText(R.string.check_newversion);
-
-                        })
-                        .show(getSupportFragmentManager());
-
-                new Handler().postDelayed(() -> {
-                    //判断升级
-                    try {
-                        BleBean bleBean = mAdapter.getData().get(pos);
-                        deviceType = bleBean.getType();
-                        sendCmdConnect();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }, 1000);*/
-
 
                 new Handler().postDelayed(() -> {
                     //判断升级
@@ -646,46 +539,23 @@ public class BlueToothScanActivity extends BaseActivity
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     private void disconnet() {
         //更新列表
         List<BleBean> data = mAdapter.getData();
-        if (data.size() == 0) return;
+        if (data.isEmpty()) return;
         //更新列表
         bleBean = data.get(pos);
         bleBean.setStatus(BluetoothConstant.BLUETOOTH_CONNET_STATUS_1);
         mAdapter.notifyDataSetChanged();
 
-        //重新连接
-
-
     }
 
 
-    private void getVersion() {
-   /*     //1.设备类型 2.软件版本号 3.
-        int[] paramByte = new int[]{DataLogApDataParseUtil.DATALOGGER_TYPE, DataLogApDataParseUtil.FIRMWARE_VERSION, DataLogApDataParseUtil.FOTA_FILE_TYPE};
-        byte[] bytes = new byte[0];
-        try {
-            bytes = DatalogApUtil.sendMsg_blue19(DatalogApUtil.DATALOG_GETDATA_0X19, datalogSn, paramByte);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        mBleService.writeCharacteristic(bytes);*/
-    }
 
 
     /*发送密钥连接蓝牙*/
     private void sendCmdConnect() throws Exception {
-//        String bluetoothCommentKey = "";
-        //蓝牙公共密钥
-    /*    if (deviceType.contains("G")) {//已绑定 发送账户密钥
-            bluetoothCommentKey = TextUtils.isEmpty(BluetoothConstant.BLUETOOTH_SHARE_KEY) ?
-                    Cons.userBean.getCpowerToken() : BluetoothConstant.BLUETOOTH_SHARE_KEY;
-
-        } else {//未绑定  发送公共密钥 等到配网成功之后再发送账户密钥
-            bluetoothCommentKey = BluetoothConstant.BLUETOOTH_OSS_KEY;
-        }*/
-
 
         step=0;
 
@@ -806,14 +676,13 @@ public class BlueToothScanActivity extends BaseActivity
         //跳转到配置页面
         new Handler().postDelayed(() -> {
             show.dialogDismiss();
-            String type = bleBean.getType();
+            BleBean bleBean = mAdapter.getData().get(pos);
             DatalogConfigBean configBean = new DatalogConfigBean();
             configBean.setSerialNumber(bleBean.getBleName());
             ConfigManager.getInstance().setConfigBean(configBean);
 
-
             Intent intent = new Intent(BlueToothScanActivity.this, BlueToothConfigActivity.class);
-            intent.putExtra(GlobalConstant.DEVICE_TYPE, type);
+            intent.putExtra(GlobalConstant.DEVICE_TYPE, "");
             startActivity(intent);
         }, 2000);
     }
@@ -821,31 +690,23 @@ public class BlueToothScanActivity extends BaseActivity
 
 
 
-    private int reConnect = 0;
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventTask(ConnBleFailMsg bean) {
         try {
+            Toast.makeText(this, R.string.all_failed, Toast.LENGTH_SHORT);
             //主动连接失败
             BleBean bleBean = mAdapter.getData().get(pos);
             bleBean.setStatus(BluetoothConstant.BLUETOOTH_CONNET_STATUS_1);
             mAdapter.notifyDataSetChanged();
 
-
-            reConnect++;
-
-            //重新连接
-            if (reConnect < 3) {
-                BleBean bleBean1 = mAdapter.getData().get(pos);
-                bleBean1.setStatus(BluetoothConstant.BLUETOOTH_CONNET_STATUS_3);
-                mBleService.connect(mAdapter.getData().get(pos).getAddress());
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
     }
+
 
 
 }

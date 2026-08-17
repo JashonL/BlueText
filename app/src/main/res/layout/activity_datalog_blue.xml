@@ -6,10 +6,11 @@
     android:layout_height="match_parent"
     android:background="@color/white_background">
 
-    <include layout="@layout/toobar_title" />
+    <include layout="@layout/toobar_title" android:id="@+id/headerView" />
 
 
     <include
+        android:id="@+id/title_step3"
         layout="@layout/layout_title_step3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
