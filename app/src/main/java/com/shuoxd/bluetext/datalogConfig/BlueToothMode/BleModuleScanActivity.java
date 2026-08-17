@@ -8,15 +8,12 @@ import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.ServiceConnection;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -45,7 +42,6 @@ import com.shuoxd.bluetext.DatalogApUtil;
 import com.shuoxd.bluetext.DatalogConfigfinish;
 import com.shuoxd.bluetext.DatalogResponBean;
 import com.shuoxd.bluetext.GlobalConstant;
-import com.shuoxd.bluetext.MyApplication;
 import com.shuoxd.bluetext.Mydialog;
 import com.shuoxd.bluetext.R;
 import com.shuoxd.bluetext.databinding.ActivityBleModuleScanBinding;
@@ -53,7 +49,6 @@ import com.shuoxd.bluetext.datalogConfig.CircleDialogUtils;
 import com.shuoxd.bluetext.datalogConfig.ConfigManager;
 import com.shuoxd.bluetext.datalogConfig.bean.DatalogConfigBean;
 import com.shuoxd.bluetext.datalogConfig.bluetooth.BleScanRecordParser;
-import com.shuoxd.bluetext.datalogConfig.bluetooth.BleService;
 import com.shuoxd.bluetext.datalogConfig.bluetooth.BleSession;
 import com.shuoxd.bluetext.datalogConfig.bluetooth.BluetoothUtils;
 import com.shuoxd.bluetext.datalogConfig.bluetooth.bean.BleBean;
@@ -73,14 +68,11 @@ import java.util.List;
 /**
  * BLE scan + connect page powered by {@link BleClient} via {@link BleSession}.
  * Advertising parse rules stay in {@link BleScanRecordParser}.
- * {@link BleService} is only bound so legacy config pages can obtain a write handle
- * (service methods already delegate to {@link BleSession}).
  */
 public class BleModuleScanActivity extends BaseActivity implements View.OnClickListener {
 
     private ActivityBleModuleScanBinding binding;
     private BlueToothAdapter mAdapter;
-    private BleService mBleService;
 
     private boolean scaning = false;
     private boolean isAnimShowed = false;
@@ -91,19 +83,6 @@ public class BleModuleScanActivity extends BaseActivity implements View.OnClickL
     private String deviceType = "";
     private BaseCircleDialog dialogUpdate;
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
-
-    private final ServiceConnection mServiceConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName className, IBinder rawBinder) {
-            mBleService = ((BleService.LocalBinder) rawBinder).getService();
-            MyApplication.getInstance().setgBleServer(mBleService);
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName classname) {
-            mBleService = null;
-        }
-    };
 
     private final BroadcastReceiver bleStatusReceiver = new BroadcastReceiver() {
         @Override
@@ -209,11 +188,6 @@ public class BleModuleScanActivity extends BaseActivity implements View.OnClickL
         } else {
             BluetoothUtils.openBluetooth(this, BluetoothUtils.REQUEST_ENABLE_BT);
         }
-
-        // Bind thin BleService so BlueToothConfigActivity can keep using getgBleServer().
-        Intent intent = new Intent(this, BleService.class);
-        bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
-        startService(intent);
     }
 
     private void initListeners() {
@@ -525,7 +499,7 @@ public class BleModuleScanActivity extends BaseActivity implements View.OnClickL
             configBean.setSerialNumber(bleBean.getBleName());
             ConfigManager.getInstance().setConfigBean(configBean);
 
-            Intent intent = new Intent(BleModuleScanActivity.this, BlueToothConfigActivity.class);
+            Intent intent = new Intent(BleModuleScanActivity.this, BleModuleConfigActivity.class);
             intent.putExtra(GlobalConstant.DEVICE_TYPE, "");
             startActivity(intent);
         }, 2000);
@@ -563,10 +537,6 @@ public class BleModuleScanActivity extends BaseActivity implements View.OnClickL
         BleClient.getInstance().stopScan();
         try {
             unregisterReceiver(bleStatusReceiver);
-        } catch (Exception ignored) {
-        }
-        try {
-            unbindService(mServiceConnection);
         } catch (Exception ignored) {
         }
         // Keep GATT alive for config page via BleSession; do not disconnect on forward navigation.
