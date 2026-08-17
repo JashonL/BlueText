@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.LOCAL_MAC_ADDRESS" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 极光推送所需权限 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 鏋佸厜鎺ㄩ€佹墍闇€鏉冮檺 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
 
@@ -59,6 +59,11 @@
 
         <activity
             android:name=".datalogConfig.BlueToothMode.BlueToothScanActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".datalogConfig.BlueToothMode.BleModuleScanActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />

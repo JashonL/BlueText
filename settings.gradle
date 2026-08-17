@@ -46,4 +46,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "BlueText"
 include ':app'
+include ':ble'
 

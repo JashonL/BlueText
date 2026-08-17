@@ -15,11 +15,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Handler;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.View;
-import android.widget.Toast;
 
 
 import androidx.fragment.app.FragmentActivity;
@@ -27,11 +23,9 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.shuoxd.bluetext.R;
 import com.shuoxd.bluetext.datalogConfig.CircleDialogUtils;
-import com.shuoxd.bluetext.datalogConfig.bean.BleBrocastPro;
 import com.shuoxd.bluetext.datalogConfig.bluetooth.bean.BleBean;
 import com.shuoxd.bluetext.datalogConfig.bluetooth.constant.BluetoothConstant;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -128,110 +122,20 @@ public class BleScanManager {
     }
 
     private void parseRecord(byte[] scanRecord, String address) {
-
-
-        //数据长度
-        int tempLenIndex = 0;
-        List<BleBrocastPro> datas = new ArrayList<>();
-        for (int i = 0; i < scanRecord.length; i = tempLenIndex) {
-
-            //len包含Type data
-            int len = scanRecord[i] & 0xff;
-            //len包含Type data
-            if (len == 0) {
-                break;
-            }
-
-            byte[] data = new byte[len - 1];
-            BleBrocastPro pro = new BleBrocastPro();
-            pro.len = len;
-            pro.type = scanRecord[i + 1];
-            System.arraycopy(scanRecord, i + 2, data, 0, len - 1);
-            pro.data = data;
-
-
-            datas.add(pro);
-            tempLenIndex += len + 1;
-
-
-        }
-
-
-        BleBean bleBean = new BleBean();
-        bleBean.setAddress(address);
-
-
-        String name1 = "";
-        String deviceType = "";
-        String bleName = "";
-
-        for (int i = 0; i < datas.size(); i++) {
-            BleBrocastPro pro = datas.get(i);
-            byte type = pro.type;
-            switch (type) {
-                case 0x01:
-                    break;
-                case (byte) 0xff:
-                    String tempType = new String(pro.data, StandardCharsets.UTF_8);
-                    deviceType = tempType;
-                    int i1 = tempType.indexOf("#");
-                    if (i1 != -1) {
-                        name1 = tempType.substring(i1 + 1);
-                    }
-
-                    break;
-                case 0x03:
-                    break;
-                case 0x09:
-                    bleName = new String(pro.data, StandardCharsets.UTF_8);
-
-                    break;
-                case 0x0A:
-                    break;
-
-            }
-
-
-        }
-
-
-        bleName = name1 + bleName;
-
-
-        bleBean.setBleName(bleName);
-        bleBean.setType(deviceType);
-
-        if (TextUtils.isEmpty(bleBean.getBleName()) || TextUtils.isEmpty(bleBean.getType()) || TextUtils.isEmpty(bleBean.getAddress())) {
+        BleBean bleBean = BleScanRecordParser.parse(scanRecord, address);
+        if (bleBean == null) {
             return;
         }
-
-
-
-    /*      33：便携式电源内采集器
-            34：ShineWiFi-X2
-            43：GroHome Manager
-            44：WeLink
-            45：Welink-Pro
-            46：ShineRFStick-X2
-            51：ShineWiLan-X
-            94：便携式电源-TB*/
-
-        Log.d("liaojinsha", "type:" + bleBean.getType() + "name:" + bleName);
-
-        if (bleBean.getBleName().length() >= 10 && bleBean.getBleName().length() <= 20) {
-            boolean repeatFlag = false;
-            for (BleBean ble : scanlisteners.getBleData()) {
-                if (ble.getBleName().equals(bleBean.getBleName())) {
-                    repeatFlag = true;
-                    break;
-                }
-            }
-            if (!repeatFlag) {
-                scanlisteners.addBleData(bleBean);
+        boolean repeatFlag = false;
+        for (BleBean ble : scanlisteners.getBleData()) {
+            if (ble.getBleName().equals(bleBean.getBleName())) {
+                repeatFlag = true;
+                break;
             }
         }
-
-
+        if (!repeatFlag) {
+            scanlisteners.addBleData(bleBean);
+        }
     }
 
     @SuppressLint("MissingPermission")
