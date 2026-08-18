@@ -8,11 +8,8 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class AESCBCUtils {
-
-
-
-    private static String SECRET_KEY = "growatt_key16aes";//
-    private static String iv = "growatt_Ivs16aes";//偏移量字符串16位 当模式是CBC的时候必须设置偏移量
+    private static String SECRET_KEY = "growatt_aes16key";//
+    private static String iv = "growatt_aes16Ivs";//偏移量字符串16位 当模式是CBC的时候必须设置偏移量
     private static String Algorithm = "AES";
 
 

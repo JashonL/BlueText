@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -29,6 +30,8 @@ import org.greenrobot.eventbus.ThreadMode;
  * 0x17 透传调试：06 单寄存器设置 / 10 连续寄存器设置。
  */
 public class BleModulePassthroughActivity extends BaseActivity implements View.OnClickListener {
+
+    private static final String TAG = "BleModulePassthrough";
 
     private ActivityBleModulePassthroughBinding binding;
     private String lastPlainSendHex = "";
@@ -138,6 +141,8 @@ public class BleModulePassthroughActivity extends BaseActivity implements View.O
         byte[] modbusBytes = modbus.getBytes();
         Protocol0X17 protocol = Protocol0X17.newInstanceForModbus(modbusBytes);
         lastPlainSendHex = safeHex(protocol.getDecodeBytes());
+        Log.d(TAG, "下发(未加密) " + lastPlainSendHex);
+        Log.d(TAG, "下发(加密) " + safeHex(protocol.getBytes()));
         appendLog("发送(未加密):\n" + lastPlainSendHex + "\n返回:\n");
         BleSession.getInstance().writeCharacteristic(protocol.getBytes());
     }
@@ -149,6 +154,7 @@ public class BleModulePassthroughActivity extends BaseActivity implements View.O
             return;
         }
         String receiveHex = safeHex(data);
+        Log.d(TAG, "接收 " + receiveHex);
         appendLog("发送(未加密):\n" + lastPlainSendHex + "\n返回:\n" + receiveHex);
     }
 

@@ -9,7 +9,6 @@ public class PermissionConstant {
 
     //ble
     public static final String[] BLE_SCAN = {
-            Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.BLUETOOTH_SCAN,
             Manifest.permission.BLUETOOTH_CONNECT};
 }

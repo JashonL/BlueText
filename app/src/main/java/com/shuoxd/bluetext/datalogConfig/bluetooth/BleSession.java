@@ -19,6 +19,7 @@ import com.shuoxd.ble.model.BleConnectionState;
 import com.shuoxd.ble.model.BleDevice;
 import com.shuoxd.bluetext.CRC16;
 import com.shuoxd.bluetext.DatalogApUtil;
+import com.shuoxd.bluetext.SmartHomeUtil;
 import com.shuoxd.bluetext.datalogConfig.bluetooth.eventbus.BleDisconnectedEvent;
 import com.shuoxd.bluetext.datalogConfig.bluetooth.eventbus.BleEvent;
 import com.shuoxd.bluetext.datalogConfig.bluetooth.eventbus.ConnBleFailMsg;
@@ -182,6 +183,7 @@ public class BleSession {
 
             @Override
             public void onCharacteristicChanged(@NonNull byte[] data) {
+                Log.d(TAG, "接收原始 len=" + data.length + " data=" + SmartHomeUtil.bytesToHexString(data));
                 handleNotifyData(data);
             }
         });
@@ -195,6 +197,7 @@ public class BleSession {
             Log.e(TAG, "write while disconnected");
             return;
         }
+        Log.d(TAG, "下发 len=" + value.length + " data=" + SmartHomeUtil.bytesToHexString(value));
         receviceData = new byte[0];
         synchronized (writeQueue) {
             int chunkSize = Math.max(20, Math.min(500, negotiatedMtu - 3));
@@ -263,6 +266,7 @@ public class BleSession {
                 boolean ischeck = checkAndshow();
                 if (ischeck) {
                     aesPase();
+                    Log.d(TAG, "接收解密 len=" + receviceData.length + " data=" + SmartHomeUtil.bytesToHexString(receviceData));
                     EventBus.getDefault().post(new BleEvent(receviceData));
                 } else {
                     receviceData = new byte[0];
@@ -285,6 +289,7 @@ public class BleSession {
         if (ischeck) {
             try {
                 aesPase();
+                Log.d(TAG, "接收解密 len=" + receviceData.length + " data=" + SmartHomeUtil.bytesToHexString(receviceData));
                 EventBus.getDefault().post(new BleEvent(receviceData));
             } catch (Exception e) {
                 e.printStackTrace();
