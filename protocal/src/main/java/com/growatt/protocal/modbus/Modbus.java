@@ -1,6 +1,7 @@
 package com.growatt.protocal.modbus;
 
 
+import com.growatt.protocal.utils.ByteUtils;
 
 /**
  * Modbus协议基类

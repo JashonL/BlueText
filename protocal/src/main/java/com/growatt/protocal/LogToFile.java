@@ -46,6 +46,10 @@ public final class LogToFile {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
+                Context context = ApplicationImpl.INSTANCE().getApplicationContext();
+                if (context == null) {
+                    return;
+                }
                 File fileDir = new File(context.getFilesDir(), LOG_FILE_DIR);
                 long currentTimeMillis = System.currentTimeMillis();
                 if (fileDir.exists()) {
@@ -111,6 +115,10 @@ public final class LogToFile {
      * @param reduceDays 减少的天数，0代表当天
      */
     public @Nullable File getShareLogFile(int reduceDays, boolean isCreate) {
+        Context context = ApplicationImpl.INSTANCE().getApplicationContext();
+        if (context == null) {
+            return null;
+        }
         File fileDir = new File(context.getFilesDir(), LOG_FILE_DIR);
         if (!fileDir.exists()) {
             if (!fileDir.mkdir()) {

@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * After BLE connect: choose debug mode.
  * 配网 → {@link BleModuleConfigActivity}
- * 0x17透传 → placeholder for later.
+ * 0x17透传 → {@link BleModulePassthroughActivity}
  */
 public class BleModuleDebugSelectActivity extends BaseActivity implements BaseQuickAdapter.OnItemClickListener {
 
@@ -69,6 +69,6 @@ public class BleModuleDebugSelectActivity extends BaseActivity implements BaseQu
     }
 
     private void toPassthrough0x17() {
-        // 0x17透传页面稍后实现
+        startActivity(new Intent(this, BleModulePassthroughActivity.class));
     }
 }

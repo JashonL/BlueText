@@ -73,6 +73,13 @@ public class Protocol0X17 extends Protocol {
     }
 
     /**
+     * 用任意 Modbus 报文做 0x17 透传（例如 06 / 10 设置）
+     */
+    public static Protocol0X17 newInstanceForModbus(byte[] _modbusData) throws Exception {
+        return newInstance(_modbusData);
+    }
+
+    /**
      * @param _modbusData 透传数据区数据，即modbus数据
      */
     private static Protocol0X17 newInstance(byte[] _modbusData) throws Exception {

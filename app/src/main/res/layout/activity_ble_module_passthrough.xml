@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_background"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/headerView"
+        layout="@layout/toobar_title" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/xa40"
+            android:paddingTop="@dimen/xa20"
+            android:paddingEnd="@dimen/xa40"
+            android:paddingBottom="@dimen/xa40">
+
+            <RadioGroup
+                android:id="@+id/rg_mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_06"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="06设置"
+                    android:textColor="@color/title_bg_white"
+                    android:textSize="@dimen/sizea_title" />
+
+                <RadioButton
+                    android:id="@+id/rb_10"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10设置"
+                    android:textColor="@color/title_bg_white"
+                    android:textSize="@dimen/sizea_title" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/ll_mode_06"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/xa30"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="寄存器地址"
+                    android:textColor="@color/title_bg_white"
+                    android:textSize="@dimen/sizea_title" />
+
+                <EditText
+                    android:id="@+id/et_reg_addr"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/xa100"
+                    android:layout_marginTop="@dimen/xa10"
+                    android:background="@drawable/shape_iphone_radius_20"
+                    android:digits="0123456789."
+                    android:hint="寄存器地址"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="@dimen/xa20"
+                    android:paddingEnd="@dimen/xa20"
+                    android:textColor="@color/content_bg_white"
+                    android:textSize="@dimen/sizea_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/xa20"
+                    android:text="设置值"
+                    android:textColor="@color/title_bg_white"
+                    android:textSize="@dimen/sizea_title" />
+
+                <EditText
+                    android:id="@+id/et_set_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/xa100"
+                    android:layout_marginTop="@dimen/xa10"
+                    android:background="@drawable/shape_iphone_radius_20"
+                    android:digits="0123456789."
+                    android:hint="设置值"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="@dimen/xa20"
+                    android:paddingEnd="@dimen/xa20"
+                    android:textColor="@color/content_bg_white"
+                    android:textSize="@dimen/sizea_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_mode_10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/xa30"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="开始寄存器地址"
+                            android:textColor="@color/title_bg_white"
+                            android:textSize="@dimen/sizea_title" />
+
+                        <EditText
+                            android:id="@+id/et_start_addr"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/xa100"
+                            android:layout_marginTop="@dimen/xa10"
+                            android:background="@drawable/shape_iphone_radius_20"
+                            android:digits="0123456789"
+                            android:hint="开始寄存器地址"
+                            android:inputType="number"
+                            android:paddingStart="@dimen/xa20"
+                            android:paddingEnd="@dimen/xa20"
+                            android:textColor="@color/content_bg_white"
+                            android:textSize="@dimen/sizea_content" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/xa20"
+                        android:paddingEnd="@dimen/xa20"
+                        android:text="-"
+                        android:textColor="@color/title_bg_white"
+                        android:textSize="@dimen/sizea_title_big" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="结束寄存器地址"
+                            android:textColor="@color/title_bg_white"
+                            android:textSize="@dimen/sizea_title" />
+
+                        <EditText
+                            android:id="@+id/et_end_addr"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/xa100"
+                            android:layout_marginTop="@dimen/xa10"
+                            android:background="@drawable/shape_iphone_radius_20"
+                            android:enabled="false"
+                            android:focusable="false"
+                            android:hint="结束寄存器地址"
+                            android:inputType="number"
+                            android:paddingStart="@dimen/xa20"
+                            android:paddingEnd="@dimen/xa20"
+                            android:textColor="@color/content_bg_white"
+                            android:textSize="@dimen/sizea_content" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/xa20"
+                    android:text="设置值1"
+                    android:textColor="@color/title_bg_white"
+                    android:textSize="@dimen/sizea_title" />
+
+                <EditText
+                    android:id="@+id/et_value_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/xa100"
+                    android:layout_marginTop="@dimen/xa10"
+                    android:background="@drawable/shape_iphone_radius_20"
+                    android:digits="0123456789"
+                    android:hint="设置值1"
+                    android:inputType="number"
+                    android:paddingStart="@dimen/xa20"
+                    android:paddingEnd="@dimen/xa20"
+                    android:textColor="@color/content_bg_white"
+                    android:textSize="@dimen/sizea_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/xa20"
+                    android:text="设置值2"
+                    android:textColor="@color/title_bg_white"
+                    android:textSize="@dimen/sizea_title" />
+
+                <EditText
+                    android:id="@+id/et_value_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/xa100"
+                    android:layout_marginTop="@dimen/xa10"
+                    android:background="@drawable/shape_iphone_radius_20"
+                    android:digits="0123456789"
+                    android:hint="设置值2"
+                    android:inputType="number"
+                    android:paddingStart="@dimen/xa20"
+                    android:paddingEnd="@dimen/xa20"
+                    android:textColor="@color/content_bg_white"
+                    android:textSize="@dimen/sizea_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/xa20"
+                    android:text="设置值3"
+                    android:textColor="@color/title_bg_white"
+                    android:textSize="@dimen/sizea_title" />
+
+                <EditText
+                    android:id="@+id/et_value_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/xa100"
+                    android:layout_marginTop="@dimen/xa10"
+                    android:background="@drawable/shape_iphone_radius_20"
+                    android:digits="0123456789"
+                    android:hint="设置值3"
+                    android:inputType="number"
+                    android:paddingStart="@dimen/xa20"
+                    android:paddingEnd="@dimen/xa20"
+                    android:textColor="@color/content_bg_white"
+                    android:textSize="@dimen/sizea_content" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btn_ok"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/xa100"
+                android:layout_marginTop="@dimen/xa40"
+                android:background="@drawable/selector_circle_btn_blue"
+                android:gravity="center"
+                android:text="确定"
+                android:textColor="@color/white_background"
+                android:textSize="@dimen/sizea_title" />
+
+            <TextView
+                android:id="@+id/tv_log"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/xa30"
+                android:background="@drawable/shape_iphone_radius_20"
+                android:minHeight="@dimen/xa200"
+                android:padding="@dimen/xa20"
+                android:textColor="@color/title_bg_white"
+                android:textIsSelectable="true"
+                android:textSize="@dimen/sizea_content" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

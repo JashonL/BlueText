@@ -1,6 +1,8 @@
 package com.growatt.protocal.modbus;
 
 
+import com.growatt.protocal.utils.ByteUtils;
+import com.growatt.protocal.utils.CRC16Util;
 
 /**
  * 支持功能码为0X10连续寄存器地址批量设置
