@@ -539,6 +539,8 @@ public class BleModuleScanActivity extends BaseActivity implements View.OnClickL
             unregisterReceiver(bleStatusReceiver);
         } catch (Exception ignored) {
         }
-        // Keep GATT alive for config page via BleSession; do not disconnect on forward navigation.
+        if (isFinishing()) {
+            BleSession.getInstance().disconnect();
+        }
     }
 }

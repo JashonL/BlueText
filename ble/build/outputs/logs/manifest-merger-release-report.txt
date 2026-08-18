@@ -1,0 +1,56 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:2:1-26:12
+INJECTED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:2:1-26:12
+	package
+		INJECTED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.BLUETOOTH
+ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:4:5-6:38
+	android:maxSdkVersion
+		ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:6:9-35
+	android:name
+		ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:5:9-52
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:7:5-9:38
+	android:maxSdkVersion
+		ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:9:9-35
+	android:name
+		ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:8:9-58
+uses-permission#android.permission.BLUETOOTH_SCAN
+ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:10:5-12:58
+	android:usesPermissionFlags
+		ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:12:9-55
+	android:name
+		ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:11:9-57
+uses-permission#android.permission.BLUETOOTH_CONNECT
+ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:13:5-76
+	android:name
+		ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:13:22-73
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:15:5-17:38
+	android:maxSdkVersion
+		ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:17:9-35
+	android:name
+		ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:16:9-63
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:18:5-20:38
+	android:maxSdkVersion
+		ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:20:9-35
+	android:name
+		ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:19:9-65
+uses-feature#android.hardware.bluetooth_le
+ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:22:5-24:36
+	android:required
+		ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:24:9-33
+	android:name
+		ADDED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:23:9-53
+uses-sdk
+INJECTED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml
+INJECTED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\newplace\BlueText\ble\src\main\AndroidManifest.xml

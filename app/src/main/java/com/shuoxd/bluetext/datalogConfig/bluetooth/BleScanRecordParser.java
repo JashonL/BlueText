@@ -30,6 +30,9 @@ public final class BleScanRecordParser {
      */
     @Nullable
     public static BleBean parse(@Nullable byte[] scanRecord, @Nullable String address) {
+        Log.d(TAG, "扫描结果:"+scanRecord);
+
+
         if (scanRecord == null || TextUtils.isEmpty(address)) {
             return null;
         }

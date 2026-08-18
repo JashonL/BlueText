@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="D:\newplace\BlueText\ble"
+    name=":ble"
+    type="LIBRARY"
+    maven="BlueText:ble:unspecified"
+    agpVersion="8.11.1"
+    buildFolder="build"
+    bootClassPath="D:\AndroidSDK\platforms\android-34\android.jar;D:\AndroidSDK\build-tools\35.0.0\core-lambda-stubs.jar"
+    javaSourceLevel="17"
+    compileTarget="android-34"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="release"/>
+</lint-module>

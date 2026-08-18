@@ -12,6 +12,7 @@ import com.shuoxd.bluetext.GlobalConstant;
 import com.shuoxd.bluetext.R;
 import com.shuoxd.bluetext.databinding.ActivityBleModuleDebugSelectBinding;
 import com.shuoxd.bluetext.datalogConfig.DatalogStringChooseAdapter;
+import com.shuoxd.bluetext.datalogConfig.bluetooth.BleSession;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -70,5 +71,13 @@ public class BleModuleDebugSelectActivity extends BaseActivity implements BaseQu
 
     private void toPassthrough0x17() {
         startActivity(new Intent(this, BleModulePassthroughActivity.class));
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (isFinishing()) {
+            BleSession.getInstance().disconnect();
+        }
+        super.onDestroy();
     }
 }

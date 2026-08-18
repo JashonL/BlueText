@@ -116,7 +116,7 @@ public class DatalogStep3BlueToothGuideActivty extends BaseActivity implements T
 
 
     private void toScanSerial() {
-        Intent intent = new Intent(this, BleModuleScanActivity.class);
+        Intent intent = new Intent(this, BlueToothScanActivity.class);
         startActivity(intent);
     }
 

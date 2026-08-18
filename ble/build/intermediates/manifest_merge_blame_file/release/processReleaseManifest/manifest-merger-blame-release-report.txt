@@ -1,0 +1,49 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.shuoxd.ble" >
+4
+5    <uses-sdk android:minSdkVersion="26" />
+6
+7    <uses-permission
+7-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:4:5-6:38
+8        android:name="android.permission.BLUETOOTH"
+8-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:5:9-52
+9        android:maxSdkVersion="30" />
+9-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:6:9-35
+10    <uses-permission
+10-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:7:5-9:38
+11        android:name="android.permission.BLUETOOTH_ADMIN"
+11-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:8:9-58
+12        android:maxSdkVersion="30" />
+12-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:9:9-35
+13    <uses-permission
+13-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:10:5-12:58
+14        android:name="android.permission.BLUETOOTH_SCAN"
+14-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:11:9-57
+15        android:usesPermissionFlags="neverForLocation" />
+15-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:12:9-55
+16    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+16-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:13:5-76
+16-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:13:22-73
+17    <!-- Required for BLE scan on Android 11 and below -->
+18    <uses-permission
+18-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:15:5-17:38
+19        android:name="android.permission.ACCESS_FINE_LOCATION"
+19-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:16:9-63
+20        android:maxSdkVersion="30" />
+20-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:17:9-35
+21    <uses-permission
+21-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:18:5-20:38
+22        android:name="android.permission.ACCESS_COARSE_LOCATION"
+22-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:19:9-65
+23        android:maxSdkVersion="30" />
+23-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:20:9-35
+24
+25    <uses-feature
+25-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:22:5-24:36
+26        android:name="android.hardware.bluetooth_le"
+26-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:23:9-53
+27        android:required="false" />
+27-->D:\newplace\BlueText\ble\src\main\AndroidManifest.xml:24:9-33
+28
+29</manifest>

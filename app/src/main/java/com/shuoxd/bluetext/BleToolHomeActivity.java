@@ -11,6 +11,7 @@ import com.shuoxd.ble.BleClient;
 import com.shuoxd.ble.callback.BlePermissionCallback;
 import com.shuoxd.bluetext.databinding.ActivityBleToolHomeBinding;
 import com.shuoxd.bluetext.datalogConfig.BlueToothMode.BleModuleScanActivity;
+import com.shuoxd.bluetext.datalogConfig.BlueToothMode.BlueToothScanActivity;
 import com.shuoxd.bluetext.datalogConfig.ConfigManager;
 import com.shuoxd.bluetext.datalogConfig.Constant;
 import com.shuoxd.bluetext.datalogConfig.bean.DatalogConfigBean;
@@ -71,6 +72,7 @@ public class BleToolHomeActivity extends BaseActivity implements View.OnClickLis
         bean.setConfigMode(String.valueOf(Constant.CONFIG_BLUETOOTH));
         ConfigManager.getInstance().setConfigBean(bean);
 
+//        startActivity(new Intent(this, BlueToothScanActivity.class));
         startActivity(new Intent(this, BleModuleScanActivity.class));
     }
 }
