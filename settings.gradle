@@ -48,3 +48,4 @@ rootProject.name = "BlueText"
 include ':app'
 include ':ble'
 
+include ':protocal'

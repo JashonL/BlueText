@@ -1,5 +1,6 @@
 package com.shuoxd.ble;
 
+import android.app.Activity;
 import android.bluetooth.BluetoothGatt;
 import android.bluetooth.BluetoothGattService;
 import android.bluetooth.le.ScanFilter;
@@ -10,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.shuoxd.ble.callback.BleConnectCallback;
 import com.shuoxd.ble.callback.BleNotifyCallback;
+import com.shuoxd.ble.callback.BlePermissionCallback;
 import com.shuoxd.ble.callback.BleReadCallback;
 import com.shuoxd.ble.callback.BleScanCallback;
 import com.shuoxd.ble.callback.BleWriteCallback;
@@ -106,6 +108,30 @@ public final class BleClient {
     public boolean isBluetoothEnabled() {
         ensureInit();
         return BleUtils.isBluetoothEnabled(appContext);
+    }
+
+    // -------------------- Permission --------------------
+
+    public boolean hasPermissions(@NonNull Context context) {
+        return BlePermission.hasPermissions(context);
+    }
+
+    /**
+     * Request BLE runtime permissions. Forward {@code Activity.onRequestPermissionsResult}
+     * to {@link #handlePermissionsResult(Activity, int, String[], int[])}.
+     */
+    public void requestPermissions(@NonNull Activity activity, @NonNull BlePermissionCallback callback) {
+        BlePermission.request(activity, callback);
+    }
+
+    /**
+     * @return true if the result was consumed as a BLE permission request
+     */
+    public boolean handlePermissionsResult(@NonNull Activity activity,
+                                           int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        return BlePermission.handleResult(activity, requestCode, permissions, grantResults);
     }
 
     // -------------------- Scan --------------------

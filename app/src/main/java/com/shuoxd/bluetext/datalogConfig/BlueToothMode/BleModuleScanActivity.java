@@ -499,7 +499,7 @@ public class BleModuleScanActivity extends BaseActivity implements View.OnClickL
             configBean.setSerialNumber(bleBean.getBleName());
             ConfigManager.getInstance().setConfigBean(configBean);
 
-            Intent intent = new Intent(BleModuleScanActivity.this, BleModuleConfigActivity.class);
+            Intent intent = new Intent(BleModuleScanActivity.this, BleModuleDebugSelectActivity.class);
             intent.putExtra(GlobalConstant.DEVICE_TYPE, "");
             startActivity(intent);
         }, 2000);
